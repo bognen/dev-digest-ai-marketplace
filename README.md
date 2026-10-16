@@ -4,9 +4,14 @@ A [Claude Code plugin marketplace](https://code.claude.com/docs/en/plugins/creat
 
 ## Plugins
 
-| Plugin | Description |
-|---|---|
-| _none yet_ | |
+| Plugin | Description | Depends on |
+|---|---|---|
+| [`sdd-engineering`](plugins/sdd-engineering) | Spec-Driven Development workflow: spec, plan, `/run-plan`, verification, architecture review and retro | `engineering-paved-path`, `research-tools`, `architecture-review` |
+| [`architecture-review`](plugins/architecture-review) | Read-only `architecture-reviewer` agent that checks a diff against your repo's architecture docs | `engineering-paved-path` |
+| [`research-tools`](plugins/research-tools) | Read-only `researcher` agent for scoped questions about your repo or the web | none |
+| [`engineering-paved-path`](plugins/engineering-paved-path) | Shared technical skills: onion architecture, frontend architecture, security, TypeScript, React, Next.js, Fastify, Drizzle, PostgreSQL, Zod, Mermaid and skill routing | none |
+
+Installing a plugin also installs its dependencies. Dependency ranges resolve against git tags (`<plugin>--v<version>`), so release a dependency before the plugins that use it. See [docs/RELEASES.md](docs/RELEASES.md).
 
 ## Prerequisites
 

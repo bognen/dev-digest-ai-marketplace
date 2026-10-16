@@ -1,0 +1,11 @@
+{
+  "name": "architecture-review",
+  "version": "1.0.0",
+  "description": "A read-only architecture-reviewer agent that checks a diff against your repository's architecture docs and the paved-path layering rules, with file:line evidence for every finding",
+  "author": { "name": "Dima Bognen", "url": "https://github.com/bognen" },
+  "repository": "https://github.com/bognen/dev-digest-ai-marketplace",
+  "keywords": ["architecture", "code-review", "layering", "agent"],
+  "dependencies": [
+    { "name": "engineering-paved-path", "version": "^1.0.0" }
+  ]
+}

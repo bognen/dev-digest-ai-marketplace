@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: no-docs-generic-only
+description: The checkout diff in a repo with no architecture docs. The reviewer must say so and still apply the generic paved-path rules.
+tags: [smoke, generic]
+context:
+  scaffold_script: setup.sh

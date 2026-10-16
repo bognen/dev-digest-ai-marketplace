@@ -40,10 +40,10 @@ A skill is included only when a v1 agent or skill uses it. Proposed v1 set:
 | `onion-architecture` | `onion-architecture`, with the DevDigest examples moved into its evals | `implementation-planner`, `architecture-reviewer` (frontmatter `skills:`) |
 | `frontend-architecture` | `frontend-architecture` | `implementation-planner`, `architecture-reviewer` |
 | `mermaid-diagram` | `mermaid-diagram` | `spec-creator` |
-| `security` | `security` | `implementer` (every changed source file), `architecture-reviewer` |
+| `security` | `security` | `implementer` (every changed source file) |
 | `typescript` | `typescript-expert` | `implementer` (every `*.ts` / `*.tsx`) |
-| `react-best-practices`, `next-best-practices`, `react-testing-library` | same | `implementer` through routing, `architecture-reviewer` (RSC boundary) |
-| `fastify-best-practices`, `drizzle-orm-patterns`, `postgresql-table-design`, `zod` | same | `implementer` through routing |
+| `react-best-practices`, `next-best-practices`, `react-testing-library` | same | `implementer` through routing; `next-best-practices` is also preloaded by `architecture-reviewer` (RSC boundary) |
+| `fastify-best-practices`, `drizzle-orm-patterns`, `postgresql-table-design`, `zod` | same | `implementer` through routing; `fastify-best-practices` is also preloaded by `architecture-reviewer` |
 
 Also included:
 
@@ -61,7 +61,7 @@ Also included:
 ### 3.3 `architecture-review`: `architecture-reviewer` agent
 
 - Remove the hardcoded checks for `server/` onion layering, `reviewer-core` purity and `@devdigest/*`. The reviewer gets its rules from two places, in this order:
-  1. The repo's own architecture docs (`architectureDocs` in the repo contract). These win when they conflict with the generic rules.
+  1. The repo's own architecture docs. The caller passes their paths (`/run-plan` passes `architectureDocs`). Run on its own, the reviewer looks for `ARCHITECTURE.md`, `docs/architecture/**`, `docs/adr/**` and the architecture sections of `CLAUDE.md` / `AGENTS.md`. These docs win when they conflict with the generic rules.
   2. The generic rules in `engineering-paved-path:onion-architecture` and `:frontend-architecture`.
 - If no architecture docs are found, it reviews against the generic skills only and says so in the report header.
 - Output: evidence-backed findings with a `file:line` for each. It uses `ReportFindings` when that tool is available and a fixed markdown table when it is not. It gives no PASS or BLOCK verdict.
@@ -110,7 +110,7 @@ engineering-insights ─► invoked at the end of a task or when a gotcha is hit
 
 Components in this plugin reference each other by their full names, for example
 `sdd-engineering:implementer`. Dependency components always use their namespace:
-`research-tools:researcher` (`spec-creator` tools: `Agent(research-tools:researcher)`), and
+`research-tools:researcher` (`spec-creator` has the plain `Agent` tool and names `research-tools:researcher` in its prompt, because `Agent(type)` allowlists are ignored inside subagents), and
 `architecture-review:architecture-reviewer` (`run-plan`).
 
 ## 4. Repo contract (explicit inputs that replace DevDigest assumptions)
@@ -144,7 +144,7 @@ guesses a command such as `npm test`.
 2. Replace assumptions about repo structure with the keys from section 4.
 3. Review the tools for each agent: the verifier and reviewer stay read-only, and `implementation-planner` drops `Bash` unless a step needs it. Record why each agent has the tools it has.
 4. Replace local references with namespaced ones.
-5. Move the guard hooks out of agent frontmatter. Plugin agents do not support `hooks`, `mcpServers` or `permissionMode`. The guards move to `hooks/hooks.json`, and the scripts apply only when the hook input's agent type is the guarded agent. **This must be verified** against the minimum Claude Code version before release, and recorded in COMPATIBILITY.md.
+5. Move the guard hooks out of agent frontmatter. Plugin agents do not support `hooks`, `mcpServers` or `permissionMode`. The guards move to `hooks/hooks.json`, and the scripts apply only when the hook input's `agent_type` is the guarded agent. The hooks docs confirm that `agent_type` is present when a subagent makes the tool call. They don't say which version added it, so COMPATIBILITY.md lists it as a feature to verify.
 6. Use `"${CLAUDE_PLUGIN_ROOT}"` for files at plugin level and `${CLAUDE_SKILL_DIR}` for skill scripts such as `workflow-retro/scripts/collect.mjs`.
 7. Remove duplicated text. Rules live in skills, and agent prompts link to them. For example, the implementer's routing prose becomes a pointer to `skill-routing`.
 8. `run-plan`: drop `--security` and the `test-writer` and `security-reviewer` references from v1. List them as "not in this plugin" in the README.
@@ -179,7 +179,7 @@ with `claude plugin tag plugins/<p> --push` (`<p>--v1.0.0`). Then release `sdd-e
   - run-plan acts as section 4 describes when no verify command exists.
   - plan-verifier returns `CANNOT VERIFY` instead of guessing.
   - The reviewer cites `file:line` and respects repo docs over generic rules.
-- **Format:** ported from the vitest + Agent SDK harness to `claude plugin eval` suites, so that they run in CI without the DevDigest `evals/` package. *Open: confirm that `claude plugin eval` covers the trace assertions used in `evals/workflow/*`.*
+- **Format:** ported from the vitest + Agent SDK harness to `claude plugin eval` suites, so that they run in CI without the DevDigest `evals/` package. Running the evals requires Claude Code 2.1.269 or later. This is for development and CI only; installing the plugins does not need it. *Open: confirm that `claude plugin eval` graders can express the trace assertions used in `evals/workflow/*`.*
 
 ## 8. Docs and versioning
 
@@ -200,7 +200,7 @@ with `claude plugin tag plugins/<p> --push` (`<p>--v1.0.0`). Then release `sdd-e
 
 - `claude plugin validate . --strict` finds 4 plugins, and every manifest name matches its marketplace entry.
 - `node scripts/validate-marketplace.mjs` passes, including the DevDigest-name scan.
-- After a test install, `claude plugin list --json` shows no `dependency-unsatisfied`, `range-conflict` or `no-matching-tag`.
+- After a test install, `claude plugin list --json` shows no `dependency-unsatisfied` or `dependency-version-unsatisfied` errors, and no "has conflicting version requirements" or "has no git tag satisfying" messages.
 - Every file can be traced to an owner plugin, a consumer scenario and a reason it is versioned with that plugin. An `OWNERSHIP.md` table in each plugin, or a section in its README, records this.
 - The plugins read no file outside their own directory, their dependencies, or the repo contract in section 4.
 

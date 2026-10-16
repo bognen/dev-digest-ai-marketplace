@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: benign-rename-no-findings
+description: A local-variable rename violates no rule; the reviewer must report no findings.
+tags: [smoke, precision]
+context:
+  scaffold_script: setup.sh

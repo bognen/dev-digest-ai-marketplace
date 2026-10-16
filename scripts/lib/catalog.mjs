@@ -16,6 +16,10 @@ const KEBAB = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 const RESERVED_PREFIXES = ['claude-', 'anthropic-', 'anthropics-', 'cc-plugin-'];
 const RESERVED_NAMES = ['claude', 'anthropic', 'claude-code', 'claude-mods'];
 const DAY = 86_400_000;
+// Plugins are extracted from the DevDigest product repo and must stay product-neutral.
+// The marketplace's own name (dev-digest-ai-marketplace) is allowed.
+const PRODUCT_REFERENCES = /devdigest|dev-digest(?!-ai-marketplace)|reviewer-core|agent-runner|verify-changed\.sh|pr-self-review/i;
+const TEXT_FILE = /\.(md|json|mjs|cjs|js|ts|tsx|py|ya?ml|sh|txt)$/;
 
 // ---------------------------------------------------------------------------
 // Frontmatter: a deliberately small YAML subset (scalars, quoted strings,
@@ -364,6 +368,11 @@ export function validate(root) {
       if (r.startsWith('bin/')) error(f, 'Use scripts/ instead of a top-level bin/ (bin/ blocks claude.ai org distribution)');
       if (r === 'CLAUDE.md') error(f, 'CLAUDE.md inside a plugin is not loaded; put instructions in a skill');
       if (f.includes('\\')) error(f, 'Paths must use forward slashes');
+      if (TEXT_FILE.test(f)) {
+        const lines = (source.read(f) ?? '').split('\n');
+        const at = lines.findIndex((l) => PRODUCT_REFERENCES.test(l));
+        if (at !== -1) error(`${f}:${at + 1}`, `Product-specific reference "${lines[at].match(PRODUCT_REFERENCES)[0]}"; plugins must stay product-neutral`);
+      }
     }
     if (!plugin.files.includes(`${dir}/README.md`)) error(dir, 'README.md is required');
     if (!plugin.files.includes(`${dir}/CHANGELOG.md`)) warn(dir, 'CHANGELOG.md is recommended (feeds What\'s New)');
