@@ -1,0 +1,178 @@
+---
+// "Start here" card for newcomers. States, driven by attributes on <html> that
+// Base.astro sets before first paint:
+//   expanded  — default
+//   collapsed — [data-start-dismissed]: the card hides and a "Getting started" link shows on the homepage
+//   connected — [data-connected] (onboarding step 2 ticked): the primary action becomes "Browse what's new"
+import { getSiteData, url } from '../lib/data.mjs';
+
+const { catalog, collections } = getSiteData();
+const { counts } = catalog;
+const name = catalog.marketplace.name;
+const starter = collections.find((c) => c.slug === 'starter-pack');
+const starterPlugins = (starter?.plugins ?? [])
+  .map((pluginName) => catalog.artifacts.find((a) => a.type === 'plugin' && a.name === pluginName))
+  .filter(Boolean);
+const starterCommands = starterPlugins.map((p) => p.installCommand).join('\n');
+const cells = [
+  [counts.plugin, 'Plugins'],
+  [counts.skill, 'Skills'],
+  [counts.agent, 'Agents'],
+  [counts.command, 'Commands'],
+];
+const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>';
+---
+<section class="start-card blueprint" data-start-card aria-labelledby="start-title">
+  <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+  <div class="start-copy">
+    <p class="kicker">
+      <span class="when-connected"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Connected to {name}</span>
+      <span class="when-new">Start here</span>
+    </p>
+    <h1 id="start-title">Plugins, skills and agents for Claude Code, in one marketplace.</h1>
+    <p class="pitch when-new">Connect {name} once, then install any plugin with a single command. Takes about three minutes.</p>
+    <p class="pitch when-connected">You have added the marketplace. See what has been added or updated, or install the starter pack.</p>
+    <div class="actions">
+      <button type="button" class="btn btn-primary blueprint connect-action" data-open-onboarding>
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        Connect the marketplace <Fragment set:html={arrow} />
+      </button>
+      <a class="btn btn-primary blueprint browse-action" href={url('whats-new')}>
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        Browse what's new <Fragment set:html={arrow} />
+      </a>
+      <button type="button" class="btn btn-secondary" data-find-skill>Find a skill</button>
+      <button type="button" class="btn btn-secondary" data-starter-toggle aria-expanded="false" aria-controls="starter-pack">Starter pack</button>
+    </div>
+  </div>
+
+  <div class="start-stats">
+    <div class="stats-head">
+      <span>catalog.json · {catalog.generatedAt.slice(0, 10)}</span>
+      <button type="button" class="btn btn-ghost btn-icon dismiss" data-dismiss-start aria-label="Dismiss the getting started card" title="Dismiss">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+      </button>
+    </div>
+    {cells.map(([n, label]) => (
+      <div class="stat">
+        <span class="stat-n">{n}</span>
+        <span class="stat-label">{label}</span>
+      </div>
+    ))}
+  </div>
+
+  <div class="starter" id="starter-pack" hidden>
+    <h2>{starter?.title ?? 'Starter pack'}</h2>
+    {starterPlugins.length > 0 ? (
+      <>
+        {starter?.description && <p class="starter-desc">{starter.description}</p>}
+        <ul>
+          {starterPlugins.map((p) => (
+            <li><span class="starter-name">{p.name}</span><span class="starter-desc">{p.description}</span></li>
+          ))}
+        </ul>
+        <pre class="starter-cmds">{starterCommands}</pre>
+        <button type="button" class="btn btn-primary blueprint" data-copy data-copy-text={starterCommands}>
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <span data-copy-label>Copy all install commands</span>
+        </button>
+      </>
+    ) : (
+      <p class="starter-desc">We're still choosing the starter plugins. Meanwhile, <a href={url('whats-new')}>see what's new</a>.</p>
+    )}
+  </div>
+</section>
+
+<style>
+  .start-card { margin-top: 44px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
+  :global(html[data-start-dismissed]) .start-card { display: none; }
+  :global(html[data-connected]) .connect-action,
+  :global(html[data-connected]) .when-new,
+  :global(html:not([data-connected])) .browse-action,
+  :global(html:not([data-connected])) .when-connected { display: none; }
+  .when-connected { display: inline-flex; align-items: center; gap: 8px; }
+
+  .start-copy { padding: clamp(24px, 4vw, 44px); display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+  .start-copy .kicker { white-space: nowrap; }
+  h1 { margin: 0; font-size: clamp(34px, 5vw, 54px); line-height: 1.02; letter-spacing: -0.02em; text-wrap: balance; }
+  .pitch { margin: 0; font-size: 17px; color: var(--muted); max-width: 520px; text-wrap: pretty; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+  .actions .btn { height: 44px; padding: 0 16px; font-size: 16px; }
+  .actions .btn-primary { padding: 0 18px; }
+
+  .start-stats {
+    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr 1fr; gap: 1px;
+    background: var(--color-divider); box-shadow: -1px -1px 0 var(--color-divider); min-width: 0;
+  }
+  .stats-head {
+    grid-column: 1 / 3; display: flex; justify-content: space-between; align-items: center; gap: 8px;
+    padding: 8px 8px 8px 20px; background: var(--color-bg);
+    font-family: var(--font-mono); font-size: 12px; color: var(--muted);
+  }
+  .dismiss { width: 32px; height: 32px; color: var(--muted); flex: none; }
+  .dismiss:hover { color: var(--color-text); }
+  .stat {
+    padding: 20px 24px; display: flex; flex-direction: column; justify-content: flex-end; gap: 2px;
+    background: var(--color-bg); min-height: 120px; min-width: 0;
+  }
+  .stat-n { font-family: var(--font-heading); font-weight: 500; font-size: clamp(40px, 5vw, 58px); line-height: 1; letter-spacing: -0.02em; }
+  .stat-label { font-family: var(--font-heading); font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+  .starter {
+    grid-column: 1 / -1; display: flex; flex-direction: column; gap: 12px;
+    padding: clamp(20px, 3vw, 28px) clamp(24px, 4vw, 44px) clamp(24px, 4vw, 36px);
+    border-top: 1px solid var(--color-divider); min-width: 0;
+  }
+  .starter h2 { margin: 0; font-size: 28px; }
+  .starter ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--color-divider); }
+  .starter li { display: flex; flex-direction: column; gap: 2px; padding: 12px 0; border-bottom: 1px solid var(--color-divider); }
+  .starter-name { font-family: var(--font-heading); font-weight: 600; font-size: 20px; }
+  .starter-desc { margin: 0; font-size: 14px; color: var(--muted); }
+  .starter-cmds {
+    margin: 0; padding: 12px 14px; background: var(--color-surface); border: 1px solid var(--color-divider);
+    font-size: 13px; line-height: 1.7; overflow-x: auto;
+  }
+  .starter .btn { align-self: flex-start; }
+
+  @media (max-width: 480px) {
+    .start-card { margin-top: 28px; }
+    .stat { padding: 16px; min-height: 96px; }
+    .stats-head { padding-left: 16px; }
+  }
+</style>
+
+<script>
+  import '../scripts/copy.js';
+  import { save } from '../scripts/storage.js';
+
+  const card = document.querySelector<HTMLElement>('[data-start-card]');
+  if (card) {
+    card.querySelector('[data-dismiss-start]')!.addEventListener('click', () => {
+      save('startCard', 'dismissed');
+      document.documentElement.setAttribute('data-start-dismissed', '');
+      document.querySelector<HTMLElement>('[data-show-start]')?.focus();
+    });
+
+    card.querySelector('[data-find-skill]')!.addEventListener('click', () => {
+      const search = document.querySelector<HTMLInputElement>('#site-search');
+      if (!search) return;
+      // Below 1024px the header search is folded into an icon button.
+      if (!search.offsetParent) document.querySelector<HTMLButtonElement>('[data-search-toggle]')?.click();
+      search.scrollIntoView({ block: 'nearest' });
+      search.focus();
+    });
+
+    const toggle = card.querySelector<HTMLButtonElement>('[data-starter-toggle]')!;
+    const panel = card.querySelector<HTMLElement>('#starter-pack')!;
+    toggle.addEventListener('click', () => {
+      panel.hidden = !panel.hidden;
+      toggle.setAttribute('aria-expanded', String(!panel.hidden));
+    });
+  }
+
+  document.querySelector('[data-show-start]')?.addEventListener('click', () => {
+    save('startCard', null);
+    document.documentElement.removeAttribute('data-start-dismissed');
+    [...(card?.querySelectorAll<HTMLElement>('.actions .btn') ?? [])].find((b) => b.offsetParent)?.focus();
+  });
+</script>

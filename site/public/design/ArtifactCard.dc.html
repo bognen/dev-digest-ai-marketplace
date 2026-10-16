@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/industry-0170da02-2f81-44d7-82b2-14ea1abdb45d/styles.css">
+<script src="_ds/industry-0170da02-2f81-44d7-82b2-14ea1abdb45d/_ds_bundle.js"></script>
+</helmet>
+<sc-if value="{{ isCard }}" hint-placeholder-val="{{ true }}">
+  <article class="blueprint" tabIndex="0" role="link" aria-label="{{ ariaLabel }}" onClick="{{ open }}" onKeyDown="{{ onKey }}" style="height:100%;display:flex;flex-direction:column;cursor:pointer;opacity:{{ opacity }};transition:border-color .15s, background-color .15s" style-hover="border-color:var(--color-accent);background-color:var(--hover)">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <div style="padding:18px 20px;display:flex;flex-direction:column;gap:10px;flex:1">
+      <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+        <span style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;padding:2px 7px;border:1px solid var(--color-accent);color:var(--accent-text)">{{ a.code }}</span>
+        <sc-for list="{{ badges }}" as="b" hint-placeholder-count="1"><span class="tag {{ b.cls }}">{{ b.label }}</span></sc-for>
+      </div>
+      <h3 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:23px;line-height:1.1;overflow-wrap:anywhere"><sc-for list="{{ titleSegs }}" as="s"><sc-if value="{{ s.hit }}"><mark style="background:var(--mark);color:inherit">{{ s.t }}</mark></sc-if><sc-if value="{{ s.plain }}">{{ s.t }}</sc-if></sc-for></h3>
+      <p style="margin:0;font-size:14px;line-height:1.5;color:var(--muted);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden"><sc-for list="{{ descSegs }}" as="s"><sc-if value="{{ s.hit }}"><mark style="background:var(--mark);color:var(--color-text)">{{ s.t }}</mark></sc-if><sc-if value="{{ s.plain }}">{{ s.t }}</sc-if></sc-for></p>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+        <sc-for list="{{ tags3 }}" as="t" hint-placeholder-count="3"><span class="tag tag-neutral">{{ t }}</span></sc-for>
+        <sc-if value="{{ hasMore }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:var(--faint)">{{ more }}</span></sc-if>
+      </div>
+      <div style="margin-top:auto;font-size:12px;color:var(--faint)">{{ a.installNote }} · v{{ a.version }} · {{ a.rel }}</div>
+      <sc-if value="{{ isDeprecated }}" hint-placeholder-val="{{ false }}">
+        <a href="{{ replacementHref }}" onClick="{{ stop }}" style="font-size:13px">Use {{ replacementName }} instead →</a>
+      </sc-if>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;height:42px;padding:0 6px 0 20px;border-top:1px solid var(--color-divider);font-family:var(--font-mono);font-size:12px;color:var(--muted)">
+      <span style="flex:1;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">{{ a.installCommand }}</span>
+      <button class="btn btn-ghost" onClick="{{ copy }}" aria-label="Copy install command" style="height:30px;padding:0 8px;font-size:13px">
+        <sc-if value="{{ copied }}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="M20 6 9 17l-5-5"></path></svg></sc-if>
+        <sc-if value="{{ notCopied }}" hint-placeholder-val="{{ true }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></sc-if>
+        {{ copyLabel }}
+      </button>
+    </div>
+  </article>
+</sc-if>
+
+<sc-if value="{{ isRow }}" hint-placeholder-val="{{ false }}">
+  <div role="option" aria-selected="{{ active }}" tabIndex="{{ rowTab }}" onClick="{{ open }}" onKeyDown="{{ onKey }}" onMouseEnter="{{ hover }}" style="display:grid;grid-template-columns:{{ rowCols }};align-items:center;gap:14px;min-height:46px;padding:6px 12px;cursor:pointer;opacity:{{ opacity }};background:{{ rowBg }};box-shadow:{{ rowEdge }};border-bottom:1px solid var(--color-divider)" style-hover="background:var(--hover)">
+    <span style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.04em;color:var(--accent-text)">{{ a.code }}</span>
+    <span style="font-family:var(--font-heading);font-weight:600;font-size:18px;line-height:1.15;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><sc-for list="{{ titleSegs }}" as="s"><sc-if value="{{ s.hit }}"><mark style="background:var(--mark);color:inherit">{{ s.t }}</mark></sc-if><sc-if value="{{ s.plain }}">{{ s.t }}</sc-if></sc-for></span>
+    <sc-if value="{{ showDesc }}" hint-placeholder-val="{{ true }}"><span style="font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ a.description }}</span></sc-if>
+    <span style="display:flex;gap:6px;align-items:center;justify-content:flex-end;font-size:12px;color:var(--faint);white-space:nowrap"><sc-for list="{{ badges }}" as="b"><span class="tag {{ b.cls }}" style="padding:1px 6px">{{ b.label }}</span></sc-for>{{ a.plugin }}</span>
+    <sc-if value="{{ showCopy }}" hint-placeholder-val="{{ true }}">
+      <button class="btn btn-ghost btn-icon" onClick="{{ copy }}" aria-label="Copy install command" style="width:30px;height:30px">
+        <sc-if value="{{ copied }}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="M20 6 9 17l-5-5"></path></svg></sc-if>
+        <sc-if value="{{ notCopied }}" hint-placeholder-val="{{ true }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></sc-if>
+      </button>
+    </sc-if>
+  </div>
+</sc-if>
+
+<sc-if value="{{ isMini }}" hint-placeholder-val="{{ false }}">
+  <div tabIndex="{{ miniTab }}" onClick="{{ open }}" onKeyDown="{{ onKey }}" style="height:100%;border:1px solid var(--color-divider);padding:12px 14px;display:flex;flex-direction:column;gap:5px;cursor:{{ miniCursor }};opacity:{{ opacity }}" style-hover="border-color:var(--color-accent)">
+    <span style="display:flex;gap:6px;align-items:center"><span style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.04em;color:var(--accent-text)">{{ a.code }}</span><sc-for list="{{ badges }}" as="b"><span class="tag {{ b.cls }}" style="padding:1px 6px">{{ b.label }}</span></sc-for></span>
+    <span style="font-family:var(--font-heading);font-weight:600;font-size:18px;line-height:1.15;text-decoration:{{ miniStrike }}">{{ a.name }}</span>
+    <span style="font-size:12px;color:var(--faint)">in {{ a.plugin }}</span>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:360,&quot;height&quot;:300},&quot;a&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;object&quot;},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;card&quot;,&quot;row&quot;,&quot;mini&quot;],&quot;default&quot;:&quot;card&quot;,&quot;tsType&quot;:&quot;'card'|'row'|'mini'&quot;},&quot;terms&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string[]&quot;},&quot;active&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;compact&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;copiedId&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string&quot;},&quot;onOpen&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(a)=&gt;void&quot;},&quot;onCopy&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(a)=&gt;void&quot;},&quot;onHover&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;()=&gt;void&quot;}}">
+function stem(w) {
+  w = w.toLowerCase();
+  if (w.length > 4) for (const s of ['ing', 'ers', 'er', 'ed', 'es', 's']) if (w.endsWith(s) && w.length - s.length >= 3) { w = w.slice(0, -s.length); break; }
+  if (w.length > 4 && w.endsWith('e')) w = w.slice(0, -1);
+  return w;
+}
+
+class Component extends DCLogic {
+  segs(text) {
+    const terms = this.props.terms || [];
+    const parts = String(text || '').split(/([A-Za-z0-9]+)/).filter((p) => p !== '');
+    if (!terms.length) return [{ t: String(text || ''), hit: false, plain: true }];
+    return parts.map((p) => {
+      const isWord = /^[A-Za-z0-9]+$/.test(p);
+      const s = isWord ? stem(p) : '';
+      const hit = isWord && terms.some((t) => s === t || (t.length >= 2 && s.startsWith(t)));
+      return { t: p, hit, plain: !hit };
+    });
+  }
+  renderVals() {
+    const a = this.props.a || {};
+    const v = this.props.variant || 'card';
+    const removed = !!a.removed;
+    const deprecated = a.status === 'deprecated';
+    const open = () => { if (!removed && this.props.onOpen) this.props.onOpen(a); };
+    const tags = a.tags || [];
+    const copied = !!a.id && this.props.copiedId === a.id;
+    const rep = a.replacement ? a.replacement.split('/') : [];
+    const compact = !!this.props.compact;
+    return {
+      a, isCard: v === 'card', isRow: v === 'row', isMini: v === 'mini',
+      ariaLabel: `${a.typeLabel || ''} ${a.name || ''}`,
+      badges: a.badges || [], titleSegs: this.segs(a.name), descSegs: this.segs(a.description),
+      tags3: tags.slice(0, 3), hasMore: tags.length > 3, more: tags.length > 3 ? `+${tags.length - 3}` : '',
+      isDeprecated: deprecated, replacementName: rep[2] || '', replacementHref: rep.length ? `#/plugins/${rep[0]}/${rep[1]}/${rep[2]}` : '#/',
+      opacity: deprecated || removed ? 0.7 : 1,
+      copied, notCopied: !copied, copyLabel: copied ? 'Copied' : 'Copy',
+      open, onKey: (e) => { if (e.key === 'Enter') open(); },
+      copy: (e) => { e.stopPropagation(); this.props.onCopy && this.props.onCopy(a); },
+      stop: (e) => e.stopPropagation(),
+      hover: () => this.props.onHover && this.props.onHover(),
+      active: !!this.props.active,
+      rowBg: this.props.active ? 'var(--hover)' : 'transparent',
+      rowEdge: this.props.active ? 'inset 2px 0 0 var(--color-accent)' : 'none',
+      rowTab: compact ? -1 : 0,
+      rowCols: compact ? '56px minmax(0,1fr) auto' : '60px minmax(120px,1fr) minmax(0,2fr) auto 30px',
+      showDesc: !compact, showCopy: !compact,
+      miniTab: removed ? -1 : 0, miniCursor: removed ? 'default' : 'pointer', miniStrike: removed ? 'line-through' : 'none',
+    };
+  }
+}
+</script>
+</body>
+</html>

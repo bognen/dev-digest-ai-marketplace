@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/industry-0170da02-2f81-44d7-82b2-14ea1abdb45d/styles.css">
+<script src="_ds/industry-0170da02-2f81-44d7-82b2-14ea1abdb45d/_ds_bundle.js"></script>
+<style>
+:root{--color-bg:#121415;--color-surface:#1a1d1f;--color-text:#e6e7ea;--color-accent:#749dc4;--color-accent-2:#7e9cb8;--color-divider:color-mix(in srgb,#e6e7ea 15%,transparent);
+--color-neutral-100:#2b2b2d;--color-neutral-200:#424244;--color-neutral-300:#5d5d60;--color-neutral-400:#7a7a7d;--color-neutral-500:#98989b;--color-neutral-600:#b7b7ba;--color-neutral-700:#d4d4d7;--color-neutral-800:#e7e7ea;--color-neutral-900:#f5f5f8;
+--color-accent-100:#1d2d3d;--color-accent-200:#2c455d;--color-accent-300:#416180;--color-accent-400:#597ea3;--color-accent-500:#749dc4;--color-accent-600:#94bce3;--color-accent-700:#b5d9fd;--color-accent-800:#d6ebff;--color-accent-900:#eef6ff;
+--color-accent-2-100:#1f2d3a;--color-accent-2-200:#314457;--color-accent-2-300:#486077;--color-accent-2-400:#627d98;--color-accent-2-500:#7e9cb8;--color-accent-2-600:#9ebbd8;--color-accent-2-700:#bdd8f2;--color-accent-2-800:#d6ebff;--color-accent-2-900:#eef6ff;
+--shadow-sm:0 1px 2px rgba(0,0,0,.5);--shadow-md:0 0 0 1px rgba(255,255,255,.04),0 6px 16px rgba(0,0,0,.45);--shadow-lg:0 0 0 1px rgba(255,255,255,.05),0 18px 48px rgba(0,0,0,.6);
+--muted:#a6a8ad;--faint:#8b8d92;--accent-text:#94bce3;--hover:color-mix(in srgb,#e6e7ea 5%,transparent);--mark:#2c455d;--font-mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;color-scheme:dark}
+[data-theme="light"]{--color-bg:#f2f2f3;--color-surface:#e9e9ea;--color-text:#1d1f20;--color-accent:#5980a6;--color-accent-2:#728fab;--color-divider:color-mix(in srgb,#1d1f20 16%,transparent);
+--color-neutral-100:#f5f5f8;--color-neutral-200:#e7e7ea;--color-neutral-300:#d4d4d7;--color-neutral-400:#b7b7ba;--color-neutral-500:#98989b;--color-neutral-600:#7a7a7d;--color-neutral-700:#5d5d60;--color-neutral-800:#424244;--color-neutral-900:#2b2b2d;
+--color-accent-100:#eef6ff;--color-accent-200:#d6ebff;--color-accent-300:#b5d9fd;--color-accent-400:#94bce3;--color-accent-500:#749dc4;--color-accent-600:#597ea3;--color-accent-700:#416180;--color-accent-800:#2c455d;--color-accent-900:#1d2d3d;
+--shadow-sm:0 1px 2px color-mix(in srgb,#2b2b2d 14%,transparent);--shadow-md:0 3px 10px color-mix(in srgb,#2b2b2d 16%,transparent);--shadow-lg:0 12px 32px color-mix(in srgb,#2b2b2d 22%,transparent);
+--muted:#55575b;--faint:#66686c;--accent-text:#416180;--hover:color-mix(in srgb,#1d1f20 4%,transparent);--mark:#d6ebff;color-scheme:light}
+body{margin:0;background:var(--color-bg)}
+a{color:var(--accent-text);text-underline-offset:3px}
+a:hover{color:var(--color-accent-700)}
+.btn{white-space:nowrap}
+@keyframes ddpulse{0%,100%{opacity:.45}50%{opacity:.9}}
+.prose{font-size:15px;line-height:1.65;color:var(--color-text)}
+.prose h2{font-family:var(--font-heading);font-weight:600;font-size:22px;margin:28px 0 8px}
+.prose p,.prose ul{margin:0 0 12px;color:var(--muted)}
+.prose ul{padding-left:20px}
+.prose code{font-family:var(--font-mono);font-size:.88em;color:var(--color-text)}
+.prose pre{margin:0 0 14px;padding:14px 16px;background:var(--color-surface);border:1px solid var(--color-divider);overflow-x:auto;font-size:13px;line-height:1.55}
+.prose>:first-child{margin-top:0}
+</style>
+</helmet>
+<div data-theme="{{ themeAttr }}" ref="{{ rootRef }}" style="min-height:100vh;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);display:flex;flex-direction:column">
+
+  <header style="position:sticky;top:0;z-index:40;background:var(--color-bg);border-bottom:1px solid var(--color-divider)">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(16px,4vw,40px);display:flex;flex-wrap:wrap;align-items:center;column-gap:20px;min-height:60px;box-sizing:border-box">
+      <a href="#/" aria-label="dev-digest home" style="display:flex;align-items:center;gap:10px;height:60px;color:var(--color-text);text-decoration:none">
+        <span style="width:18px;height:18px;border:1px solid var(--color-accent);display:grid;place-items:center"><span style="width:6px;height:6px;background:var(--color-accent)"></span></span>
+        <span style="font-family:var(--font-heading);font-weight:600;font-size:21px">dev-digest</span>
+      </a>
+      <div style="{{ searchWrapStyle }}">
+        <div style="position:relative;display:flex;align-items:center">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="position:absolute;left:11px;stroke-width:1.5;stroke-linecap:round;color:var(--muted);pointer-events:none"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+          <input ref="{{ searchRef }}" class="input" type="search" role="combobox" aria-autocomplete="list" aria-expanded="{{ taOpen }}" aria-controls="ta-panel" aria-label="Search the marketplace" placeholder="{{ searchPlaceholder }}" value="{{ hq }}" onChange="{{ onHq }}" onKeyDown="{{ onHqKey }}" onFocus="{{ onHqFocus }}" onBlur="{{ onHqBlur }}" style="padding-left:34px;padding-right:36px;height:38px">
+          <sc-if value="{{ hdrFull }}" hint-placeholder-val="{{ true }}"><kbd style="position:absolute;right:9px;font-family:var(--font-mono);font-size:11px;border:1px solid var(--color-divider);padding:0 6px;color:var(--muted)">/</kbd></sc-if>
+        </div>
+        <sc-if value="{{ taOpen }}" hint-placeholder-val="{{ false }}">
+          <div id="ta-panel" role="listbox" aria-label="Search suggestions" onMouseDown="{{ preventDefault }}" style="position:absolute;top:calc(100% + 6px);left:0;width:max(100%, min(560px, 92vw));z-index:50;background:var(--color-bg);border:1px solid var(--color-divider);box-shadow:var(--shadow-lg)">
+            <sc-if value="{{ taEmpty }}">
+              <div style="padding:12px 14px 6px;font-family:var(--font-heading);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--faint)">{{ taEmptyTitle }}</div>
+              <sc-for list="{{ taRecent }}" as="r" hint-placeholder-count="3">
+                <button onClick="{{ r.go }}" style="width:100%;display:flex;align-items:center;gap:10px;padding:9px 14px;background:transparent;border:0;color:var(--color-text);font:inherit;font-size:14px;text-align:left;cursor:pointer" style-hover="background:var(--hover)">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round;color:var(--faint)"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>{{ r.q }}</button>
+              </sc-for>
+              <div style="height:6px"></div>
+            </sc-if>
+            <sc-if value="{{ taHasQuery }}">
+              <sc-if value="{{ taHasType }}">
+                <div style="display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--color-divider);font-size:13px;color:var(--muted)">Detected <span class="tag tag-outline">Type: {{ taTypeLabel }}</span></div>
+              </sc-if>
+              <sc-for list="{{ taRows }}" as="r" hint-placeholder-count="4">
+                <dc-import name="ArtifactCard" a="{{ r.a }}" variant="row" compact="{{ true }}" active="{{ r.active }}" terms="{{ taTerms }}" on-open="{{ openArt }}" on-hover="{{ r.hover }}" hint-size="100%,46px"></dc-import>
+              </sc-for>
+              <sc-if value="{{ taNone }}"><div style="padding:14px;font-size:14px;color:var(--muted)">No matches yet. Press Enter to see suggestions.</div></sc-if>
+              <button onClick="{{ seeAll }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:11px 14px;background:transparent;border:0;color:var(--accent-text);font:inherit;font-size:14px;cursor:pointer" style-hover="background:var(--hover)"><span>See all {{ taTotal }} results</span><span style="font-family:var(--font-mono);font-size:11px;color:var(--faint)">↑↓ · Enter · Esc</span></button>
+            </sc-if>
+          </div>
+        </sc-if>
+      </div>
+      <sc-if value="{{ hdrFull }}" hint-placeholder-val="{{ true }}">
+        <nav aria-label="Main" style="display:flex;gap:28px;margin-left:auto;font-size:14px">
+          <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="3"><a href="{{ n.href }}" aria-current="{{ n.current }}" style="color:{{ n.color }};text-decoration:none;white-space:nowrap">{{ n.label }}</a></sc-for>
+        </nav>
+      </sc-if>
+      <sc-if value="{{ hdrCompact }}" hint-placeholder-val="{{ false }}"><div style="flex:1"></div></sc-if>
+      <div style="display:flex;gap:8px;align-items:center">
+        <sc-if value="{{ hdrCompact }}" hint-placeholder-val="{{ false }}">
+          <button class="btn btn-secondary btn-icon" onClick="{{ toggleMSearch }}" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></button>
+        </sc-if>
+        <sc-if value="{{ hdrFull }}" hint-placeholder-val="{{ true }}">
+          <a class="btn btn-secondary" href="{{ repoUrl }}" target="_blank" rel="noopener" style="height:36px">GitHub
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linejoin:round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><span style="color:var(--muted)">{{ stars }}</span></a>
+        </sc-if>
+        <button class="btn btn-secondary btn-icon" onClick="{{ cycleTheme }}" aria-label="{{ themeLabel }}" title="{{ themeLabel }}">
+          <sc-if value="{{ themeIsDark }}" hint-placeholder-val="{{ true }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linejoin:round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg></sc-if>
+          <sc-if value="{{ themeIsLight }}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg></sc-if>
+          <sc-if value="{{ themeIsSystem }}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round"><rect width="20" height="14" x="2" y="3" rx="2"></rect><line x1="8" x2="16" y1="21" y2="21"></line><line x1="12" x2="12" y1="17" y2="21"></line></svg></sc-if>
+        </button>
+        <sc-if value="{{ hdrCompact }}" hint-placeholder-val="{{ false }}">
+          <button class="btn btn-secondary btn-icon" onClick="{{ toggleMenu }}" aria-label="Menu" aria-expanded="{{ menuOpen }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round"><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button>
+        </sc-if>
+      </div>
+    </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <nav aria-label="Main" style="display:flex;flex-direction:column;border-top:1px solid var(--color-divider);padding:6px clamp(16px,4vw,40px) 12px">
+        <sc-for list="{{ navItems }}" as="n"><a href="{{ n.href }}" style="display:flex;align-items:center;min-height:46px;border-bottom:1px solid var(--color-divider);color:{{ n.color }};text-decoration:none;font-family:var(--font-heading);font-weight:600;font-size:19px">{{ n.label }}</a></sc-for>
+        <a href="{{ repoUrl }}" target="_blank" rel="noopener" style="display:flex;align-items:center;min-height:46px;color:var(--color-text);text-decoration:none;font-family:var(--font-heading);font-weight:600;font-size:19px">GitHub ★ {{ stars }}</a>
+      </nav>
+    </sc-if>
+  </header>
+
+  <main style="flex:1;width:100%;max-width:1280px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 88px;box-sizing:border-box">
+
+    <sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}">
+      <div style="padding-top:48px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:22px">
+        <sc-for list="{{ skeletons }}" as="k"><div style="height:260px;border:1px solid var(--color-divider);animation:ddpulse 1.4s ease-in-out infinite"></div></sc-for>
+      </div>
+    </sc-if>
+
+    <!-- HOME -->
+    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+      <sc-if value="{{ startExpanded }}" hint-placeholder-val="{{ true }}">
+        <section class="blueprint" aria-label="Start here" data-screen-label="Home" style="margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="padding:clamp(24px,4vw,44px);display:flex;flex-direction:column;gap:18px">
+            <div style="display:flex;align-items:center;gap:8px;font-family:var(--font-heading);font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-text);white-space:nowrap">
+              <sc-if value="{{ connected }}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M20 6 9 17l-5-5"></path></svg></sc-if>{{ startKicker }}</div>
+            <h1 style="margin:0;font-size:clamp(34px,5vw,54px);line-height:1.02;letter-spacing:-0.02em;text-wrap:balance">Plugins, skills and agents for Claude Code, in one marketplace.</h1>
+            <p style="margin:0;font-size:17px;color:var(--muted);max-width:520px;text-wrap:pretty">{{ startPitch }}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:6px">
+              <button class="btn btn-primary blueprint" onClick="{{ startPrimary }}" style="height:44px;padding:0 18px;font-size:16px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>{{ startPrimaryLabel }}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button>
+              <button class="btn btn-secondary" onClick="{{ focusHero }}" style="height:44px;padding:0 16px;font-size:16px">Find a skill</button>
+              <button class="btn btn-secondary" onClick="{{ openStarter }}" style="height:44px;padding:0 16px;font-size:16px">Starter pack</button>
+            </div>
+          </div>
+          <div style="box-shadow:-1px -1px 0 var(--color-divider);display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto 1fr 1fr;gap:1px;background:var(--color-divider)">
+            <div style="grid-column:1 / 3;display:flex;justify-content:space-between;align-items:center;padding:8px 8px 8px 20px;background:var(--color-bg);font-family:var(--font-mono);font-size:12px;color:var(--muted)">
+              <span>catalog.json · {{ buildDate }}</span>
+              <button class="btn btn-ghost btn-icon" onClick="{{ dismissStart }}" aria-label="Dismiss" title="Dismiss" style="width:32px;height:32px;color:var(--muted)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+            </div>
+            <sc-for list="{{ counts }}" as="c" hint-placeholder-count="4">
+              <a href="{{ c.href }}" style="padding:20px 24px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;background:var(--color-bg);color:var(--color-text);text-decoration:none;min-height:120px" style-hover="background:var(--color-surface)">
+                <span style="font-family:var(--font-heading);font-weight:500;font-size:clamp(40px,5vw,58px);line-height:1;letter-spacing:-0.02em">{{ c.n }}</span>
+                <span style="font-family:var(--font-heading);font-size:14px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)">{{ c.label }}</span>
+              </a>
+            </sc-for>
+          </div>
+        </section>
+      </sc-if>
+
+      <section aria-label="Search" style="padding-top:{{ heroPad }};display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap">
+          <h2 style="margin:0;font-size:clamp(24px,3vw,30px)">What do you need to do?</h2>
+          <sc-if value="{{ startCollapsed }}" hint-placeholder-val="{{ false }}"><a href="#/get-started" style="font-size:14px">New here? Getting started →</a></sc-if>
+        </div>
+        <label style="display:flex;align-items:center;gap:14px;min-height:60px;padding:0 18px;background:var(--color-surface);border:1px solid var(--color-accent)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round;flex:none;color:var(--accent-text)"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+          <input ref="{{ heroRef }}" type="search" aria-label="Describe what you need" placeholder="Describe a task, e.g. a skill for parsing PDF invoices" value="{{ heroQ }}" onChange="{{ onHero }}" onKeyDown="{{ onHeroKey }}" style="flex:1;min-width:0;height:58px;background:transparent;border:0;outline:none;color:var(--color-text);font:inherit;font-size:clamp(16px,2vw,19px)">
+          <button class="btn btn-primary" onClick="{{ heroSubmit }}" style="height:38px">Search</button>
+        </label>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:14px;color:var(--muted)">
+          <span>Try</span>
+          <sc-for list="{{ tries }}" as="t" hint-placeholder-count="4"><button onClick="{{ t.go }}" class="btn btn-secondary" style="height:30px;padding:0 10px;font-family:var(--font-body);font-weight:400;font-size:13px">{{ t.q }}</button></sc-for>
+        </div>
+      </section>
+
+      <section aria-labelledby="h-new" style="padding-top:64px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+          <h2 id="h-new" style="margin:0;font-size:clamp(24px,3vw,30px)">What's new</h2>
+          <a href="#/whats-new" style="font-size:14px;text-decoration:none">See all →</a>
+        </div>
+        <div style="display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,1fr);overflow-x:auto;gap:1px;background:var(--color-divider);border:1px solid var(--color-divider)">
+          <sc-for list="{{ homeChanges }}" as="ch" hint-placeholder-count="5">
+            <a href="{{ ch.href }}" style="padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;background:var(--color-bg);color:var(--color-text);text-decoration:none" style-hover="background:var(--color-surface)">
+              <div style="display:flex;justify-content:space-between;align-items:center"><span class="tag {{ ch.cls }}">{{ ch.kind }}</span><span style="font-family:var(--font-mono);font-size:11px;color:var(--faint)">{{ ch.dateShort }}</span></div>
+              <span style="font-family:var(--font-heading);font-weight:600;font-size:21px;line-height:1.15">{{ ch.a.name }}</span>
+              <span style="font-size:13px;color:var(--muted)">{{ ch.a.typeLabel }} · {{ ch.a.plugin }}</span>
+              <span style="font-family:var(--font-mono);font-size:12px;color:var(--muted)">{{ ch.ver }}</span>
+            </a>
+          </sc-for>
+        </div>
+      </section>
+
+      <section aria-labelledby="h-cat" style="padding-top:64px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+          <h2 id="h-cat" style="margin:0;font-size:clamp(24px,3vw,30px)">Browse by category</h2>
+          <a href="#/browse" style="font-size:14px;text-decoration:none">All categories →</a>
+        </div>
+        <div style="display:grid;grid-template-columns:{{ catCols }};gap:1px;background:var(--color-divider);border:1px solid var(--color-divider)">
+          <sc-for list="{{ cats }}" as="c" hint-placeholder-count="8">
+            <a href="{{ c.href }}" style="padding:18px 20px;display:flex;align-items:center;gap:14px;background:var(--color-bg);color:var(--color-text);text-decoration:none" style-hover="background:var(--color-surface)">
+              <span style="color:var(--accent-text);display:flex">{{ c.icon }}</span>
+              <span style="flex:1;font-family:var(--font-heading);font-weight:600;font-size:20px">{{ c.name }}</span>
+              <span style="font-family:var(--font-mono);font-size:13px;color:var(--muted)">{{ c.count }}</span>
+            </a>
+          </sc-for>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- RESULTS (search + category) -->
+    <sc-if value="{{ isResults }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Search results" style="padding:32px 0 20px;display:flex;flex-direction:column;gap:14px">
+        <sc-if value="{{ isCategory }}"><nav aria-label="Breadcrumb" style="display:flex;gap:8px;font-size:13px;color:var(--faint)"><a href="#/browse">Browse</a><span>/</span><span>{{ resTitle }}</span></nav></sc-if>
+        <h1 style="margin:0;font-size:clamp(28px,4vw,42px);line-height:1.08;text-wrap:balance">{{ resTitle }}<sc-if value="{{ hasQuote }}"> <em style="font-style:normal;color:var(--accent-text)">{{ resQuote }}</em></sc-if></h1>
+        <sc-if value="{{ hasCatBlurb }}"><p style="margin:0;color:var(--muted)">{{ catBlurb }}</p></sc-if>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+          <sc-for list="{{ chips }}" as="c" hint-placeholder-count="1">
+            <button onClick="{{ c.remove }}" aria-label="Remove filter {{ c.label }}" class="tag tag-outline" style="gap:6px;cursor:pointer;background:transparent;font-family:var(--font-body);font-size:13px;padding:4px 8px 4px 10px">{{ c.label }}<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+          </sc-for>
+          <sc-if value="{{ hasManyChips }}"><button class="btn btn-ghost" onClick="{{ clearFilters }}" style="font-size:13px">Clear all</button></sc-if>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 0;border-top:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider);margin-bottom:24px">
+        <div style="display:flex;gap:10px;align-items:center">
+          <sc-if value="{{ isMobile }}"><button class="btn btn-secondary" onClick="{{ openSheet }}" style="height:36px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linejoin:round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>Filters{{ filterCountLabel }}</button></sc-if>
+          <span aria-live="polite" style="font-size:14px;color:var(--muted)">{{ resSummary }}</span>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center">
+          <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)">Sort
+            <select class="input" value="{{ sortVal }}" onChange="{{ onSort }}" style="width:auto;min-height:34px;padding:4px 8px">
+              <option value="relevance">Relevance</option><option value="updated">Recently updated</option><option value="name">Name A–Z</option>
+            </select></label>
+          <div role="group" aria-label="Layout" style="display:flex;border:1px solid var(--color-divider)">
+            <button onClick="{{ setGrid }}" aria-pressed="{{ isGrid }}" aria-label="Grid view" style="width:34px;height:34px;display:grid;place-items:center;border:0;background:{{ gridBg }};color:{{ gridFg }};cursor:pointer"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5"><rect width="7" height="7" x="3" y="3"></rect><rect width="7" height="7" x="14" y="3"></rect><rect width="7" height="7" x="14" y="14"></rect><rect width="7" height="7" x="3" y="14"></rect></svg></button>
+            <button onClick="{{ setList }}" aria-pressed="{{ isList }}" aria-label="List view" style="width:34px;height:34px;display:grid;place-items:center;border:0;border-left:1px solid var(--color-divider);background:{{ listBg }};color:{{ listFg }};cursor:pointer"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round"><line x1="8" x2="21" y1="6" y2="6"></line><line x1="8" x2="21" y1="12" y2="12"></line><line x1="8" x2="21" y1="18" y2="18"></line><line x1="3" x2="3.01" y1="6" y2="6"></line><line x1="3" x2="3.01" y1="12" y2="12"></line><line x1="3" x2="3.01" y1="18" y2="18"></line></svg></button>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:40px;align-items:flex-start">
+        <sc-if value="{{ sheetOpen }}"><div onClick="{{ closeSheet }}" style="position:fixed;inset:0;z-index:60;background:color-mix(in srgb,#000 55%,transparent)"></div></sc-if>
+        <aside aria-label="Filters" style="{{ facetStyle }}">
+          <sc-if value="{{ isMobile }}">
+            <div style="position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;padding:16px 0 12px;background:var(--color-bg);border-bottom:1px solid var(--color-divider)">
+              <span style="font-family:var(--font-heading);font-weight:600;font-size:22px">Filters</span>
+              <button class="btn btn-primary" onClick="{{ closeSheet }}" style="height:36px">Show {{ resCount }} results</button>
+            </div>
+          </sc-if>
+          <sc-for list="{{ facets }}" as="f" hint-placeholder-count="5">
+            <fieldset style="border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;min-width:0">
+              <legend style="padding:0;margin-bottom:8px;font-family:var(--font-heading);font-weight:600;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)">{{ f.title }}</legend>
+              <sc-for list="{{ f.options }}" as="o">
+                <label style="display:flex;align-items:center;gap:10px;min-height:30px;font-size:14px;cursor:pointer;opacity:{{ o.op }}">
+                  <input type="{{ f.inputType }}" name="{{ f.key }}" checked="{{ o.checked }}" onChange="{{ o.toggle }}" style="width:16px;height:16px;margin:0;accent-color:var(--color-accent)">
+                  <span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ o.label }}</span>
+                  <span style="font-family:var(--font-mono);font-size:12px;color:var(--faint)">{{ o.count }}</span>
+                </label>
+              </sc-for>
+            </fieldset>
+          </sc-for>
+        </aside>
+        <div style="flex:1;min-width:0">
+          <sc-if value="{{ resLoading }}" hint-placeholder-val="{{ false }}">
+            <div aria-busy="true" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:22px">
+              <sc-for list="{{ skeletons }}" as="k"><div style="height:260px;border:1px solid var(--color-divider);padding:20px;display:flex;flex-direction:column;gap:12px"><span style="width:60px;height:18px;background:var(--color-surface);animation:ddpulse 1.4s ease-in-out infinite"></span><span style="width:70%;height:22px;background:var(--color-surface);animation:ddpulse 1.4s ease-in-out infinite"></span><span style="width:100%;height:56px;background:var(--color-surface);animation:ddpulse 1.4s ease-in-out infinite"></span></div></sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ resEmpty }}" hint-placeholder-val="{{ false }}">
+            <div class="blueprint" style="padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;gap:16px">
+              <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+              <h2 style="margin:0;font-size:28px">No matches for “{{ emptyQ }}”</h2>
+              <sc-for list="{{ suggestions }}" as="s"><p style="margin:0;font-size:16px">Did you mean <a href="{{ s.href }}">{{ s.q }}</a>?</p></sc-for>
+              <p style="margin:0;color:var(--muted)">Try fewer or different words, remove a filter, or browse a popular category:</p>
+              <div style="display:flex;gap:8px;flex-wrap:wrap"><sc-for list="{{ popularCats }}" as="c"><a class="btn btn-secondary" href="{{ c.href }}" style="height:32px">{{ c.name }}</a></sc-for></div>
+              <p style="margin:6px 0 0;font-size:14px;color:var(--muted)">Can't find it? <a href="{{ requestUrl }}" target="_blank" rel="noopener">Request this artifact ↗</a></p>
+            </div>
+          </sc-if>
+          <sc-if value="{{ showGrid }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:22px">
+              <sc-for list="{{ results }}" as="a" hint-placeholder-count="6">
+                <dc-import name="ArtifactCard" a="{{ a }}" variant="card" terms="{{ resTerms }}" copied-id="{{ copiedId }}" on-open="{{ openArt }}" on-copy="{{ copyArt }}" hint-size="100%,290px"></dc-import>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ showList }}" hint-placeholder-val="{{ false }}">
+            <div role="list" style="border-top:1px solid var(--color-divider)">
+              <sc-for list="{{ results }}" as="a">
+                <dc-import name="ArtifactCard" a="{{ a }}" variant="row" terms="{{ resTerms }}" copied-id="{{ copiedId }}" on-open="{{ openArt }}" on-copy="{{ copyArt }}" hint-size="100%,46px"></dc-import>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- ARTIFACT DETAIL -->
+    <sc-if value="{{ isArtifact }}" hint-placeholder-val="{{ false }}">
+      <nav aria-label="Breadcrumb" data-screen-label="Artifact detail" style="padding-top:28px;display:flex;gap:8px;flex-wrap:wrap;font-size:13px;color:var(--faint)">
+        <a href="#/browse">Browse</a><span>/</span><a href="{{ artCatHref }}">{{ artCatName }}</a><span>/</span><a href="{{ artPluginHref }}">{{ art.plugin }}</a><span>/</span><span>{{ art.name }}</span>
+      </nav>
+      <div style="display:flex;flex-wrap:wrap;gap:48px;padding-top:22px;align-items:flex-start">
+        <div style="flex:1 1 560px;min-width:0;display:flex;flex-direction:column;gap:28px">
+          <header style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+              <span style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.06em;padding:2px 8px;border:1px solid var(--color-accent);color:var(--accent-text)">{{ art.code }}</span>
+              <sc-for list="{{ art.badges }}" as="b"><span class="tag {{ b.cls }}">{{ b.label }}</span></sc-for>
+            </div>
+            <h1 style="margin:0;font-size:clamp(36px,5vw,52px);line-height:1;letter-spacing:-0.02em;overflow-wrap:anywhere">{{ art.name }}</h1>
+            <p style="margin:0;font-size:18px;color:var(--muted);max-width:720px;text-wrap:pretty">{{ art.description }}</p>
+            <div style="display:flex;gap:6px 18px;flex-wrap:wrap;font-size:14px;color:var(--muted)"><span>v{{ art.version }}</span><span>Updated {{ art.rel }}</span><span>by {{ art.author }}</span><span>{{ artStatusLabel }}</span></div>
+            <sc-if value="{{ artDeprecated }}">
+              <div role="note" style="padding:12px 14px;border:1px solid var(--color-divider);background:var(--color-surface);font-size:15px">This skill is deprecated. <a href="{{ artReplacementHref }}">Use {{ artReplacementName }} instead →</a></div>
+            </sc-if>
+          </header>
+
+          <section class="blueprint" aria-label="Install" style="padding:18px 20px;display:flex;flex-direction:column;gap:12px">
+            <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap"><h2 style="margin:0;font-size:21px">Install</h2><span style="font-size:13px;color:var(--muted)">{{ installNoteLong }}</span></div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <code style="flex:1 1 280px;min-width:0;display:flex;align-items:center;min-height:44px;padding:0 14px;background:var(--color-surface);border:1px solid var(--color-divider);font-family:var(--font-mono);font-size:14px;overflow-x:auto;white-space:nowrap">{{ art.installCommand }}</code>
+              <button class="btn btn-primary blueprint" onClick="{{ copyInstall }}" style="height:44px;padding:0 18px;font-size:15px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>{{ installCopyLabel }}</button>
+            </div>
+            <div style="font-size:14px;color:var(--muted)">Not connected yet? <a href="#/get-started" onClick="{{ openDrawerCtx }}">Get started</a></div>
+          </section>
+
+          <div>
+            <div role="tablist" aria-label="Artifact sections" style="display:flex;gap:2px;border-bottom:1px solid var(--color-divider);overflow-x:auto">
+              <sc-for list="{{ dTabs }}" as="t" hint-placeholder-count="5">
+                <button role="tab" aria-selected="{{ t.active }}" onClick="{{ t.select }}" style="flex:none;height:44px;padding:0 14px;border:0;border-bottom:2px solid {{ t.line }};margin-bottom:-1px;background:transparent;color:{{ t.fg }};font-family:var(--font-heading);font-weight:600;font-size:16px;cursor:pointer">{{ t.label }}</button>
+              </sc-for>
+            </div>
+            <div role="tabpanel" style="padding-top:24px">
+              <sc-if value="{{ tabOverview }}"><div class="prose" ref="{{ artBodyRef }}"></div></sc-if>
+              <sc-if value="{{ tabHow }}">
+                <div style="display:flex;flex-direction:column;gap:16px">
+                  <p style="margin:0;color:var(--muted);font-size:15px">{{ howText }}</p>
+                  <sc-if value="{{ hasSyntax }}">
+                    <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:12px;color:var(--faint)">Syntax</span><code style="padding:12px 14px;background:var(--color-surface);border:1px solid var(--color-divider);font-family:var(--font-mono);font-size:14px">{{ syntax }}</code></div>
+                  </sc-if>
+                  <sc-if value="{{ hasExamples }}">
+                    <div style="display:flex;flex-direction:column;gap:8px">
+                      <span style="font-size:12px;color:var(--faint)">Example prompts</span>
+                      <sc-for list="{{ examples }}" as="e">
+                        <div style="display:flex;align-items:center;gap:10px;padding:10px 8px 10px 14px;border:1px solid var(--color-divider)">
+                          <span style="flex:1;font-size:15px">“{{ e.text }}”</span>
+                          <button class="btn btn-ghost btn-icon" onClick="{{ e.copy }}" aria-label="Copy prompt" style="width:30px;height:30px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button>
+                        </div>
+                      </sc-for>
+                    </div>
+                  </sc-if>
+                </div>
+              </sc-if>
+              <sc-if value="{{ tabReq }}">
+                <table class="table"><tbody>
+                  <sc-for list="{{ reqRows }}" as="r"><tr><th scope="row" style="width:38%;border-bottom:1px solid color-mix(in srgb,var(--color-text) 8%,transparent)">{{ r.k }}</th><td style="font-family:{{ r.font }};font-size:14px">{{ r.v }}</td></tr></sc-for>
+                </tbody></table>
+              </sc-if>
+              <sc-if value="{{ tabFiles }}">
+                <ul style="list-style:none;margin:0;padding:0;border-top:1px solid var(--color-divider)">
+                  <sc-for list="{{ files }}" as="f">
+                    <li style="display:flex;align-items:center;gap:10px;min-height:44px;padding-left:{{ f.indent }};border-bottom:1px solid var(--color-divider);font-family:var(--font-mono);font-size:13px">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linejoin:round;color:var(--faint);flex:none"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path></svg>
+                      <a href="{{ f.url }}" target="_blank" rel="noopener" style="overflow-wrap:anywhere">{{ f.path }}</a>
+                    </li>
+                  </sc-for>
+                </ul>
+              </sc-if>
+              <sc-if value="{{ tabLog }}">
+                <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column">
+                  <sc-for list="{{ changelog }}" as="c">
+                    <li style="display:grid;grid-template-columns:minmax(90px,140px) minmax(0,1fr);gap:16px;padding:14px 0;border-top:1px solid var(--color-divider)">
+                      <div style="display:flex;flex-direction:column;gap:2px"><span style="font-family:var(--font-mono);font-size:14px">{{ c.version }}</span><span style="font-size:12px;color:var(--faint)">{{ c.dateLabel }}</span></div>
+                      <ul style="margin:0;padding-left:18px;color:var(--muted);font-size:15px"><sc-for list="{{ c.notes }}" as="n"><li>{{ n }}</li></sc-for></ul>
+                    </li>
+                  </sc-for>
+                </ol>
+              </sc-if>
+            </div>
+          </div>
+        </div>
+
+        <aside style="flex:1 1 280px;max-width:340px;min-width:0;display:flex;flex-direction:column;gap:28px">
+          <section aria-labelledby="h-q" style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline"><h2 id="h-q" style="margin:0;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)">Quality</h2><span style="font-family:var(--font-mono);font-size:14px">{{ qScore }} / 100</span></div>
+            <div role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ qScore }}" aria-label="Quality score" style="height:6px;background:var(--color-divider)"><div style="height:100%;width:{{ qWidth }};background:var(--color-accent)"></div></div>
+            <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px">
+              <sc-for list="{{ qFlags }}" as="f"><li style="display:flex;align-items:center;gap:8px;font-size:14px;color:{{ f.color }}">
+                <sc-if value="{{ f.ok }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:2;stroke-linecap:round;stroke-linejoin:round;color:var(--accent-text)"><path d="M20 6 9 17l-5-5"></path></svg></sc-if>
+                <sc-if value="{{ f.no }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></sc-if>{{ f.label }}</li></sc-for>
+            </ul>
+          </section>
+          <section style="display:flex;flex-direction:column;gap:10px">
+            <h2 style="margin:0;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)">Tags</h2>
+            <div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ artTags }}" as="t"><a class="tag tag-neutral" href="{{ t.href }}" style="text-decoration:none">{{ t.label }}</a></sc-for></div>
+          </section>
+          <section style="display:flex;flex-direction:column;gap:0">
+            <h2 style="margin:0 0 6px;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)">Details</h2>
+            <sc-for list="{{ artMeta }}" as="m"><div style="display:flex;justify-content:space-between;gap:12px;min-height:34px;align-items:center;border-bottom:1px solid var(--color-divider);font-size:14px"><span style="color:var(--muted)">{{ m.k }}</span><span style="text-align:right">{{ m.v }}</span></div></sc-for>
+          </section>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <a class="btn btn-secondary" href="{{ art.sourceUrl }}" target="_blank" rel="noopener" style="justify-content:space-between;height:40px">View source on GitHub<span>↗</span></a>
+            <a class="btn btn-secondary" href="{{ issueUrl }}" target="_blank" rel="noopener" style="justify-content:space-between;height:40px">Report an issue<span>↗</span></a>
+          </div>
+        </aside>
+      </div>
+      <section aria-labelledby="h-rel" style="padding-top:56px;display:flex;flex-direction:column;gap:16px">
+        <h2 id="h-rel" style="margin:0;font-size:clamp(22px,3vw,28px)">Related</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:12px">
+          <sc-for list="{{ related }}" as="r" hint-placeholder-count="4"><dc-import name="ArtifactCard" a="{{ r }}" variant="mini" on-open="{{ openArt }}" hint-size="100%,88px"></dc-import></sc-for>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- PLUGIN DETAIL -->
+    <sc-if value="{{ isPlugin }}" hint-placeholder-val="{{ false }}">
+      <nav aria-label="Breadcrumb" data-screen-label="Plugin detail" style="padding-top:28px;display:flex;gap:8px;flex-wrap:wrap;font-size:13px;color:var(--faint)"><a href="#/browse">Browse</a><span>/</span><a href="{{ artCatHref }}">{{ artCatName }}</a><span>/</span><span>{{ art.name }}</span></nav>
+      <div style="display:flex;flex-wrap:wrap;gap:48px;padding-top:22px;align-items:flex-start">
+        <div style="flex:1 1 560px;min-width:0;display:flex;flex-direction:column;gap:28px">
+          <header style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;gap:6px;align-items:center"><span style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.06em;padding:2px 8px;border:1px solid var(--color-accent);color:var(--accent-text)">PLUGIN</span><sc-for list="{{ art.badges }}" as="b"><span class="tag {{ b.cls }}">{{ b.label }}</span></sc-for></div>
+            <h1 style="margin:0;font-size:clamp(36px,5vw,52px);line-height:1;letter-spacing:-0.02em">{{ art.name }}</h1>
+            <p style="margin:0;font-size:18px;color:var(--muted);max-width:720px;text-wrap:pretty">{{ art.description }}</p>
+            <div style="display:flex;gap:6px 18px;flex-wrap:wrap;font-size:14px;color:var(--muted)"><span>v{{ art.version }}</span><span>Updated {{ art.rel }}</span><span>by {{ art.author }}</span></div>
+          </header>
+          <section class="blueprint" aria-label="Install" style="padding:18px 20px;display:flex;flex-direction:column;gap:12px">
+            <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap"><h2 style="margin:0;font-size:21px">Install</h2><span style="font-size:13px;color:var(--muted)">{{ installNoteLong }}</span></div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <code style="flex:1 1 280px;min-width:0;display:flex;align-items:center;min-height:44px;padding:0 14px;background:var(--color-surface);border:1px solid var(--color-divider);font-family:var(--font-mono);font-size:14px;overflow-x:auto;white-space:nowrap">{{ art.installCommand }}</code>
+              <button class="btn btn-primary blueprint" onClick="{{ copyInstall }}" style="height:44px;padding:0 18px;font-size:15px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>{{ installCopyLabel }}</button>
+            </div>
+            <div style="font-size:14px;color:var(--muted)">Not connected yet? <a href="#/get-started" onClick="{{ openDrawerCtx }}">Get started</a></div>
+          </section>
+        </div>
+        <aside style="flex:1 1 280px;max-width:340px;min-width:0;display:flex;flex-direction:column">
+          <h2 style="margin:0 0 6px;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)">Contents</h2>
+          <sc-for list="{{ plGroups }}" as="g"><a href="{{ g.anchor }}" onClick="{{ g.jump }}" style="display:flex;justify-content:space-between;min-height:38px;align-items:center;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none;font-size:15px" style-hover="color:var(--accent-text)"><span>{{ g.label }}</span><span style="font-family:var(--font-mono);font-size:13px;color:var(--muted)">{{ g.count }}</span></a></sc-for>
+        </aside>
+      </div>
+      <p style="margin:40px 0 0;font-family:var(--font-heading);font-size:20px;color:var(--muted)">{{ plSummary }}</p>
+      <sc-for list="{{ plGroups }}" as="g">
+        <section id="{{ g.id }}" style="padding-top:28px;display:flex;flex-direction:column;gap:16px">
+          <h2 style="margin:0;font-size:clamp(22px,3vw,28px)">{{ g.label }}</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:22px">
+            <sc-for list="{{ g.items }}" as="a"><dc-import name="ArtifactCard" a="{{ a }}" variant="card" copied-id="{{ copiedId }}" on-open="{{ openArt }}" on-copy="{{ copyArt }}" hint-size="100%,290px"></dc-import></sc-for>
+          </div>
+        </section>
+      </sc-for>
+      <div style="display:flex;flex-wrap:wrap;gap:48px;padding-top:56px">
+        <section style="flex:1 1 520px;min-width:0;display:flex;flex-direction:column;gap:14px">
+          <h2 style="margin:0;font-size:clamp(22px,3vw,28px)">README</h2>
+          <div class="prose" ref="{{ readmeRef }}" style="padding:24px;border:1px solid var(--color-divider)"></div>
+        </section>
+        <section style="flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:14px">
+          <h2 style="margin:0;font-size:clamp(22px,3vw,28px)">Changelog</h2>
+          <ol style="list-style:none;margin:0;padding:0">
+            <sc-for list="{{ changelog }}" as="c"><li style="padding:12px 0;border-top:1px solid var(--color-divider);display:flex;flex-direction:column;gap:4px"><div style="display:flex;justify-content:space-between"><span style="font-family:var(--font-mono);font-size:14px">{{ c.version }}</span><span style="font-size:12px;color:var(--faint)">{{ c.dateLabel }}</span></div><ul style="margin:0;padding-left:18px;color:var(--muted);font-size:14px"><sc-for list="{{ c.notes }}" as="n"><li>{{ n }}</li></sc-for></ul></li></sc-for>
+          </ol>
+        </section>
+      </div>
+    </sc-if>
+
+    <!-- WHAT'S NEW -->
+    <sc-if value="{{ isWhatsNew }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="What's new" style="padding:40px 0 24px;display:flex;flex-direction:column;gap:10px">
+        <h1 style="margin:0;font-size:clamp(32px,4.5vw,48px);line-height:1.05">What's new</h1>
+        <p style="margin:0;color:var(--muted);font-size:16px;max-width:640px">Every change to the catalog, from git history and plugin versions. Rebuilt on every merge to main.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center;padding:10px 0;border-top:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider)">
+        <div role="group" aria-label="Change type" style="display:flex;flex-wrap:wrap;border:1px solid var(--color-divider)">
+          <sc-for list="{{ wnKinds }}" as="k"><button onClick="{{ k.select }}" aria-pressed="{{ k.active }}" style="height:34px;padding:0 12px;border:0;border-right:1px solid var(--color-divider);background:{{ k.bg }};color:{{ k.fg }};font-family:var(--font-heading);font-weight:600;font-size:14px;cursor:pointer">{{ k.label }}</button></sc-for>
+        </div>
+        <select class="input" aria-label="Artifact type" value="{{ wnType }}" onChange="{{ onWnType }}" style="width:auto;min-height:36px">
+          <option value="">All types</option><sc-for list="{{ typeOptions }}" as="o"><option value="{{ o.value }}">{{ o.label }}</option></sc-for>
+        </select>
+        <select class="input" aria-label="Plugin" value="{{ wnPlugin }}" onChange="{{ onWnPlugin }}" style="width:auto;min-height:36px">
+          <option value="">All plugins</option><sc-for list="{{ pluginOptions }}" as="o"><option value="{{ o.value }}">{{ o.label }}</option></sc-for>
+        </select>
+        <span aria-live="polite" style="margin-left:auto;font-size:14px;color:var(--muted)">{{ wnCount }}</span>
+      </div>
+      <sc-if value="{{ wnEmpty }}"><p style="padding:40px 0;color:var(--muted)">No changes match these filters. <button class="btn btn-ghost" onClick="{{ wnClear }}">Clear filters</button></p></sc-if>
+      <sc-for list="{{ weeks }}" as="w">
+        <section style="padding-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px 40px;align-items:start">
+          <div style="display:flex;flex-direction:column;gap:2px;position:sticky;top:76px">
+            <h2 style="margin:0;font-size:22px">{{ w.label }}</h2>
+            <span style="font-size:13px;color:var(--faint)">{{ w.countLabel }}</span>
+          </div>
+          <ol style="grid-column:span 3;list-style:none;margin:0;padding:0;border-top:1px solid var(--color-divider);min-width:0">
+            <sc-for list="{{ w.entries }}" as="e">
+              <li style="display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;padding:14px 0;border-bottom:1px solid var(--color-divider)">
+                <span style="width:52px;font-family:var(--font-mono);font-size:12px;color:var(--faint)">{{ e.dateShort }}</span>
+                <span style="width:96px"><span class="tag {{ e.cls }}">{{ e.kind }}</span></span>
+                <div style="flex:0 1 280px;min-width:220px"><dc-import name="ArtifactCard" a="{{ e.a }}" variant="mini" on-open="{{ openArt }}" hint-size="100%,88px"></dc-import></div>
+                <div style="flex:1 1 220px;min-width:0;display:flex;flex-direction:column;gap:4px">
+                  <span style="font-family:var(--font-mono);font-size:13px">{{ e.ver }}</span>
+                  <span style="font-size:14px;color:var(--muted)">{{ e.note }}</span>
+                </div>
+              </li>
+            </sc-for>
+          </ol>
+        </section>
+      </sc-for>
+    </sc-if>
+
+    <!-- BROWSE -->
+    <sc-if value="{{ isBrowse }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Browse" style="padding:40px 0 28px;display:flex;flex-direction:column;gap:10px">
+        <h1 style="margin:0;font-size:clamp(32px,4.5vw,48px);line-height:1.05">Browse</h1>
+        <p style="margin:0;color:var(--muted);font-size:16px">{{ browseSub }}</p>
+      </div>
+      <div style="display:grid;grid-template-columns:{{ catCols }};gap:1px;background:var(--color-divider);border:1px solid var(--color-divider)">
+        <sc-for list="{{ cats }}" as="c" hint-placeholder-count="8">
+          <a href="{{ c.href }}" style="padding:24px 22px;display:flex;flex-direction:column;gap:14px;background:var(--color-bg);color:var(--color-text);text-decoration:none;min-height:190px" style-hover="background:var(--color-surface)">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start"><span style="color:var(--accent-text);display:flex">{{ c.iconLg }}</span><span style="font-family:var(--font-heading);font-weight:500;font-size:40px;line-height:1">{{ c.count }}</span></div>
+            <span style="margin-top:auto;font-family:var(--font-heading);font-weight:600;font-size:24px;line-height:1.1">{{ c.name }}</span>
+            <span style="font-size:14px;color:var(--muted)">{{ c.blurb }}</span>
+          </a>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <!-- GET STARTED -->
+    <sc-if value="{{ isStart }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Get started" style="display:flex;flex-wrap:wrap;gap:56px;padding-top:40px;align-items:flex-start">
+        <div style="flex:1 1 600px;min-width:0;max-width:780px;display:flex;flex-direction:column;gap:24px">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="font-family:var(--font-heading);font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-text)">Get started</div>
+            <h1 style="margin:0;font-size:clamp(34px,5vw,52px);line-height:1.02;letter-spacing:-0.02em">Connect the marketplace</h1>
+            <p style="margin:0;color:var(--muted);font-size:17px;text-wrap:pretty">About three minutes. Pick where you use Claude Code; the steps are the same. Tick each step as you go — progress is saved in this browser.</p>
+          </div>
+          <dc-import name="Onboarding" tab="{{ obTab }}" progress="{{ progress }}" plugin="" faq="{{ faq }}" on-tab="{{ setObTab }}" on-toggle="{{ toggleStep }}" on-copy="{{ copyText }}" on-faq="{{ setFaq }}" hint-size="100%,1200px"></dc-import>
+        </div>
+        <aside style="flex:1 1 260px;max-width:340px;display:flex;flex-direction:column;gap:20px;position:sticky;top:84px">
+          <div class="blueprint" style="padding:18px 20px;display:flex;flex-direction:column;gap:10px">
+            <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+            <h2 style="margin:0;font-size:20px">Prefer the terminal?</h2>
+            <p style="margin:0;font-size:14px;color:var(--muted)">Install <code style="font-family:var(--font-mono)">find-skill</code> and ask Claude Code to recommend artifacts from this catalog without leaving your session.</p>
+            <a href="#/search?q=find-skill" style="font-size:14px">Coming in phase 2</a>
+          </div>
+          <div style="display:flex;flex-direction:column">
+            <h2 style="margin:0 0 6px;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)">Next</h2>
+            <a href="#/whats-new" style="display:flex;justify-content:space-between;min-height:40px;align-items:center;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">See what's new<span>→</span></a>
+            <a href="#/browse" style="display:flex;justify-content:space-between;min-height:40px;align-items:center;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">Browse categories<span>→</span></a>
+            <button onClick="{{ openStarter }}" style="display:flex;justify-content:space-between;min-height:40px;align-items:center;border:0;border-bottom:1px solid var(--color-divider);background:transparent;color:var(--color-text);font:inherit;padding:0;cursor:pointer">Install the starter pack<span>→</span></button>
+          </div>
+        </aside>
+      </div>
+    </sc-if>
+
+    <!-- 404 -->
+    <sc-if value="{{ is404 }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="404" style="min-height:60vh;display:flex;flex-direction:column;justify-content:center;gap:18px;max-width:720px;padding:48px 0">
+        <span style="font-family:var(--font-mono);font-size:14px;color:var(--accent-text)">404 · {{ notFoundPath }}</span>
+        <h1 style="margin:0;font-size:clamp(36px,6vw,64px);line-height:1;letter-spacing:-0.02em">This page isn't in the catalog.</h1>
+        <p style="margin:0;color:var(--muted);font-size:17px">It may have been renamed or removed. Search for what you need instead.</p>
+        <label style="display:flex;align-items:center;gap:12px;min-height:54px;padding:0 16px;background:var(--color-surface);border:1px solid var(--color-accent)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round;flex:none;color:var(--accent-text)"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+          <input type="search" aria-label="Search" placeholder="Search the marketplace" value="{{ heroQ }}" onChange="{{ onHero }}" onKeyDown="{{ onHeroKey }}" style="flex:1;min-width:0;height:52px;background:transparent;border:0;outline:none;color:var(--color-text);font:inherit;font-size:17px">
+        </label>
+        <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn-secondary" href="#/">Home</a><a class="btn btn-secondary" href="#/browse">Browse</a><a class="btn btn-secondary" href="#/whats-new">What's new</a></div>
+      </div>
+    </sc-if>
+  </main>
+
+  <footer style="border-top:1px solid var(--color-divider)">
+    <div style="max-width:1280px;margin:0 auto;padding:22px clamp(16px,4vw,40px);display:flex;flex-wrap:wrap;gap:10px 24px;font-size:13px;color:var(--muted);box-sizing:border-box">
+      <a href="{{ repoUrl }}" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none">GitHub</a>
+      <a href="#/contribute" style="color:var(--muted);text-decoration:none">Contribute</a>
+      <a href="#/feed.xml" style="color:var(--muted);text-decoration:none">RSS</a>
+      <a href="#/catalog.json" style="color:var(--muted);text-decoration:none">catalog.json</a>
+      <a href="#/llms.txt" style="color:var(--muted);text-decoration:none">llms.txt</a>
+      <span style="margin-left:auto">Catalog updated {{ buildDateLong }}</span>
+    </div>
+  </footer>
+
+  <!-- Onboarding drawer -->
+  <sc-if value="{{ drawerOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeDrawer }}" style="position:fixed;inset:0;z-index:70;background:color-mix(in srgb,#000 55%,transparent)"></div>
+    <aside role="dialog" aria-modal="true" aria-labelledby="drawer-title" style="{{ drawerStyle }}">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <span style="font-family:var(--font-heading);font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-text)">{{ drawerKicker }}</span>
+          <h2 id="drawer-title" style="margin:0;font-size:30px;line-height:1.05">{{ drawerTitle }}</h2>
+        </div>
+        <button class="btn btn-secondary btn-icon" onClick="{{ closeDrawer }}" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+      </div>
+      <dc-import name="Onboarding" tab="{{ obTab }}" progress="{{ progress }}" plugin="{{ drawerPlugin }}" faq="{{ faq }}" on-tab="{{ setObTab }}" on-toggle="{{ toggleStep }}" on-copy="{{ copyText }}" on-faq="{{ setFaq }}" hint-size="100%,900px"></dc-import>
+      <a href="#/get-started" onClick="{{ closeDrawer }}" style="font-size:14px">Open the full guide →</a>
+    </aside>
+  </sc-if>
+
+  <!-- Starter pack dialog -->
+  <sc-if value="{{ starterOpen }}" hint-placeholder-val="{{ false }}">
+    <div class="dialog-backdrop" onClick="{{ closeStarter }}" style="z-index:80;background:color-mix(in srgb,#000 55%,transparent)">
+      <div class="dialog blueprint" role="dialog" aria-modal="true" aria-labelledby="starter-title" onClick="{{ stop }}" style="width:min(580px,100%);max-height:90vh;overflow:auto;background:var(--color-bg);padding:24px">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+          <div><div id="starter-title" class="dialog-title" style="font-size:28px">{{ starter.title }}</div><p style="margin:4px 0 0;color:var(--muted);font-size:15px">{{ starter.description }}</p></div>
+          <button class="btn btn-ghost btn-icon" onClick="{{ closeStarter }}" aria-label="Close" style="color:var(--muted)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+        </div>
+        <div style="border-top:1px solid var(--color-divider)">
+          <sc-for list="{{ starter.items }}" as="p"><a href="{{ p.href }}" onClick="{{ closeStarter }}" style="display:flex;flex-direction:column;gap:2px;padding:12px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none" style-hover="color:var(--accent-text)"><span style="font-family:var(--font-heading);font-weight:600;font-size:20px">{{ p.name }}</span><span style="font-size:14px;color:var(--muted)">{{ p.description }}</span><span style="font-size:12px;color:var(--faint)">{{ p.summary }}</span></a></sc-for>
+        </div>
+        <pre style="margin:0;padding:12px 14px;background:var(--color-surface);border:1px solid var(--color-divider);font-family:var(--font-mono);font-size:13px;line-height:1.7;overflow-x:auto">{{ starter.cmds }}</pre>
+        <div class="dialog-actions">
+          <button class="btn btn-secondary" onClick="{{ closeStarter }}">Close</button>
+          <button class="btn btn-primary blueprint" onClick="{{ copyStarter }}"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>Copy all install commands</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <div role="status" aria-live="polite" style="position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:90;pointer-events:none">
+    <sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--color-text);color:var(--color-bg);font-size:14px;box-shadow:var(--shadow-lg);max-width:90vw">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none"><path d="M20 6 9 17l-5-5"></path></svg>
+        <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ toast }}</span>
+      </div>
+    </sc-if>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;startCard&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;auto&quot;,&quot;expanded&quot;,&quot;collapsed&quot;,&quot;connected&quot;],&quot;default&quot;:&quot;auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Review states&quot;},&quot;forceLoading&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Review states&quot;}}">
+const LS = {
+  get(k, d) { try { const v = localStorage.getItem('dd.' + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem('dd.' + k, JSON.stringify(v)); } catch (e) {} },
+};
+const ICONS = {
+  code: [['polyline', { points: '16 18 22 12 16 6' }], ['polyline', { points: '8 6 2 12 8 18' }]],
+  flask: [['path', { d: 'M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2' }], ['path', { d: 'M8.5 2h7' }], ['path', { d: 'M7 16h10' }]],
+  server: [['rect', { width: 20, height: 8, x: 2, y: 2, rx: 2 }], ['rect', { width: 20, height: 8, x: 2, y: 14, rx: 2 }], ['line', { x1: 6, x2: 6.01, y1: 6, y2: 6 }], ['line', { x1: 6, x2: 6.01, y1: 18, y2: 18 }]],
+  database: [['ellipse', { cx: 12, cy: 5, rx: 9, ry: 3 }], ['path', { d: 'M3 5V19A9 3 0 0 0 21 19V5' }], ['path', { d: 'M3 12A9 3 0 0 0 21 12' }]],
+  file: [['path', { d: 'M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z' }], ['path', { d: 'M14 2v4a2 2 0 0 0 2 2h4' }], ['path', { d: 'M16 13H8' }], ['path', { d: 'M16 17H8' }]],
+  pen: [['path', { d: 'M12 20h9' }], ['path', { d: 'M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z' }]],
+  zap: [['path', { d: 'M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z' }]],
+  shield: [['path', { d: 'M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z' }]],
+};
+function icon(name, size) {
+  return React.createElement('svg', { width: size, height: size, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.5, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true },
+    (ICONS[name] || []).map(([t, p], i) => React.createElement(t, { key: i, ...p })));
+}
+function parseHash() {
+  const h = (location.hash || '').replace(/^#/, '') || '/';
+  const [p, qs] = h.split('?');
+  const params = {}; new URLSearchParams(qs || '').forEach((v, k) => { params[k] = v; });
+  return { seg: p.split('/').filter(Boolean).map(decodeURIComponent), params, path: p };
+}
+const qsOf = (o) => { const u = new URLSearchParams(); Object.entries(o).forEach(([k, v]) => { if (v !== '' && v != null) u.set(k, v); }); const s = u.toString(); return s ? '?' + s : ''; };
+const list = (v) => (v ? v.split(',').filter(Boolean) : []);
+const tog = (arr, v) => (arr.includes(v) ? arr.filter((x) => x !== v) : [...arr, v]);
+const CODE = { plugin: 'PLUGIN', skill: 'SKILL', agent: 'AGENT', command: 'CMD', hook: 'HOOK', mcp: 'MCP' };
+const TYPE_ORDER = ['plugin', 'skill', 'agent', 'command', 'hook', 'mcp'];
+const KIND_CLS = { New: 'tag-accent', Updated: 'tag-outline', Deprecated: 'tag-neutral', Removed: 'tag-neutral' };
+
+class Component extends DCLogic {
+  state = {
+    ready: false, route: parseHash(), theme: LS.get('theme', 'dark'), startDismissed: LS.get('startDismissed', false),
+    progress: LS.get('onboarding', {}), recent: LS.get('recent', []), obTab: 'cli', drawer: null, starter: false,
+    hq: '', heroQ: '', taOpen: false, taIndex: -1, toast: '', copiedId: null, width: 1280, menu: false, mSearch: false,
+    sheet: false, dTab: 'overview', faq: -1, indexReady: false,
+  };
+  searchRef = React.createRef();
+  heroRef = React.createRef();
+  ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(() => this.onResize && this.onResize()) : null;
+  rootRef = () => {};
+  proseCache = {};
+  prose(html) {
+    if (!this.proseCache[html]) this.proseCache[html] = (el) => { if (el && el.__h !== html) { el.innerHTML = html; el.__h = html; } };
+    return this.proseCache[html];
+  }
+
+  componentDidMount() {
+    Promise.all([import('./data/catalog.js'), import('./data/search.js')]).then(([C, S]) => {
+      const arts = C.artifacts.map(C.decorate);
+      this.C = C; this.S = S; this.arts = arts; this.index = S.buildIndex(arts);
+      this.setState({ ready: true });
+      setTimeout(() => this.setState({ indexReady: true }), 500);
+    });
+    this.onResize = () => { const w = document.documentElement.clientWidth || window.innerWidth; if (w !== this.state.width) this.setState({ width: w }); };
+    this.onResize();
+    window.addEventListener('resize', this.onResize);
+    if (this.ro) this.ro.observe(document.documentElement);
+    const r = this.state.route;
+    if (r.seg[0] === 'search') this.setState({ hq: r.params.q || '' });
+    this.onHash = () => {
+      const route = parseHash();
+      this.setState({ route, dTab: 'overview', menu: false, mSearch: false, sheet: false, taOpen: false, hq: route.seg[0] === 'search' ? route.params.q || '' : this.state.hq });
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener('hashchange', this.onHash);
+    this.onKey = (e) => {
+      const tag = (document.activeElement && document.activeElement.tagName) || '';
+      if (e.key === '/' && !/INPUT|TEXTAREA|SELECT/.test(tag)) {
+        e.preventDefault();
+        if (this.state.width < 1024) this.setState({ mSearch: true }, () => this.searchRef.current && this.searchRef.current.focus());
+        else this.searchRef.current && this.searchRef.current.focus();
+      }
+      if (e.key === 'Escape') this.setState({ drawer: null, starter: false, sheet: false, menu: false });
+    };
+    document.addEventListener('keydown', this.onKey);
+    this.mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: light)') : null;
+    this.mqL = () => this.forceUpdate();
+    if (this.mq && this.mq.addEventListener) this.mq.addEventListener('change', this.mqL);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('hashchange', this.onHash);
+    window.removeEventListener('resize', this.onResize);
+    document.removeEventListener('keydown', this.onKey);
+    if (this.ro) this.ro.disconnect();
+    if (this.mq && this.mq.removeEventListener) this.mq.removeEventListener('change', this.mqL);
+  }
+
+  go(path) { location.hash = '#' + path; }
+  setParams(patch) {
+    const { seg, params } = this.state.route;
+    const next = { ...params, ...patch };
+    Object.keys(next).forEach((k) => { if (next[k] === '' || next[k] == null) delete next[k]; });
+    this.go('/' + seg.map(encodeURIComponent).join('/') + qsOf(next));
+  }
+  goSearch(q) {
+    q = (q || '').trim(); if (!q) return;
+    const recent = [q, ...this.state.recent.filter((r) => r !== q)].slice(0, 5);
+    LS.set('recent', recent);
+    this.setState({ recent, taOpen: false, mSearch: false, hq: q, taIndex: -1 });
+    if (this.searchRef.current) this.searchRef.current.blur();
+    this.go('/search' + qsOf({ q }));
+  }
+  copy(text, id, msg) {
+    try { navigator.clipboard && navigator.clipboard.writeText(text); } catch (e) {}
+    clearTimeout(this._t);
+    this.setState({ toast: msg || 'Copied to clipboard', copiedId: id || null });
+    this._t = setTimeout(() => this.setState({ toast: '', copiedId: null }), 1800);
+  }
+  openArt = (a) => { this.setState({ taOpen: false, taIndex: -1 }); this.go(a.url); };
+  copyArt = (a) => this.copy(a.installCommand, a.id, `Copied ${a.installCommand}`);
+  copyText = (t) => this.copy(t, null, 'Copied to clipboard');
+  toggleStep = (k) => { const progress = { ...this.state.progress, [k]: !this.state.progress[k] }; LS.set('onboarding', progress); this.setState({ progress }); };
+  setObTab = (t) => this.setState({ obTab: t });
+  setFaq = (i) => this.setState({ faq: i });
+
+  computeResults(route) {
+    const { C, S, arts, index } = this;
+    const { seg, params } = route;
+    const catMode = seg[0] === 'browse';
+    const q = params.q || '';
+    const p = S.parseQuery(q, C.synonyms);
+    const scored = p.terms.length > 0;
+    let base = scored ? S.search(index, p).map((r) => r.a) : arts.slice();
+    const detected = p.type && !params.notype && !params.type ? p.type : null;
+    const sel = {
+      type: params.type ? list(params.type) : detected ? [detected] : [],
+      plugin: list(params.plugin), category: catMode ? [seg[1]] : list(params.category),
+      status: list(params.status), updated: params.updated || '',
+    };
+    const pass = (a, skip) =>
+      (skip === 'type' || !sel.type.length || sel.type.includes(a.type)) &&
+      (skip === 'plugin' || !sel.plugin.length || sel.plugin.includes(a.plugin)) &&
+      (skip === 'category' || !sel.category.length || sel.category.includes(a.category)) &&
+      (skip === 'status' || !sel.status.length || sel.status.includes(a.status)) &&
+      (skip === 'updated' || !sel.updated || C.daysAgo(a.updatedAt) <= +sel.updated);
+    let res = base.filter((a) => pass(a));
+    const sort = params.sort || 'relevance';
+    if (sort === 'updated' || (sort === 'relevance' && !scored)) res = res.slice().sort((x, y) => y.updatedAt.localeCompare(x.updatedAt));
+    if (sort === 'name') res = res.slice().sort((x, y) => x.slug.localeCompare(y.slug));
+    const cnt = (key, fn) => base.filter((a) => pass(a, key) && fn(a)).length;
+    const facet = (key, title, opts, cur, onT) => ({
+      key, title, inputType: 'checkbox',
+      options: opts.map((o) => { const c = cnt(key, o.fn); const checked = cur.includes(o.value); return { label: o.label, count: c, checked, op: c || checked ? 1 : 0.45, toggle: () => onT(o.value) }; }),
+    });
+    const facets = [
+      facet('type', 'Type', TYPE_ORDER.map((t) => ({ value: t, label: C.TYPE_LABEL[t], fn: (a) => a.type === t })), sel.type, (v) => this.setParams({ type: tog(sel.type, v).join(','), notype: '1' })),
+      facet('plugin', 'Plugin', C.plugins.map((pl) => ({ value: pl.name, label: pl.name, fn: (a) => a.plugin === pl.name })), sel.plugin, (v) => this.setParams({ plugin: tog(sel.plugin, v).join(',') })),
+    ];
+    if (!catMode) facets.push(facet('category', 'Category', C.categories.map((c) => ({ value: c.slug, label: c.name, fn: (a) => a.category === c.slug })), sel.category, (v) => this.setParams({ category: tog(sel.category, v).join(',') })));
+    facets.push(facet('status', 'Status', [['stable', 'Stable'], ['beta', 'Beta'], ['deprecated', 'Deprecated']].map(([v, l]) => ({ value: v, label: l, fn: (a) => a.status === v })), sel.status, (v) => this.setParams({ status: tog(sel.status, v).join(',') })));
+    facets.push({
+      key: 'updated', title: 'Updated', inputType: 'radio',
+      options: [['', 'Any time'], ['7', 'Last 7 days'], ['30', 'Last 30 days'], ['90', 'Last 90 days']].map(([v, l]) => {
+        const c = v ? cnt('updated', (a) => C.daysAgo(a.updatedAt) <= +v) : cnt('updated', () => true);
+        return { label: l, count: c, checked: sel.updated === v, op: 1, toggle: () => this.setParams({ updated: v }) };
+      }),
+    });
+    const tl = (t) => C.TYPE_LABEL[t];
+    const chips = [];
+    if (detected) chips.push({ label: `Type: ${tl(detected)}`, remove: () => this.setParams({ notype: '1' }) });
+    if (params.type) sel.type.forEach((t) => chips.push({ label: `Type: ${tl(t)}`, remove: () => this.setParams({ type: tog(sel.type, t).join(',') }) }));
+    sel.plugin.forEach((v) => chips.push({ label: `Plugin: ${v}`, remove: () => this.setParams({ plugin: tog(sel.plugin, v).join(',') }) }));
+    if (!catMode) sel.category.forEach((v) => chips.push({ label: `Category: ${(C.categories.find((c) => c.slug === v) || {}).name || v}`, remove: () => this.setParams({ category: tog(sel.category, v).join(',') }) }));
+    sel.status.forEach((v) => chips.push({ label: `Status: ${v}`, remove: () => this.setParams({ status: tog(sel.status, v).join(',') }) }));
+    if (sel.updated) chips.push({ label: `Updated: last ${sel.updated} days`, remove: () => this.setParams({ updated: '' }) });
+    return { q, p, res, facets, chips, catMode, sort, scored, activeCount: chips.length };
+  }
+
+  renderVals() {
+    const st = this.state;
+    const { route, width } = st;
+    const { seg, params } = route;
+    const isMobile = width < 768;
+    const sysLight = this.mq ? this.mq.matches : false;
+    const themeAttr = st.theme === 'system' ? (sysLight ? 'light' : 'dark') : st.theme;
+    const ready = st.ready;
+    const C = this.C, S = this.S, arts = this.arts || [];
+    const catCols = width >= 1024 ? 'repeat(4,minmax(0,1fr))' : width >= 560 ? 'repeat(2,minmax(0,1fr))' : '1fr';
+
+    let page = 'loading';
+    let art = null, plugin = null, cat = null;
+    if (ready) {
+      page = '404';
+      if (!seg.length) page = 'home';
+      else if (seg[0] === 'search' && seg.length === 1) page = 'results';
+      else if (seg[0] === 'get-started') page = 'start';
+      else if (seg[0] === 'whats-new') page = 'whatsnew';
+      else if (seg[0] === 'browse' && seg.length === 1) page = 'browse';
+      else if (seg[0] === 'browse' && seg.length === 2 && (cat = C.categories.find((c) => c.slug === seg[1]))) page = 'results';
+      else if (seg[0] === 'plugins' && seg.length === 2 && (art = arts.find((a) => a.type === 'plugin' && a.plugin === seg[1]))) { page = 'plugin'; plugin = C.plugins.find((p) => p.name === seg[1]); }
+      else if (seg[0] === 'plugins' && seg.length === 4 && (art = arts.find((a) => a.type !== 'plugin' && a.plugin === seg[1] && a.type === seg[2] && a.slug === seg[3]))) { page = 'artifact'; plugin = C.plugins.find((p) => p.name === art.plugin); }
+    }
+    const forceStart = this.props.startCard && this.props.startCard !== 'auto' ? this.props.startCard : null;
+    const connected = forceStart ? forceStart === 'connected' : !!st.progress.s2;
+    const dismissed = forceStart ? forceStart === 'collapsed' : st.startDismissed;
+
+    const v = {
+      themeAttr, rootRef: this.rootRef, searchRef: this.searchRef, heroRef: this.heroRef,
+      isMobile, notMobile: !isMobile, catCols, loading: page === 'loading' || !!this.props.forceLoading,
+      skeletons: [1, 2, 3, 4, 5, 6],
+      isHome: page === 'home', isResults: page === 'results' && !this.props.forceLoading, isArtifact: page === 'artifact', isPlugin: page === 'plugin',
+      isWhatsNew: page === 'whatsnew', isBrowse: page === 'browse', isStart: page === 'start', is404: page === '404',
+      repoUrl: C ? C.marketplace.repoUrl : '#', stars: C ? C.marketplace.stars : '',
+      buildDate: C ? C.BUILD_DATE : '', buildDateLong: C ? C.fmtDate(C.BUILD_DATE) : '',
+      themeIsDark: st.theme === 'dark', themeIsLight: st.theme === 'light', themeIsSystem: st.theme === 'system',
+      themeLabel: `Theme: ${st.theme} (click to change)`,
+      cycleTheme: () => { const n = { dark: 'light', light: 'system', system: 'dark' }[st.theme]; LS.set('theme', n); this.setState({ theme: n }); },
+      hdrCompact: width < 1024, hdrFull: width >= 1024, menuOpen: width < 1024 && st.menu, toggleMenu: () => this.setState({ menu: !st.menu, mSearch: false }),
+      toggleMSearch: () => this.setState({ mSearch: !st.mSearch, menu: false }, () => this.state.mSearch && this.searchRef.current && this.searchRef.current.focus()),
+      navItems: [['Browse', '#/browse', 'browse'], ["What's new", '#/whats-new', 'whats-new'], ['Get started', '#/get-started', 'get-started']].map(([label, href, k]) => ({
+        label, href, current: seg[0] === k ? 'page' : undefined, color: seg[0] === k ? 'var(--accent-text)' : 'var(--color-text)',
+      })),
+      searchWrapStyle: width < 1024 ? (st.mSearch ? { order: 10, flexBasis: '100%', position: 'relative', paddingBottom: 12 } : { display: 'none' }) : { flex: '1 1 200px', maxWidth: 440, minWidth: 0, position: 'relative', marginLeft: 8 },
+      searchPlaceholder: `Search ${arts.length || ''} artifacts`,
+      hq: st.hq, toast: st.toast, hasToast: !!st.toast, copiedId: st.copiedId,
+      preventDefault: (e) => e.preventDefault(), stop: (e) => e.stopPropagation(),
+      openArt: this.openArt, copyArt: this.copyArt, copyText: this.copyText,
+      progress: st.progress, obTab: st.obTab, faq: st.faq, setObTab: this.setObTab, toggleStep: this.toggleStep, setFaq: this.setFaq,
+      heroQ: st.heroQ, onHero: (e) => this.setState({ heroQ: e.target.value }),
+      onHeroKey: (e) => { if (e.key === 'Enter') this.goSearch(st.heroQ); }, heroSubmit: () => this.goSearch(st.heroQ),
+    };
+
+    // type-ahead
+    const tq = st.hq.trim();
+    let taRows = [], taTotal = 0, taType = null, taTerms = [];
+    if (tq && ready) {
+      const p = S.parseQuery(tq, C.synonyms);
+      let r = S.search(this.index, p).map((x) => x.a);
+      if (p.type) r = r.filter((a) => a.type === p.type);
+      if (!p.terms.length && p.type) r = arts.filter((a) => a.type === p.type);
+      taTotal = r.length; taType = p.type; taTerms = p.stems;
+      taRows = r.slice(0, 6).map((a, i) => ({ a, active: i === st.taIndex, hover: () => this.setState({ taIndex: i }) }));
+    }
+    Object.assign(v, {
+      taOpen: st.taOpen, taEmpty: !tq, taHasQuery: !!tq, taRows, taTotal, taTerms, taNone: !!tq && !taRows.length,
+      taHasType: !!taType, taTypeLabel: taType && C ? C.TYPE_LABEL[taType] : '',
+      taEmptyTitle: st.recent.length ? 'Recent searches' : 'Try',
+      taRecent: (st.recent.length ? st.recent : ['skill for parsing pdf invoices', 'review pull requests', 'postgres mcp']).map((q) => ({ q, go: () => this.goSearch(q) })),
+      seeAll: () => this.goSearch(st.hq),
+      onHq: (e) => this.setState({ hq: e.target.value, taOpen: true, taIndex: -1 }),
+      onHqFocus: () => this.setState({ taOpen: true }),
+      onHqBlur: () => setTimeout(() => this.setState({ taOpen: false, taIndex: -1 }), 120),
+      onHqKey: (e) => {
+        const n = taRows.length;
+        if (e.key === 'ArrowDown') { e.preventDefault(); this.setState({ taOpen: true, taIndex: Math.min(n - 1, st.taIndex + 1) }); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); this.setState({ taIndex: Math.max(-1, st.taIndex - 1) }); }
+        else if (e.key === 'Enter') { if (st.taIndex >= 0 && taRows[st.taIndex]) this.openArt(taRows[st.taIndex].a); else this.goSearch(st.hq); }
+        else if (e.key === 'Escape') { this.setState({ taOpen: false, taIndex: -1 }); e.target.blur(); }
+      },
+    });
+
+    // shared: categories, changes
+    if (ready) {
+      v.cats = C.categories.map((c) => ({ ...c, href: `#/browse/${c.slug}`, count: arts.filter((a) => a.category === c.slug).length, icon: icon(c.icon, 20), iconLg: icon(c.icon, 28) }));
+      const changeEntries = C.changes.map((c) => {
+        const a = arts.find((x) => x.id === c.id) || { ...c.removed, id: c.id, removed: true, code: CODE[c.removed.type], typeLabel: C.TYPE_LABEL[c.removed.type], badges: [], tags: [] };
+        return { ...c, a, cls: KIND_CLS[c.kind], href: a.removed ? '#/whats-new' : a.href, dateShort: C.fmtShort(c.date), ver: c.from ? `${c.from} → ${c.to}` : c.to };
+      });
+      this._changes = changeEntries;
+    }
+
+    // HOME
+    if (page === 'home') {
+      const n = (t) => arts.filter((a) => a.type === t).length;
+      Object.assign(v, {
+        startExpanded: !dismissed, startCollapsed: dismissed, connected,
+        heroPad: dismissed ? '48px' : '56px',
+        startKicker: connected ? `Connected to ${C.marketplace.name}` : 'Start here',
+        startPitch: connected ? 'You have added the marketplace. See what has been added or updated, or install the starter pack.' : `Connect ${C.marketplace.name} once, then install any plugin with a single command. Takes about three minutes.`,
+        startPrimaryLabel: connected ? "Browse what's new" : 'Connect the marketplace',
+        startPrimary: () => (connected ? this.go('/whats-new') : this.setState({ drawer: { plugin: '' } })),
+        dismissStart: () => { LS.set('startDismissed', true); this.setState({ startDismissed: true }); },
+        focusHero: () => { const el = this.heroRef.current; if (el) { el.focus(); } },
+        counts: [['plugin', 'Plugins'], ['skill', 'Skills'], ['agent', 'Agents'], ['command', 'Commands']].map(([t, label]) => ({ n: n(t), label, href: `#/search?type=${t}&notype=1` })),
+        tries: ['a skill for parsing PDF invoices', 'review pull requests', 'deploy to kubernetes', 'query postgres'].map((q) => ({ q, go: () => this.goSearch(q) })),
+        homeChanges: this._changes.slice(0, 5),
+      });
+    }
+
+    // RESULTS
+    if (page === 'results') {
+      const R = this.computeResults(route);
+      const n = R.res.length;
+      const resLoading = !st.indexReady;
+      const view = params.view === 'list' ? 'list' : 'grid';
+      const nounN = `${n} ${n === 1 ? 'result' : 'results'}`;
+      let resTitle, resQuote = '', resSummary;
+      if (R.catMode) { resTitle = cat.name; resSummary = `${n} ${n === 1 ? 'artifact' : 'artifacts'}${R.q ? ` matching “${R.q}”` : ''}`; }
+      else if (R.q) { resTitle = `${nounN} for`; resQuote = R.q; resSummary = R.scored ? `Ranked by relevance${R.p.expanded.length ? ` · also searched ${R.p.expanded.slice(0, 3).join(', ')}` : ''}` : nounN; }
+      else { resTitle = 'All artifacts'; resSummary = nounN; }
+      if (R.sort !== 'relevance') resSummary = `${nounN} · sorted by ${R.sort === 'name' ? 'name' : 'last update'}`;
+      const sugg = n === 0 && R.q ? S.suggest(this.index, R.p) : [];
+      Object.assign(v, {
+        isCategory: R.catMode, resTitle, resQuote, hasQuote: !!resQuote, resSummary, resCount: n,
+        hasCatBlurb: R.catMode, catBlurb: cat ? cat.blurb : '',
+        chips: R.chips, hasManyChips: R.chips.length > 1,
+        clearFilters: () => this.setParams({ type: '', plugin: '', category: '', status: '', updated: '', notype: R.p.type ? '1' : '' }),
+        facets: R.facets, filterCountLabel: R.activeCount ? ` (${R.activeCount})` : '',
+        sortVal: R.sort, onSort: (e) => this.setParams({ sort: e.target.value === 'relevance' ? '' : e.target.value }),
+        isGrid: view === 'grid', isList: view === 'list',
+        gridBg: view === 'grid' ? 'var(--color-accent)' : 'transparent', gridFg: view === 'grid' ? 'var(--color-bg)' : 'var(--color-text)',
+        listBg: view === 'list' ? 'var(--color-accent)' : 'transparent', listFg: view === 'list' ? 'var(--color-bg)' : 'var(--color-text)',
+        setGrid: () => this.setParams({ view: '' }), setList: () => this.setParams({ view: 'list' }),
+        resLoading, resEmpty: !resLoading && n === 0, showGrid: !resLoading && n > 0 && view === 'grid', showList: !resLoading && n > 0 && view === 'list',
+        results: R.res, resTerms: R.p.stems,
+        emptyQ: R.q || (cat ? cat.name : 'these filters'),
+        suggestions: sugg.map((q) => ({ q, href: '#/search' + qsOf({ q }) })),
+        popularCats: v.cats.slice().sort((a, b) => b.count - a.count).slice(0, 4),
+        requestUrl: `${C.marketplace.repoUrl}/issues/new?labels=request&title=${encodeURIComponent('Request: ' + (R.q || ''))}`,
+        sheetOpen: isMobile && st.sheet, openSheet: () => this.setState({ sheet: true }), closeSheet: () => this.setState({ sheet: false }),
+        facetStyle: !isMobile
+          ? { width: 220, flex: 'none', display: 'flex', flexDirection: 'column', gap: 26, position: 'sticky', top: 84, maxHeight: 'calc(100vh - 100px)', overflowY: 'auto', paddingBottom: 20 }
+          : st.sheet ? { position: 'fixed', left: 0, right: 0, bottom: 0, maxHeight: '82vh', overflowY: 'auto', zIndex: 61, background: 'var(--color-bg)', borderTop: '1px solid var(--color-divider)', boxShadow: 'var(--shadow-lg)', padding: '0 20px 28px', display: 'flex', flexDirection: 'column', gap: 24 } : { display: 'none' },
+      });
+    }
+
+    // DETAIL (artifact + plugin)
+    if (page === 'artifact' || page === 'plugin') {
+      const catRec = C.categories.find((c) => c.slug === art.category) || {};
+      const siblings = arts.filter((a) => a.plugin === art.plugin && a.type !== 'plugin');
+      const summary = TYPE_ORDER.slice(1).map((t) => { const k = siblings.filter((a) => a.type === t).length; return k ? `${k} ${C.TYPE_PLURAL[t][k === 1 ? 0 : 1]}` : null; }).filter(Boolean).join(' · ');
+      const copied = st.copiedId === art.id;
+      Object.assign(v, {
+        art, artCatName: catRec.name, artCatHref: `#/browse/${art.category}`, artPluginHref: `#/plugins/${art.plugin}`,
+        installNoteLong: page === 'plugin' ? `Installs ${summary}` : `Installs with plugin ${art.plugin} (${summary})`,
+        installCopyLabel: copied ? 'Copied' : 'Copy',
+        copyInstall: () => this.copy(art.installCommand, art.id, `Copied ${art.installCommand}`),
+        openDrawerCtx: (e) => { e.preventDefault(); this.setState({ drawer: { plugin: art.plugin } }); },
+        changelog: plugin.changelog.map((c) => ({ ...c, dateLabel: C.fmtDate(c.date) })),
+      });
+      if (page === 'artifact') {
+        const rep = art.replacement ? art.replacement.split('/') : [];
+        const how = {
+          skill: 'Claude loads this skill on its own when your request matches its description. You can also ask for it by name.',
+          agent: `Ask Claude to “use the ${art.name} agent”, or let Claude delegate to it when a task matches.`,
+          command: 'Type the command in a Claude Code session. Arguments in [brackets] are optional.',
+          hook: `Runs automatically on the ${art.event} event once the plugin is installed. Nothing to call.`,
+          mcp: 'Set the environment variables listed under Requirements, then restart Claude Code. Claude can then call the server’s tools.',
+        }[art.type];
+        const rq = art.requires;
+        const reqRows = [
+          { k: 'MCP servers', v: rq.mcp.length ? rq.mcp.join(', ') : 'None' },
+          { k: 'Environment variables', v: rq.env.length ? rq.env.join(', ') : 'None', font: 'var(--font-mono)' },
+          { k: 'Allowed tools', v: rq.tools.length ? rq.tools.join(', ') : 'Session default', font: 'var(--font-mono)' },
+          { k: 'Model', v: rq.model || 'Inherits from session' },
+        ];
+        if (art.event) reqRows.push({ k: 'Hook event', v: art.event, font: 'var(--font-mono)' });
+        if (art.argumentHint) reqRows.push({ k: 'Arguments', v: art.argumentHint, font: 'var(--font-mono)' });
+        const related = arts.filter((a) => a.id !== art.id && a.type !== 'plugin')
+          .map((a) => ({ a, s: (a.plugin === art.plugin ? 2 : 0) + a.tags.filter((t) => art.tags.includes(t)).length }))
+          .filter((x) => x.s > 0).sort((x, y) => y.s - x.s).slice(0, 4).map((x) => x.a);
+        const tabKeys = [['overview', 'Overview'], ['how', 'How to use'], ['req', 'Requirements'], ['files', 'Files'], ['log', 'Changelog']];
+        Object.assign(v, {
+          artStatusLabel: art.status === 'stable' ? 'Stable' : art.status === 'beta' ? 'Beta' : 'Deprecated',
+          artDeprecated: art.status === 'deprecated', artReplacementName: rep[2] || '', artReplacementHref: rep.length ? `#/plugins/${rep[0]}/${rep[1]}/${rep[2]}` : '#/',
+          dTabs: tabKeys.map(([k, label]) => ({ label, active: st.dTab === k, line: st.dTab === k ? 'var(--color-accent)' : 'transparent', fg: st.dTab === k ? 'var(--color-text)' : 'var(--muted)', select: () => this.setState({ dTab: k }) })),
+          tabOverview: st.dTab === 'overview', tabHow: st.dTab === 'how', tabReq: st.dTab === 'req', tabFiles: st.dTab === 'files', tabLog: st.dTab === 'log',
+          artBodyRef: this.prose(art.bodyHtml),
+          howText: how, hasSyntax: art.type === 'command', syntax: `${art.name} ${art.argumentHint}`.trim(),
+          hasExamples: art.examples.length > 0, examples: art.examples.map((t) => ({ text: t, copy: () => this.copyText(t) })),
+          reqRows: reqRows.map((r) => ({ ...r, font: r.font || 'inherit' })),
+          files: art.files.map((f) => ({ ...f, indent: '0' })),
+          qScore: art.quality.score, qWidth: art.quality.score + '%',
+          qFlags: art.quality.flags.map((f) => ({ ...f, no: !f.ok, color: f.ok ? 'var(--color-text)' : 'var(--faint)' })),
+          artTags: art.tags.map((t) => ({ label: t, href: '#/search' + qsOf({ q: t }) })),
+          artMeta: [['Type', art.typeLabel], ['Plugin', art.plugin], ['Category', catRec.name], ['Version', art.version], ['Added', C.fmtDate(art.addedAt)], ['Updated', C.fmtDate(art.updatedAt)], ['Author', art.author]].map(([k, val]) => ({ k, v: val })),
+          issueUrl: `${C.marketplace.repoUrl}/issues/new?title=${encodeURIComponent(`[${art.id}] `)}`,
+          related,
+        });
+      } else {
+        const groups = TYPE_ORDER.slice(1).map((t) => {
+          const items = siblings.filter((a) => a.type === t);
+          const label = C.TYPE_PLURAL[t][1]; const id = 'g-' + t;
+          return { id, anchor: '#' + id, label: label[0].toUpperCase() + label.slice(1), count: items.length, items,
+            jump: (e) => { e.preventDefault(); const el = document.getElementById(id); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' }); } };
+        }).filter((g) => g.count);
+        Object.assign(v, { plGroups: groups, plSummary: summary, readmeRef: this.prose(plugin.readmeHtml) });
+      }
+    }
+
+    // WHAT'S NEW
+    if (page === 'whatsnew') {
+      const k = params.change || '', t = params.type || '', pl = params.plugin || '';
+      const ent = this._changes.filter((c) => (!k || c.kind === k) && (!t || c.a.type === t) && (!pl || c.a.plugin === pl));
+      const weeks = [];
+      ent.forEach((e) => {
+        const d = new Date(e.date + 'T00:00:00'); d.setDate(d.getDate() - ((d.getDay() + 6) % 7));
+        const key = d.toISOString().slice(0, 10);
+        let w = weeks.find((x) => x.key === key);
+        if (!w) { w = { key, label: `Week of ${C.fmtShort(key)}`, entries: [] }; weeks.push(w); }
+        w.entries.push(e);
+      });
+      weeks.forEach((w) => { w.countLabel = `${w.entries.length} ${w.entries.length === 1 ? 'change' : 'changes'}`; });
+      Object.assign(v, {
+        wnKinds: ['', 'New', 'Updated', 'Deprecated', 'Removed'].map((x) => ({ label: x || 'All', active: k === x, bg: k === x ? 'var(--color-accent)' : 'transparent', fg: k === x ? 'var(--color-bg)' : 'var(--color-text)', select: () => this.setParams({ change: x }) })),
+        wnType: t, wnPlugin: pl,
+        typeOptions: TYPE_ORDER.map((x) => ({ value: x, label: C.TYPE_LABEL[x] })),
+        pluginOptions: C.plugins.map((p) => ({ value: p.name, label: p.name })),
+        onWnType: (e) => this.setParams({ type: e.target.value }), onWnPlugin: (e) => this.setParams({ plugin: e.target.value }),
+        wnCount: `${ent.length} ${ent.length === 1 ? 'change' : 'changes'}`, wnEmpty: !ent.length,
+        wnClear: () => this.go('/whats-new'), weeks,
+      });
+    }
+
+    if (page === 'browse') v.browseSub = `${arts.length} artifacts across ${C.categories.length} categories.`;
+    if (page === '404') v.notFoundPath = '/' + seg.join('/');
+
+    // drawer + starter
+    const dOpen = !!st.drawer;
+    Object.assign(v, {
+      drawerOpen: dOpen, drawerPlugin: dOpen ? st.drawer.plugin : '',
+      drawerKicker: dOpen && st.drawer.plugin ? 'Install' : 'Get started',
+      drawerTitle: dOpen && st.drawer.plugin ? `Install ${st.drawer.plugin}` : 'Connect the marketplace',
+      closeDrawer: () => this.setState({ drawer: null }),
+      drawerStyle: isMobile
+        ? { position: 'fixed', left: 0, right: 0, bottom: 0, height: '92vh', zIndex: 71, background: 'var(--color-bg)', borderTop: '1px solid var(--color-divider)', boxShadow: 'var(--shadow-lg)', overflowY: 'auto', padding: '20px 16px 32px', display: 'flex', flexDirection: 'column', gap: 18, boxSizing: 'border-box' }
+        : { position: 'fixed', top: 0, right: 0, bottom: 0, width: 'min(560px, 100%)', zIndex: 71, background: 'var(--color-bg)', borderLeft: '1px solid var(--color-divider)', boxShadow: 'var(--shadow-lg)', overflowY: 'auto', padding: '24px 28px 40px', display: 'flex', flexDirection: 'column', gap: 18, boxSizing: 'border-box' },
+      starterOpen: st.starter, openStarter: () => this.setState({ starter: true }), closeStarter: () => this.setState({ starter: false }),
+    });
+    if (ready) {
+      const col = C.collections[0];
+      const items = col.plugins.map((name) => {
+        const pr = C.plugins.find((p) => p.name === name);
+        const sib = arts.filter((a) => a.plugin === name && a.type !== 'plugin');
+        const sum = TYPE_ORDER.slice(1).map((t) => { const k = sib.filter((a) => a.type === t).length; return k ? `${k} ${C.TYPE_PLURAL[t][k === 1 ? 0 : 1]}` : null; }).filter(Boolean).join(' · ');
+        return { name, description: pr.description, summary: sum, href: `#/plugins/${name}` };
+      });
+      const cmds = col.plugins.map((n) => `/plugin install ${n}@${C.marketplace.name}`).join('\n');
+      v.starter = { title: col.title, description: col.description, items, cmds };
+      v.copyStarter = () => this.copy(cmds, null, `Copied ${col.plugins.length} install commands`);
+    } else v.starter = { items: [] };
+    return v;
+  }
+}
+</script>
+</body>
+</html>

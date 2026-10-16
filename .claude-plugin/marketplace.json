@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "dev-digest-ai-marketplace",
+  "description": "Dev Digest AI plugins for Claude Code",
+  "owner": {
+    "name": "Dima Bognen",
+    "url": "https://github.com/bognen"
+  },
+  "plugins": []
+}

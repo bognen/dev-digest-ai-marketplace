@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/industry-0170da02-2f81-44d7-82b2-14ea1abdb45d/styles.css">
+<script src="_ds/industry-0170da02-2f81-44d7-82b2-14ea1abdb45d/_ds_bundle.js"></script>
+</helmet>
+<div style="display:flex;flex-direction:column;gap:20px">
+  <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
+    <div role="tablist" aria-label="Where you use Claude Code" style="display:inline-flex;border:1px solid var(--color-divider)">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+        <button role="tab" aria-selected="{{ t.active }}" onClick="{{ t.select }}" style="height:34px;padding:0 14px;border:0;border-right:1px solid var(--color-divider);background:{{ t.bg }};color:{{ t.fg }};font-family:var(--font-heading);font-weight:600;font-size:15px;cursor:pointer">{{ t.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)">
+      <div style="display:flex;gap:3px" aria-hidden="true">
+        <sc-for list="{{ bar }}" as="b" hint-placeholder-count="5"><span style="width:22px;height:4px;background:{{ b.bg }}"></span></sc-for>
+      </div>
+      <span aria-live="polite">{{ doneCount }} of 5 done</span>
+    </div>
+  </div>
+
+  <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column">
+    <sc-for list="{{ steps }}" as="s" hint-placeholder-count="7">
+      <li style="display:grid;grid-template-columns:34px minmax(0,1fr);gap:14px;padding:18px 0;border-top:1px solid var(--color-divider)">
+        <sc-if value="{{ s.checkable }}" hint-placeholder-val="{{ true }}">
+          <button onClick="{{ s.toggle }}" aria-pressed="{{ s.done }}" aria-label="{{ s.checkLabel }}" style="width:28px;height:28px;display:grid;place-items:center;border:1px solid {{ s.boxBorder }};background:{{ s.boxBg }};color:{{ s.boxFg }};font-family:var(--font-mono);font-size:12px;cursor:pointer">
+            <sc-if value="{{ s.done }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M20 6 9 17l-5-5"></path></svg></sc-if>
+            <sc-if value="{{ s.notDone }}">{{ s.n }}</sc-if>
+          </button>
+        </sc-if>
+        <sc-if value="{{ s.notCheckable }}" hint-placeholder-val="{{ false }}">
+          <span style="width:28px;height:28px;display:grid;place-items:center;border:1px dashed var(--color-divider);color:var(--faint);font-family:var(--font-mono);font-size:12px">{{ s.n }}</span>
+        </sc-if>
+        <div style="display:flex;flex-direction:column;gap:10px;min-width:0">
+          <sc-if value="{{ s.banner }}" hint-placeholder-val="{{ false }}">
+            <div role="note" style="display:flex;gap:10px;align-items:center;padding:10px 12px;border:1px solid var(--color-accent);background:var(--color-accent-100);color:var(--color-accent-800);font-size:14px">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round;flex:none"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4"></path><path d="M12 16h.01"></path></svg>
+              <span><strong>First, add the marketplace.</strong> Finish step 2, then install {{ plugin }}.</span>
+            </div>
+          </sc-if>
+          <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+            <h3 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:21px;line-height:1.15;color:{{ s.titleColor }}">{{ s.title }}</h3>
+            <sc-if value="{{ s.optional }}" hint-placeholder-val="{{ false }}"><span class="tag tag-neutral">Optional</span></sc-if>
+            <sc-if value="{{ s.contextTag }}" hint-placeholder-val="{{ false }}"><span class="tag tag-accent">{{ plugin }}</span></sc-if>
+          </div>
+          <p style="margin:0;font-size:15px;color:var(--muted);text-wrap:pretty">{{ s.body }}</p>
+          <sc-for list="{{ s.cmds }}" as="c" hint-placeholder-count="0">
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <sc-if value="{{ c.hasLabel }}"><span style="font-size:12px;color:var(--faint)">{{ c.label }}</span></sc-if>
+              <div style="display:flex;align-items:center;gap:8px;min-height:42px;padding:0 6px 0 14px;background:var(--color-surface);border:1px solid var(--color-divider)">
+                <code style="flex:1;min-width:0;font-family:var(--font-mono);font-size:13px;overflow-x:auto;white-space:nowrap">{{ c.text }}</code>
+                <button class="btn btn-ghost" onClick="{{ c.copy }}" style="height:30px;padding:0 8px;font-size:13px">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>Copy</button>
+              </div>
+            </div>
+          </sc-for>
+          <sc-if value="{{ s.hasJson }}" hint-placeholder-val="{{ false }}">
+            <div style="position:relative;background:var(--color-surface);border:1px solid var(--color-divider)">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 6px 4px 14px;border-bottom:1px solid var(--color-divider);font-family:var(--font-mono);font-size:12px;color:var(--faint)">
+                <span>.claude/settings.json</span>
+                <button class="btn btn-ghost" onClick="{{ s.copyJson }}" style="height:28px;padding:0 8px;font-size:13px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>Copy</button>
+              </div>
+              <pre style="margin:0;padding:12px 14px;overflow-x:auto;font-family:var(--font-mono);font-size:12.5px;line-height:1.55">{{ s.json }}</pre>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.hasLinks }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:14px">
+              <sc-for list="{{ s.links }}" as="l"><a href="{{ l.href }}" target="_blank" rel="noopener">{{ l.label }} ↗</a></sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.hasFaq }}" hint-placeholder-val="{{ false }}">
+            <div style="border-top:1px solid var(--color-divider)">
+              <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="4">
+                <div style="border-bottom:1px solid var(--color-divider)">
+                  <button onClick="{{ f.toggle }}" aria-expanded="{{ f.open }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;background:transparent;border:0;color:var(--color-text);font:inherit;font-size:15px;text-align:left;cursor:pointer">
+                    <span>{{ f.q }}</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none;transform:{{ f.rot }};transition:transform .15s"><path d="m6 9 6 6 6-6"></path></svg>
+                  </button>
+                  <sc-if value="{{ f.open }}"><p style="margin:0 0 14px;font-size:14px;color:var(--muted);text-wrap:pretty">{{ f.a }}</p></sc-if>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </li>
+    </sc-for>
+  </ol>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:640,&quot;height&quot;:900},&quot;tab&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;cli&quot;,&quot;desktop&quot;,&quot;ide&quot;],&quot;default&quot;:&quot;cli&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;plugin&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;progress&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;object&quot;},&quot;faq&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:-1,&quot;tsType&quot;:&quot;number&quot;},&quot;marketplace&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;dev-digest&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;repo&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&lt;org&gt;/&lt;repo&gt;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;onTab&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(k)=&gt;void&quot;},&quot;onToggle&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(key)=&gt;void&quot;},&quot;onCopy&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(text)=&gt;void&quot;},&quot;onFaq&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(i)=&gt;void&quot;}}">
+const WHERE = {
+  cli: { label: 'CLI', pre: 'Install Claude Code and sign in. Plugins need version 1.0.33 or later; check with claude --version.', run: 'Start a session with claude in your project folder, then run:' },
+  desktop: { label: 'Desktop app', pre: 'Install the Claude desktop app and open a Claude Code session. Update the app if /plugin is not recognised.', run: 'In the Claude Code prompt box, type:' },
+  ide: { label: 'IDE', pre: 'Install the Claude Code extension for VS Code or the JetBrains plugin, and sign in.', run: 'Open the Claude Code panel in your IDE and type:' },
+};
+const FAQ = [
+  { q: 'The repository is private. How do I get access?', a: 'Claude Code uses your local git credentials. Make sure git clone works for the repository from your terminal (SSH key or credential helper), then add the marketplace again.' },
+  { q: 'I installed a plugin but it does not show up.', a: 'Restart the Claude Code session so new skills, agents and commands load. Then run /plugin and check the plugin is enabled.' },
+  { q: 'Two plugins conflict or I need an older version.', a: 'Run /plugin marketplace update dev-digest to get the latest catalog. Pin a version by referencing a tag in .claude/settings.json if your team needs one.' },
+  { q: 'How do I uninstall or disable a plugin?', a: 'Open /plugin, pick the plugin and choose Disable or Uninstall. Disabling keeps it installed so you can turn it back on later.' },
+];
+
+class Component extends DCLogic {
+  renderVals() {
+    const tab = this.props.tab || 'cli';
+    const w = WHERE[tab] || WHERE.cli;
+    const pr = this.props.progress || {};
+    const plugin = this.props.plugin || '';
+    const mk = this.props.marketplace || 'dev-digest';
+    const repo = this.props.repo || '<org>/<repo>';
+    const copy = (text) => () => this.props.onCopy && this.props.onCopy(text);
+    const cmd = (text, label) => ({ text, label: label || '', hasLabel: !!label, copy: copy(text) });
+    const json = JSON.stringify({
+      extraKnownMarketplaces: { [mk]: { source: { source: 'github', repo } } },
+      enabledPlugins: { [`${plugin || 'git-helpers'}@${mk}`]: true },
+    }, null, 2);
+    const raw = [
+      { key: 's1', title: 'Check prerequisites', body: w.pre, links: [{ label: 'Install Claude Code', href: 'https://docs.claude.com/en/docs/claude-code/setup' }] },
+      { key: 's2', title: 'Add the marketplace', body: w.run, cmds: [cmd(`/plugin marketplace add ${repo}`)] },
+      plugin
+        ? { key: 's3', title: `Install ${plugin}`, contextTag: true, body: 'Install the plugin directly. Everything in it (skills, agents, commands) installs together.', cmds: [cmd(`/plugin install ${plugin}@${mk}`)], banner: !pr.s2 }
+        : { key: 's3', title: 'Browse and install', body: 'Open the interactive plugin browser, or install a plugin by name.', cmds: [cmd('/plugin', 'Browse'), cmd(`/plugin install <plugin>@${mk}`, 'Install by name')] },
+      { key: 's4', title: 'Verify', body: 'Run /plugin and check the plugin is listed as enabled. Its commands now appear in /help.' },
+      { key: 's5', title: 'Stay updated', body: 'Pull the latest catalog whenever you want new plugins and versions.', cmds: [cmd(`/plugin marketplace update ${mk}`)] },
+      { key: 's6', title: 'Set up your team', optional: true, nocheck: true, body: 'Commit this file to your project. Teammates are prompted to add the marketplace and enable the plugins when they trust the folder.', json },
+      { key: 's7', title: 'Troubleshooting', nocheck: true, body: 'Common problems and how to fix them.', faq: true },
+    ];
+    const steps = raw.map((s, i) => {
+      const done = !!pr[s.key];
+      return {
+        ...s, n: i + 1, done, notDone: !done, checkable: !s.nocheck, notCheckable: !!s.nocheck,
+        optional: !!s.optional, contextTag: !!s.contextTag, banner: !!s.banner,
+        cmds: s.cmds || [], hasJson: !!s.json, json: s.json || '', copyJson: copy(s.json || ''),
+        links: s.links || [], hasLinks: !!(s.links && s.links.length), hasFaq: !!s.faq,
+        toggle: () => this.props.onToggle && this.props.onToggle(s.key),
+        checkLabel: `Mark step ${i + 1} ${done ? 'not done' : 'done'}`,
+        boxBorder: done ? 'var(--color-accent)' : 'var(--color-divider)',
+        boxBg: done ? 'var(--color-accent)' : 'transparent', boxFg: done ? 'var(--color-bg)' : 'var(--color-text)',
+        titleColor: done ? 'var(--muted)' : 'var(--color-text)',
+      };
+    });
+    const doneCount = ['s1', 's2', 's3', 's4', 's5'].filter((k) => pr[k]).length;
+    const faqOpen = this.props.faq ?? -1;
+    return {
+      plugin,
+      tabs: Object.entries(WHERE).map(([k, v]) => ({
+        label: v.label, active: k === tab,
+        bg: k === tab ? 'var(--color-accent)' : 'transparent', fg: k === tab ? 'var(--color-bg)' : 'var(--color-text)',
+        select: () => this.props.onTab && this.props.onTab(k),
+      })),
+      steps, doneCount,
+      bar: [0, 1, 2, 3, 4].map((i) => ({ bg: i < doneCount ? 'var(--color-accent)' : 'var(--color-divider)' })),
+      faqs: FAQ.map((f, i) => ({ ...f, open: faqOpen === i, rot: faqOpen === i ? 'rotate(180deg)' : 'none', toggle: () => this.props.onFaq && this.props.onFaq(faqOpen === i ? -1 : i) })),
+    };
+  }
+}
+</script>
+</body>
+</html>

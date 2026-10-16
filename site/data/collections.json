@@ -1,0 +1,10 @@
+{
+  "collections": [
+    {
+      "slug": "starter-pack",
+      "title": "Starter pack",
+      "description": "The plugins we recommend installing first.",
+      "plugins": []
+    }
+  ]
+}

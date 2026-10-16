@@ -1,0 +1,45 @@
+<!doctype html>
+<!--
+  Claude Design prototype, served as static files at <base>/design/.
+  Imported from claude.ai/design/p/94c38f37-0245-4352-bac0-538341ed07b5.
+  Everything in this folder except this page is the design project as exported:
+  re-import it to update, don't edit it by hand. Its data/ folder is sample
+  data, not the live catalog. The live site is built from site/src.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Design prototype</title>
+<link rel="stylesheet" href="_ds/industry-0170da02-2f81-44d7-82b2-14ea1abdb45d/styles.css">
+<style>
+  :root { --muted: #55575b; }
+  @media (prefers-color-scheme: dark) {
+    :root { --color-bg: #121415; --color-text: #e6e7ea; --color-accent: #749dc4; --color-divider: color-mix(in srgb, #e6e7ea 15%, transparent); --muted: #a6a8ad; color-scheme: dark; }
+    a { color: #94bce3; }
+  }
+  a { color: #416180; }
+  main { max-width: 720px; margin: 0 auto; padding: 56px 16px; display: flex; flex-direction: column; gap: 16px; }
+  .kicker { font-family: var(--font-heading); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--color-divider); }
+  li a { display: flex; justify-content: space-between; gap: 12px; min-height: 48px; align-items: center; border-bottom: 1px solid var(--color-divider); text-decoration: none; font-family: var(--font-heading); font-weight: 600; font-size: 20px; color: var(--color-text); }
+  li a:hover { color: inherit; background: color-mix(in srgb, var(--color-text) 5%, transparent); }
+  li span { font-family: var(--font-body); font-weight: 400; font-size: 14px; color: var(--muted); }
+  p { color: var(--muted); margin: 0; }
+</style>
+</head>
+<body>
+<main>
+  <span class="kicker">Design prototype</span>
+  <h1 style="margin:0">dev-digest marketplace, as designed</h1>
+  <p>Interactive prototype from Claude Design, using the Industry design system. It runs on <strong>sample data</strong> with made-up plugins, so nothing here is in the real catalog and the install commands won't work. Go to the <a href="../">live marketplace</a> for the real thing.</p>
+  <ul>
+    <li><a href="Marketplace.dc.html">Marketplace <span>Full site: home, search, detail, What's new, Get started</span></a></li>
+    <li><a href="Onboarding.dc.html">Onboarding <span>The connect guide on its own</span></a></li>
+    <li><a href="ArtifactCard.dc.html">Artifact card <span>Card, row and mini variants</span></a></li>
+    <li><a href="Marketplace%20Directions.dc.html">Directions <span>Early visual explorations</span></a></li>
+  </ul>
+</main>
+</body>
+</html>

@@ -1,0 +1,299 @@
+---
+import { getRepoStars, getSiteData, url } from '../lib/data.mjs';
+
+const { catalog } = getSiteData();
+const repo = catalog.marketplace.repo;
+const stars = await getRepoStars();
+const path = Astro.url.pathname.replace(/\/$/, '');
+const isActive = (page: string) => path === url(page).replace(/\/$/, '');
+---
+<header class="site-header" data-site-header>
+  <div class="container header-row">
+    <a class="brand" href={url()} aria-label={`${catalog.marketplace.name} home`}>
+      <span class="brand-mark" aria-hidden="true"><span></span></span>
+      <span class="brand-name">{catalog.marketplace.name}</span>
+    </a>
+
+    <div class="search" id="header-search" data-search>
+      <label for="site-search" class="visually-hidden">Search plugins, skills and agents</label>
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
+      <input
+        id="site-search"
+        class="input"
+        type="search"
+        placeholder={catalog.artifacts.length ? `Search ${catalog.artifacts.length} artifacts` : 'Search…'}
+        autocomplete="off"
+        role="combobox"
+        aria-expanded="false"
+        aria-controls="search-results"
+        aria-autocomplete="list"
+        data-catalog-url={url('catalog.json')}
+      />
+      <kbd class="search-key" aria-hidden="true">/</kbd>
+      <ul id="search-results" class="search-results" role="listbox" aria-label="Search results" hidden></ul>
+    </div>
+
+    <nav class="nav-main" aria-label="Main">
+      <a href={url('whats-new')} aria-current={isActive('whats-new') ? 'page' : undefined}>What's new</a>
+      <a href={url('get-started')} aria-current={isActive('get-started') ? 'page' : undefined}>Get started</a>
+    </nav>
+
+    <div class="header-actions">
+      <button type="button" class="btn btn-secondary btn-icon compact-only" data-search-toggle aria-controls="header-search" aria-expanded="false" aria-label="Search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
+      </button>
+      {repo && (
+        <a class="btn btn-secondary gh full-only" href={`https://github.com/${repo}`} aria-label={`GitHub repository${stars != null ? `, ${stars} stars` : ''}`}>
+          GitHub
+          {stars != null && (
+            <>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+              <span class="stars">{stars}</span>
+            </>
+          )}
+        </a>
+      )}
+      <button type="button" class="btn btn-secondary btn-icon" data-theme-toggle aria-label="Theme: system">
+        <svg class="t-system" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><rect width="20" height="14" x="2" y="3" rx="2" /><line x1="8" x2="16" y1="21" y2="21" /><line x1="12" x2="12" y1="17" y2="21" /></svg>
+        <svg class="t-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2" /><path d="M12 20v2" /><path d="m4.93 4.93 1.41 1.41" /><path d="m17.66 17.66 1.41 1.41" /><path d="M2 12h2" /><path d="M20 12h2" /><path d="m6.34 17.66-1.41 1.41" /><path d="m19.07 4.93-1.41 1.41" /></svg>
+        <svg class="t-dark" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg>
+      </button>
+      <button type="button" class="btn btn-secondary btn-icon compact-only" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><line x1="4" x2="20" y1="6" y2="6" /><line x1="4" x2="20" y1="12" y2="12" /><line x1="4" x2="20" y1="18" y2="18" /></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Main" hidden>
+    <a href={url('whats-new')} aria-current={isActive('whats-new') ? 'page' : undefined}>What's new</a>
+    <a href={url('get-started')} aria-current={isActive('get-started') ? 'page' : undefined}>Get started</a>
+    {repo && <a href={`https://github.com/${repo}`}>GitHub{stars != null && ` ★ ${stars}`}</a>}
+  </nav>
+</header>
+
+<style>
+  .site-header { position: sticky; top: 0; z-index: 40; background: var(--color-bg); border-bottom: 1px solid var(--color-divider); }
+  .header-row { display: flex; flex-wrap: wrap; align-items: center; column-gap: 20px; min-height: 60px; }
+  .brand { display: flex; align-items: center; gap: 10px; height: 60px; color: var(--color-text); text-decoration: none; white-space: nowrap; }
+  .brand:hover { color: var(--color-text); }
+  .brand-mark { width: 18px; height: 18px; border: 1px solid var(--color-accent); display: grid; place-items: center; flex: none; }
+  .brand-mark span { width: 6px; height: 6px; background: var(--color-accent); }
+  .brand-name { font-family: var(--font-heading); font-weight: 600; font-size: 21px; }
+
+  .search { position: relative; display: flex; align-items: center; flex: 1 1 200px; max-width: 440px; min-width: 0; margin-left: 8px; }
+  .search input { height: 38px; padding-left: 34px; padding-right: 36px; }
+  .search input::-webkit-search-cancel-button { display: none; }
+  .search-icon { position: absolute; left: 11px; color: var(--muted); pointer-events: none; }
+  .search-key { position: absolute; right: 9px; font-size: 11px; color: var(--muted); }
+  .search-results {
+    position: absolute; top: calc(100% + 6px); left: 0; width: max(100%, min(560px, 92vw)); z-index: 50;
+    margin: 0; padding: 0; list-style: none; max-height: 70vh; overflow-y: auto;
+    background: var(--color-bg); border: 1px solid var(--color-divider); box-shadow: var(--shadow-lg);
+  }
+
+  .nav-main { display: flex; gap: 28px; margin-left: auto; font-size: 14px; }
+  .nav-main a { color: var(--color-text); text-decoration: none; white-space: nowrap; }
+  .nav-main a:hover, .nav-main a[aria-current="page"] { color: var(--accent-text); }
+
+  .header-actions { display: flex; gap: 8px; align-items: center; }
+  .gh { height: 36px; }
+  .gh .stars { color: var(--muted); font-family: var(--font-body); font-weight: 400; }
+  .compact-only { display: none; }
+
+  [data-theme-toggle] svg { display: none; }
+  :global(html:not([data-theme])) [data-theme-toggle] .t-system,
+  :global(html[data-theme="light"]) [data-theme-toggle] .t-light,
+  :global(html[data-theme="dark"]) [data-theme-toggle] .t-dark { display: block; }
+
+  .mobile-menu { display: flex; flex-direction: column; border-top: 1px solid var(--color-divider); padding: 6px var(--page-pad) 12px; }
+  .mobile-menu a {
+    display: flex; align-items: center; min-height: 46px; border-bottom: 1px solid var(--color-divider);
+    color: var(--color-text); text-decoration: none; font-family: var(--font-heading); font-weight: 600; font-size: 19px;
+  }
+  .mobile-menu a:last-child { border-bottom: 0; }
+  .mobile-menu a[aria-current="page"] { color: var(--accent-text); }
+
+  @media (max-width: 1023px) {
+    .nav-main, .full-only, .search-key { display: none; }
+    .compact-only { display: inline-flex; }
+    /* Long marketplace names truncate rather than push the buttons to a new row. */
+    .brand { flex: 1 1 0; min-width: 0; }
+    .brand-name { overflow: hidden; text-overflow: ellipsis; }
+    .header-actions { margin-left: auto; flex: none; }
+    .search { display: none; order: 10; flex-basis: 100%; max-width: none; margin: 0; padding-bottom: 12px; }
+    .site-header.search-open .search { display: flex; }
+    .search-results { top: calc(100% - 6px); width: 100%; }
+  }
+  @media (min-width: 1024px) {
+    .mobile-menu { display: none !important; }
+  }
+</style>
+
+<style is:global>
+  .search-results li a {
+    display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; align-items: center; gap: 14px;
+    min-height: 46px; padding: 6px 12px; border-bottom: 1px solid var(--color-divider);
+    color: var(--color-text); text-decoration: none;
+  }
+  .search-results li[aria-selected="true"] a { background: var(--hover); box-shadow: inset 2px 0 0 var(--color-accent); }
+  .search-results li a:hover { background: var(--hover); color: var(--color-text); }
+  .search-results .type-code { border: 0; padding: 0; }
+  .search-results .sr-name { font-family: var(--font-heading); font-weight: 600; font-size: 18px; line-height: 1.15; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .search-results .sr-plugin { font-size: 12px; color: var(--faint); white-space: nowrap; }
+  .search-results .sr-empty { padding: 14px; color: var(--muted); font-size: 14px; }
+</style>
+
+<script>
+  import { load, save } from '../scripts/storage.js';
+
+  // Theme: system → light → dark → system.
+  const order = [null, 'light', 'dark'];
+  const toggle = document.querySelector<HTMLButtonElement>('[data-theme-toggle]')!;
+  const apply = (theme: string | null) => {
+    if (theme) document.documentElement.dataset.theme = theme;
+    else delete document.documentElement.dataset.theme;
+    toggle.setAttribute('aria-label', `Theme: ${theme ?? 'system'}`);
+  };
+  apply(load('theme'));
+  toggle.addEventListener('click', () => {
+    const next = order[(order.indexOf(load('theme')) + 1) % order.length] ?? null;
+    save('theme', next);
+    apply(next);
+  });
+
+  // Quick search: a keyword filter over catalog.json until full search ships.
+  const input = document.querySelector<HTMLInputElement>('#site-search')!;
+  const list = document.querySelector<HTMLUListElement>('#search-results')!;
+  type Artifact = { id: string; type: string; name: string; title: string | null; description: string; plugin: string; tags: string[]; sourceUrl: string | null };
+  let artifacts: Artifact[] | null = null;
+  let active = -1;
+  const codes: Record<string, string> = { plugin: 'PLUGIN', skill: 'SKILL', agent: 'AGENT', command: 'CMD', hook: 'HOOK', mcp: 'MCP' };
+
+  async function ensureCatalog() {
+    if (artifacts) return artifacts;
+    try {
+      const res = await fetch(input.dataset.catalogUrl!);
+      artifacts = (await res.json()).artifacts as Artifact[];
+    } catch {
+      artifacts = [];
+    }
+    return artifacts;
+  }
+
+  function close() {
+    list.hidden = true;
+    input.setAttribute('aria-expanded', 'false');
+    input.removeAttribute('aria-activedescendant');
+    active = -1;
+  }
+
+  function highlight(index: number) {
+    const items = [...list.querySelectorAll<HTMLLIElement>('li[role="option"]')];
+    active = items.length ? (index + items.length) % items.length : -1;
+    items.forEach((li, i) => li.setAttribute('aria-selected', String(i === active)));
+    if (active >= 0) input.setAttribute('aria-activedescendant', items[active].id);
+  }
+
+  async function update() {
+    const q = input.value.trim().toLowerCase();
+    if (!q) return close();
+    const all = await ensureCatalog();
+    const words = q.split(/\s+/);
+    const scored = all
+      .map((a) => {
+        const name = `${a.name} ${a.title ?? ''}`.toLowerCase();
+        const text = `${a.description} ${a.tags.join(' ')} ${a.plugin} ${a.type}`.toLowerCase();
+        let score = 0;
+        for (const w of words) {
+          if (name.includes(w)) score += 3;
+          else if (text.includes(w)) score += 1;
+          else return null;
+        }
+        return { a, score };
+      })
+      .filter(Boolean)
+      .sort((x, y) => y!.score - x!.score)
+      .slice(0, 6) as { a: Artifact; score: number }[];
+
+    list.replaceChildren();
+    if (!scored.length) {
+      const li = document.createElement('li');
+      li.className = 'sr-empty';
+      li.textContent = all.length ? `No matches for “${input.value.trim()}”` : 'No artifacts have been published yet.';
+      list.append(li);
+    }
+    scored.forEach(({ a }, i) => {
+      const li = document.createElement('li');
+      li.id = `sr-${i}`;
+      li.setAttribute('role', 'option');
+      const link = document.createElement('a');
+      link.href = a.sourceUrl ?? '#';
+      link.tabIndex = -1;
+      const badge = document.createElement('span');
+      badge.className = 'type-code';
+      badge.textContent = codes[a.type] ?? a.type.toUpperCase();
+      const name = document.createElement('span');
+      name.className = 'sr-name';
+      name.textContent = a.title || a.name;
+      const plugin = document.createElement('span');
+      plugin.className = 'sr-plugin';
+      plugin.textContent = a.plugin;
+      link.append(badge, name, plugin);
+      li.append(link);
+      list.append(li);
+    });
+    list.hidden = false;
+    input.setAttribute('aria-expanded', 'true');
+    highlight(scored.length ? 0 : -1);
+  }
+
+  input.addEventListener('focus', ensureCatalog, { once: true });
+  input.addEventListener('input', update);
+  input.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowDown') { event.preventDefault(); highlight(active + 1); }
+    else if (event.key === 'ArrowUp') { event.preventDefault(); highlight(active - 1); }
+    else if (event.key === 'Escape') { close(); }
+    else if (event.key === 'Enter' && active >= 0) {
+      event.preventDefault();
+      list.querySelectorAll<HTMLAnchorElement>('li[role="option"] a')[active]?.click();
+    }
+  });
+  document.addEventListener('click', (event) => {
+    if (!(event.target as HTMLElement).closest('[data-search]')) close();
+  });
+  // Compact header (below 1024px): search and menu fold into icon buttons.
+  const header = document.querySelector<HTMLElement>('[data-site-header]')!;
+  const searchToggle = header.querySelector<HTMLButtonElement>('[data-search-toggle]')!;
+  const menuToggle = header.querySelector<HTMLButtonElement>('[data-menu-toggle]')!;
+  const menu = header.querySelector<HTMLElement>('#mobile-menu')!;
+  function setSearchOpen(open: boolean) {
+    header.classList.toggle('search-open', open);
+    searchToggle.setAttribute('aria-expanded', String(open));
+    if (open) setMenuOpen(false);
+  }
+  function setMenuOpen(open: boolean) {
+    menu.hidden = !open;
+    menuToggle.setAttribute('aria-expanded', String(open));
+    if (open) setSearchOpen(false);
+  }
+  searchToggle.addEventListener('click', () => {
+    const open = !header.classList.contains('search-open');
+    setSearchOpen(open);
+    if (open) input.focus();
+  });
+  menuToggle.addEventListener('click', () => setMenuOpen(menu.hidden));
+  header.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !menu.hidden) {
+      setMenuOpen(false);
+      menuToggle.focus();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    const el = event.target as HTMLElement;
+    if (event.key === '/' && !el.closest('input, textarea, select, [contenteditable="true"]')) {
+      event.preventDefault();
+      if (!input.offsetParent) setSearchOpen(true);
+      input.focus();
+    }
+  });
+</script>

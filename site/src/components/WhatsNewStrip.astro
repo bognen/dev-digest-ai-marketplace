@@ -1,0 +1,35 @@
+---
+import ChangeEntry from './ChangeEntry.astro';
+import { getSiteData, url } from '../lib/data.mjs';
+
+const { changes, settings } = getSiteData();
+const latest = changes.entries.slice(0, settings.whatsNewStripCount);
+---
+<section class="strip-section" aria-labelledby="strip-title">
+  <div class="section-head">
+    <h2 id="strip-title">What's new</h2>
+    {latest.length > 0 && <a href={url('whats-new')}>See all →</a>}
+  </div>
+  {latest.length > 0 ? (
+    <ul class="strip">
+      {latest.map((entry) => <ChangeEntry entry={entry} compact />)}
+    </ul>
+  ) : (
+    <div class="empty">
+      <p>Nothing has been published yet. New and updated plugins appear here as soon as they're merged.</p>
+    </div>
+  )}
+</section>
+
+<style>
+  .strip-section { padding-top: 64px; min-width: 0; }
+  .strip {
+    display: grid; grid-auto-flow: column; grid-auto-columns: minmax(220px, 1fr); gap: 1px;
+    margin: 0; padding: 0; overflow-x: auto; scroll-snap-type: x mandatory;
+    background: var(--color-divider); border: 1px solid var(--color-divider);
+  }
+  .strip > :global(li) { scroll-snap-align: start; }
+  @media (max-width: 480px) {
+    .strip-section { padding-top: 48px; }
+  }
+</style>

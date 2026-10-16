@@ -1,0 +1,11 @@
+# Default owners for everything in the repo
+*                                @bognen
+
+# Catalog, CI and security-sensitive files
+/.claude-plugin/                 @bognen
+/.github/                        @bognen
+/scripts/                        @bognen
+/docs/SECURITY.md                @bognen
+
+# Per-plugin owners — add a line per plugin, e.g.
+# /plugins/pdf-tools/            @author-handle

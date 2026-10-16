@@ -1,0 +1,39 @@
+{
+  "categories": [
+    { "id": "development", "label": "Development" },
+    { "id": "testing", "label": "Testing" },
+    { "id": "devops", "label": "DevOps" },
+    { "id": "data", "label": "Data" },
+    { "id": "documents", "label": "Documents" },
+    { "id": "writing", "label": "Writing" },
+    { "id": "productivity", "label": "Productivity" },
+    { "id": "security", "label": "Security" }
+  ],
+  "tags": [
+    "api",
+    "aws",
+    "ci",
+    "code-review",
+    "database",
+    "debugging",
+    "deployment",
+    "docs",
+    "finance",
+    "git",
+    "javascript",
+    "kubernetes",
+    "lambda",
+    "markdown",
+    "mcp",
+    "ocr",
+    "pdf",
+    "python",
+    "refactoring",
+    "reporting",
+    "scraping",
+    "sql",
+    "terraform",
+    "testing",
+    "typescript"
+  ]
+}

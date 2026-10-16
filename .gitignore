@@ -1,0 +1,45 @@
+# Local working files (specs, drafts, screenshots) — never committed
+temp/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE / editors
+.idea/
+.vscode/
+*.swp
+*~
+
+# Local Claude Code state (keep shared project settings, ignore personal ones)
+.claude/settings.local.json
+
+# Plugin eval results
+**/evals/results/
+
+# Node (plugins with MCP servers / scripts)
+node_modules/
+npm-debug.log*
+
+# Python (plugins with scripts)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Astro site build output
+site/dist/
+site/.astro/
+
+# Packaging artifacts
+*.zip
+*.tgz
+dist/
+build/
+
+# Secrets — never commit
+.env
+.env.*
+*.pem
+*.key

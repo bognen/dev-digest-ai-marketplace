@@ -1,0 +1,62 @@
+---
+// Compact artifact card used by What's New (timeline). The install button
+// opens the onboarding drawer in contextual mode.
+import { CHANGE_TAGS, TYPE_CODES, TYPE_LABELS, getSiteData, isWithinDays } from '../lib/data.mjs';
+
+interface Props {
+  artifactId: string;
+  type: string;
+  name: string;
+  title?: string | null;
+  plugin: string;
+  removed?: boolean;
+}
+const { artifactId, type, name, title, plugin, removed = false } = Astro.props;
+const { catalog, settings } = getSiteData();
+const artifact = removed ? null : catalog.artifacts.find((a) => a.id === artifactId);
+const windowDays = settings.badgeWindowDays;
+const status = artifact?.status;
+const live = artifact && status !== 'deprecated';
+const isNew = live && isWithinDays(artifact.addedAt, windowDays);
+const isUpdated = live && !isNew && artifact.updatedAt !== artifact.addedAt && isWithinDays(artifact.updatedAt, windowDays);
+const href = artifact?.sourceUrl;
+const badges = [
+  isNew && ['New', CHANGE_TAGS.new],
+  isUpdated && ['Updated', CHANGE_TAGS.updated],
+  status === 'beta' && ['Beta', CHANGE_TAGS.beta],
+  status === 'deprecated' && ['Deprecated', CHANGE_TAGS.deprecated],
+].filter(Boolean) as [string, string][];
+---
+<article class:list={['mini-card', { deprecated: status === 'deprecated', removed }]}>
+  <div class="mini-badges">
+    <span class="type-code" title={TYPE_LABELS[type] ?? type}>{TYPE_CODES[type] ?? type.toUpperCase()}</span>
+    {badges.map(([label, cls]) => <span class={`tag ${cls}`}>{label}</span>)}
+  </div>
+  <h3 class="mini-title">
+    {href ? <a href={href}>{title || name}</a> : <span>{title || name}</span>}
+  </h3>
+  {type !== 'plugin' && <p class="mini-foot">in {plugin}</p>}
+  {artifact && (
+    <button type="button" class="btn btn-ghost mini-install" data-open-onboarding data-plugin={plugin} aria-label={`Install ${plugin}`}>
+      Install{type !== 'plugin' && ` with ${plugin}`}
+    </button>
+  )}
+</article>
+
+<style>
+  .mini-card {
+    height: 100%; display: flex; flex-direction: column; gap: 5px; min-width: 0;
+    border: 1px solid var(--color-divider); padding: 12px 14px; transition: border-color .15s;
+  }
+  .mini-card:hover { border-color: var(--color-accent); }
+  .mini-card.deprecated, .mini-card.removed { opacity: 0.7; }
+  .mini-badges { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .mini-badges .type-code { border: 0; padding: 0; }
+  .mini-badges .tag { padding: 1px 6px; }
+  .mini-title { margin: 0; font-size: 18px; line-height: 1.15; letter-spacing: 0; overflow-wrap: anywhere; }
+  .mini-title a { color: var(--color-text); text-decoration: none; }
+  .mini-title a:hover { color: var(--accent-text); text-decoration: underline; }
+  .removed .mini-title { text-decoration: line-through; }
+  .mini-foot { margin: 0; font-size: 12px; color: var(--faint); }
+  .mini-install { align-self: flex-start; height: 28px; margin: 4px 0 0 -4px; font-size: 13px; }
+</style>

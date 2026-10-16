@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&amp;family=Barlow+Condensed:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#0c0d0e;color:#e6e7ea;font-family:"Barlow",system-ui,sans-serif;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+*,*::before,*::after{box-sizing:border-box}
+a{color:#94bce3;text-underline-offset:3px}
+a:hover{color:#b5d9fd}
+p,h1,h2,h3,h4{margin:0}
+</style>
+</helmet>
+<section id="turn-1" style="width:max-content;padding:96px;display:flex;flex-direction:column;gap:56px">
+  <div style="display:flex;flex-direction:column;gap:8px;max-width:880px">
+    <div style="font-family:'Barlow Condensed';font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:#94bce3">Turn 1 · Home + artifact card</div>
+    <h1 style="font-family:'Barlow Condensed';font-weight:600;font-size:48px;line-height:1.05;letter-spacing:-0.015em">Three directions, dark theme</h1>
+    <p style="color:#a3a5aa;font-size:16px;text-wrap:pretty">All three use the Industry tokens moved onto a dark ground: Barlow Condensed over Barlow, the steel accent, square hairline frames with registration marks. They differ in how the home page leads and how artifact types are told apart. Pick one (or mix parts) and I'll build the rest of the MVP screens in it.</p>
+  </div>
+
+  <div style="display:flex;gap:96px;align-items:flex-start">
+
+    <!-- ================= 1a ================= -->
+    <div id="1a" style="display:flex;flex-direction:column;gap:24px;width:1280px">
+      <div style="display:flex;align-items:baseline;gap:14px">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:13px;padding:3px 9px;background:#749dc4;color:#121415;font-weight:700">1a</span>
+        <span style="font-family:'Barlow Condensed';font-weight:600;font-size:26px">Spec sheet</span>
+        <span style="color:#a3a5aa;font-size:15px">Modular grid, Start card with a count plate, types as mono codes. Strictly one accent.</span>
+      </div>
+
+      <div data-screen-label="1a Home" style="background:#121415;border:1px solid #26292c">
+        <header style="display:flex;align-items:center;gap:24px;height:64px;padding:0 40px;border-bottom:1px solid #303336">
+          <a style="display:flex;align-items:center;gap:10px;color:#e6e7ea;text-decoration:none">
+            <span style="width:18px;height:18px;border:1px solid #749dc4;display:grid;place-items:center"><span style="width:6px;height:6px;background:#749dc4"></span></span>
+            <span style="font-family:'Barlow Condensed';font-weight:600;font-size:21px">dev-digest</span>
+          </a>
+          <div style="flex:0 1 400px;display:flex;align-items:center;gap:10px;height:36px;padding:0 10px;background:#181b1d;border:1px solid #303336;color:#a3a5aa;font-size:14px;margin-left:16px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round;flex:none"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+            <span style="flex:1">Search 160 artifacts</span>
+            <kbd style="font-family:ui-monospace,Menlo,monospace;font-size:11px;border:1px solid #3a3d41;padding:0 6px;color:#a3a5aa">/</kbd>
+          </div>
+          <nav style="display:flex;gap:28px;margin-left:auto;font-size:14px">
+            <a style="color:#e6e7ea;text-decoration:none">Browse</a>
+            <a style="color:#e6e7ea;text-decoration:none">What's new</a>
+            <a style="color:#e6e7ea;text-decoration:none">Get started</a>
+          </nav>
+          <div style="display:flex;gap:8px">
+            <a style="display:flex;align-items:center;gap:6px;height:36px;padding:0 12px;border:1px solid #303336;color:#e6e7ea;text-decoration:none;font-family:'Barlow Condensed';font-weight:600;font-size:14px">GitHub
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linejoin:round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <span style="color:#a3a5aa">1.2k</span></a>
+            <button style="width:36px;height:36px;display:grid;place-items:center;background:transparent;border:1px solid #303336;color:#e6e7ea"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linejoin:round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg></button>
+          </div>
+        </header>
+
+        <div style="padding:56px 40px 0">
+          <div style="position:relative;border:1px solid #3a3d41;display:grid;grid-template-columns:7fr 5fr">
+            <i style="position:absolute;width:11px;height:11px;top:-6px;left:-6px;color:#8a8d92;background:linear-gradient(currentColor,currentColor) 5px 0/1px 100% no-repeat,linear-gradient(currentColor,currentColor) 0 5px/100% 1px no-repeat"></i>
+            <i style="position:absolute;width:11px;height:11px;top:-6px;right:-6px;color:#8a8d92;background:linear-gradient(currentColor,currentColor) 5px 0/1px 100% no-repeat,linear-gradient(currentColor,currentColor) 0 5px/100% 1px no-repeat"></i>
+            <i style="position:absolute;width:11px;height:11px;bottom:-6px;left:-6px;color:#8a8d92;background:linear-gradient(currentColor,currentColor) 5px 0/1px 100% no-repeat,linear-gradient(currentColor,currentColor) 0 5px/100% 1px no-repeat"></i>
+            <i style="position:absolute;width:11px;height:11px;bottom:-6px;right:-6px;color:#8a8d92;background:linear-gradient(currentColor,currentColor) 5px 0/1px 100% no-repeat,linear-gradient(currentColor,currentColor) 0 5px/100% 1px no-repeat"></i>
+            <div style="padding:44px 48px;display:flex;flex-direction:column;gap:20px;border-right:1px solid #303336">
+              <div style="font-family:'Barlow Condensed';font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:#94bce3">Start here</div>
+              <h2 style="font-family:'Barlow Condensed';font-weight:600;font-size:52px;line-height:1.02;letter-spacing:-0.02em;text-wrap:balance">Plugins, skills and agents for Claude Code, in one marketplace.</h2>
+              <p style="font-size:17px;color:#a3a5aa;max-width:520px;text-wrap:pretty">Connect dev-digest once, then install any plugin with a single command. Takes about three minutes.</p>
+              <div style="display:flex;gap:10px;margin-top:8px">
+                <button style="position:relative;display:flex;align-items:center;gap:8px;height:42px;padding:0 18px;background:#749dc4;border:1px solid #749dc4;color:#121415;font-family:'Barlow Condensed';font-weight:600;font-size:16px">Connect the marketplace
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button>
+                <button style="height:42px;padding:0 16px;background:transparent;border:1px solid #3a3d41;color:#e6e7ea;font-family:'Barlow Condensed';font-weight:600;font-size:16px">Find a skill</button>
+                <button style="height:42px;padding:0 16px;background:transparent;border:1px solid #3a3d41;color:#e6e7ea;font-family:'Barlow Condensed';font-weight:600;font-size:16px">Starter pack</button>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto 1fr 1fr">
+              <div style="grid-column:1 / 3;display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid #303336;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#a3a5aa">
+                <span>catalog.json · 16 Oct 2026</span>
+                <button style="width:28px;height:28px;display:grid;place-items:center;background:transparent;border:0;color:#a3a5aa" aria-label="Dismiss"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+              </div>
+              <sc-for list="{{ counts }}" as="c" hint-placeholder-count="4">
+                <div style="padding:22px 24px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;border-right:1px solid #303336;border-bottom:1px solid #303336">
+                  <span style="font-family:'Barlow Condensed';font-weight:500;font-size:56px;line-height:1;letter-spacing:-0.02em">{{ c.n }}</span>
+                  <span style="font-family:'Barlow Condensed';font-size:14px;letter-spacing:0.1em;text-transform:uppercase;color:#a3a5aa">{{ c.label }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:56px 40px 0;display:flex;flex-direction:column;gap:14px">
+          <h3 style="font-family:'Barlow Condensed';font-weight:600;font-size:26px">What do you need to do?</h3>
+          <div style="display:flex;align-items:center;gap:14px;height:60px;padding:0 18px;background:#181b1d;border:1px solid #749dc4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94bce3" style="stroke-width:1.5;stroke-linecap:round;flex:none"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+            <span style="flex:1;font-size:19px;color:#7c7f84">Describe a task, e.g. "a skill for parsing PDF invoices"</span>
+            <kbd style="font-family:ui-monospace,Menlo,monospace;font-size:12px;border:1px solid #3a3d41;padding:1px 7px;color:#a3a5aa">/</kbd>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center;font-size:14px;color:#a3a5aa">
+            <span>Try</span>
+            <sc-for list="{{ tries }}" as="t" hint-placeholder-count="4">
+              <a style="padding:3px 10px;border:1px solid #303336;color:#e6e7ea;text-decoration:none">{{ t }}</a>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="padding:64px 40px 0;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between">
+            <h3 style="font-family:'Barlow Condensed';font-weight:600;font-size:26px">What's new</h3>
+            <a style="font-size:14px;text-decoration:none">See all changes →</a>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid #303336;border-left:1px solid #303336">
+            <sc-for list="{{ changes }}" as="ch" hint-placeholder-count="5">
+              <div style="padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;border-right:1px solid #303336;border-bottom:1px solid #303336">
+                <div style="display:flex;justify-content:space-between;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.04em">
+                  <span style="color:#94bce3">{{ ch.kindUp }}</span>
+                  <span style="color:#7c7f84">{{ ch.date }}</span>
+                </div>
+                <div style="font-family:'Barlow Condensed';font-weight:600;font-size:20px;line-height:1.15">{{ ch.name }}</div>
+                <div style="font-size:13px;color:#a3a5aa">{{ ch.typeLabel }} · {{ ch.plugin }}</div>
+                <div style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#c4c6ca">{{ ch.ver }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="padding:64px 40px 0;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between">
+            <h3 style="font-family:'Barlow Condensed';font-weight:600;font-size:26px">Browse by category</h3>
+            <a style="font-size:14px;text-decoration:none">All categories →</a>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid #303336;border-left:1px solid #303336">
+            <sc-for list="{{ cats }}" as="c" hint-placeholder-count="8">
+              <a style="padding:18px 20px;display:flex;align-items:baseline;gap:14px;border-right:1px solid #303336;border-bottom:1px solid #303336;color:#e6e7ea;text-decoration:none" style-hover="background:#181b1d">
+                <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#7c7f84">{{ c.n }}</span>
+                <span style="flex:1;font-family:'Barlow Condensed';font-weight:600;font-size:21px">{{ c.name }}</span>
+                <span style="font-family:ui-monospace,Menlo,monospace;font-size:13px;color:#a3a5aa">{{ c.count }}</span>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+
+        <footer style="margin-top:72px;padding:22px 40px;border-top:1px solid #303336;display:flex;gap:24px;font-size:13px;color:#a3a5aa">
+          <a style="color:#a3a5aa;text-decoration:none">GitHub</a><a style="color:#a3a5aa;text-decoration:none">Contribute</a><a style="color:#a3a5aa;text-decoration:none">RSS</a><a style="color:#a3a5aa;text-decoration:none">catalog.json</a><a style="color:#a3a5aa;text-decoration:none">llms.txt</a>
+          <span style="margin-left:auto">Catalog updated 16 Oct 2026</span>
+        </footer>
+      </div>
+
+      <div data-screen-label="1a Card" style="background:#121415;border:1px solid #26292c;padding:40px;display:flex;flex-direction:column;gap:32px">
+        <div style="font-family:'Barlow Condensed';font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:#94bce3">Artifact card · 1a</div>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px">
+          <sc-for list="{{ sheet }}" as="a" hint-placeholder-count="3">
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#7c7f84">{{ a.state }}</div>
+              <div style="position:relative;border:1px solid {{ a.border }};opacity:{{ a.opacity }};display:flex;flex-direction:column">
+                <i style="position:absolute;width:11px;height:11px;top:-6px;left:-6px;color:{{ a.corner }};background:linear-gradient(currentColor,currentColor) 5px 0/1px 100% no-repeat,linear-gradient(currentColor,currentColor) 0 5px/100% 1px no-repeat"></i>
+                <i style="position:absolute;width:11px;height:11px;top:-6px;right:-6px;color:{{ a.corner }};background:linear-gradient(currentColor,currentColor) 5px 0/1px 100% no-repeat,linear-gradient(currentColor,currentColor) 0 5px/100% 1px no-repeat"></i>
+                <i style="position:absolute;width:11px;height:11px;bottom:-6px;left:-6px;color:{{ a.corner }};background:linear-gradient(currentColor,currentColor) 5px 0/1px 100% no-repeat,linear-gradient(currentColor,currentColor) 0 5px/100% 1px no-repeat"></i>
+                <i style="position:absolute;width:11px;height:11px;bottom:-6px;right:-6px;color:{{ a.corner }};background:linear-gradient(currentColor,currentColor) 5px 0/1px 100% no-repeat,linear-gradient(currentColor,currentColor) 0 5px/100% 1px no-repeat"></i>
+                <div style="padding:18px 20px;display:flex;flex-direction:column;gap:10px">
+                  <div style="display:flex;gap:6px;align-items:center">
+                    <span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.06em;padding:2px 7px;border:1px solid #749dc4;color:#94bce3">{{ a.code }}</span>
+                    <sc-if value="{{ a.hasStatus }}" hint-placeholder-val="{{ true }}">
+                      <span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.06em;padding:3px 7px;background:#1f2b37;color:#b5d9fd">{{ a.statusUp }}</span>
+                    </sc-if>
+                  </div>
+                  <a style="font-family:'Barlow Condensed';font-weight:600;font-size:23px;line-height:1.1;color:#e6e7ea;text-decoration:none">{{ a.name }}</a>
+                  <p style="font-size:14px;line-height:1.5;color:#a3a5aa;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden">{{ a.desc }}</p>
+                  <div style="display:flex;gap:6px;flex-wrap:wrap">
+                    <sc-for list="{{ a.tags3 }}" as="t" hint-placeholder-count="3">
+                      <span style="font-size:12px;padding:2px 8px;background:#1d2022;color:#c4c6ca">{{ t }}</span>
+                    </sc-for>
+                    <sc-if value="{{ a.hasMore }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;padding:2px 4px;color:#7c7f84">{{ a.more }}</span></sc-if>
+                  </div>
+                  <div style="font-size:12px;color:#7c7f84">Installs with {{ a.plugin }} · v{{ a.v }} · {{ a.upd }}</div>
+                  <sc-if value="{{ a.isDeprecated }}" hint-placeholder-val="{{ false }}">
+                    <a style="font-size:13px">Use {{ a.replacement }} instead →</a>
+                  </sc-if>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;padding:0 8px 0 20px;height:42px;border-top:1px solid {{ a.border }};font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#a3a5aa">
+                  <span style="flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">{{ a.cmd }}</span>
+                  <button style="display:flex;align-items:center;gap:6px;height:28px;padding:0 8px;background:transparent;border:0;color:{{ a.copyColor }};font-family:'Barlow Condensed';font-weight:600;font-size:13px">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>{{ a.copyLabel }}</button>
+                </div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:grid;grid-template-columns:7fr 5fr;gap:28px">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#7c7f84">Compact row · list view and type-ahead</div>
+            <div style="border-top:1px solid #303336">
+              <sc-for list="{{ rows }}" as="a" hint-placeholder-count="4">
+                <div style="display:grid;grid-template-columns:56px 180px minmax(0,1fr) 110px 32px;align-items:center;gap:14px;height:46px;padding:0 6px;border-bottom:1px solid #303336">
+                  <span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#94bce3">{{ a.code }}</span>
+                  <span style="font-family:'Barlow Condensed';font-weight:600;font-size:18px">{{ a.name }}</span>
+                  <span style="font-size:13px;color:#a3a5aa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ a.desc }}</span>
+                  <span style="font-size:12px;color:#7c7f84">{{ a.plugin }}</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a3a5aa" style="stroke-width:1.5"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#7c7f84">Mini card · related rail</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <sc-for list="{{ minis }}" as="a" hint-placeholder-count="2">
+                <div style="border:1px solid #303336;padding:12px 14px;display:flex;flex-direction:column;gap:6px">
+                  <span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#94bce3">{{ a.code }}</span>
+                  <span style="font-family:'Barlow Condensed';font-weight:600;font-size:18px;line-height:1.1">{{ a.name }}</span>
+                  <span style="font-size:12px;color:#7c7f84">in {{ a.plugin }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= 1b ================= -->
+    <div id="1b" style="display:flex;flex-direction:column;gap:24px;width:1280px">
+      <div style="display:flex;align-items:baseline;gap:14px">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:13px;padding:3px 9px;background:#749dc4;color:#121415;font-weight:700">1b</span>
+        <span style="font-family:'Barlow Condensed';font-weight:600;font-size:26px">Search first</span>
+        <span style="color:#a3a5aa;font-size:15px">The search field is the hero, shown mid-query. Start card is a slim strip. Types get a hue each.</span>
+      </div>
+
+      <div data-screen-label="1b Home" style="background:#121415;border:1px solid #26292c">
+        <header style="display:flex;align-items:center;gap:24px;height:64px;padding:0 40px;border-bottom:1px solid #303336">
+          <a style="display:flex;align-items:center;gap:10px;color:#e6e7ea;text-decoration:none">
+            <span style="width:18px;height:18px;border:1px solid #749dc4;display:grid;place-items:center"><span style="width:6px;height:6px;background:#749dc4"></span></span>
+            <span style="font-family:'Barlow Condensed';font-weight:600;font-size:21px">dev-digest</span>
+          </a>
+          <nav style="display:flex;gap:28px;margin-left:auto;font-size:14px">
+            <a style="color:#e6e7ea;text-decoration:none">Browse</a>
+            <a style="color:#e6e7ea;text-decoration:none">What's new</a>
+            <a style="color:#e6e7ea;text-decoration:none">Get started</a>
+          </nav>
+          <div style="display:flex;gap:8px">
+            <button style="width:36px;height:36px;display:grid;place-items:center;background:transparent;border:1px solid #303336;color:#e6e7ea" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></button>
+            <a style="display:flex;align-items:center;gap:6px;height:36px;padding:0 12px;border:1px solid #303336;color:#e6e7ea;text-decoration:none;font-family:'Barlow Condensed';font-weight:600;font-size:14px">GitHub <span style="color:#a3a5aa">★ 1.2k</span></a>
+            <button style="width:36px;height:36px;display:grid;place-items:center;background:transparent;border:1px solid #303336;color:#e6e7ea"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linejoin:round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg></button>
+          </div>
+        </header>
+
+        <div style="display:flex;align-items:center;gap:20px;padding:14px 40px;background:#1d2d3d;border-bottom:1px solid #2c455d">
+          <span style="font-family:'Barlow Condensed';font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:#b5d9fd">Start here</span>
+          <span style="font-size:15px;color:#e6e7ea">New to dev-digest? Connect it once, then install any plugin with one command.</span>
+          <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#b5d9fd">14 plugins · 62 skills · 23 agents · 41 commands</span>
+          <div style="display:flex;gap:8px;margin-left:auto">
+            <button style="height:34px;padding:0 14px;background:#94bce3;border:1px solid #94bce3;color:#121415;font-family:'Barlow Condensed';font-weight:600;font-size:15px">Connect the marketplace</button>
+            <button style="height:34px;padding:0 12px;background:transparent;border:1px solid #416180;color:#e6e7ea;font-family:'Barlow Condensed';font-weight:600;font-size:15px">Starter pack</button>
+            <button style="width:34px;height:34px;display:grid;place-items:center;background:transparent;border:0;color:#b5d9fd" aria-label="Dismiss"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+          </div>
+        </div>
+
+        <div style="padding:80px 40px 0;display:flex;flex-direction:column;align-items:center;gap:22px">
+          <h2 style="font-family:'Barlow Condensed';font-weight:600;font-size:60px;line-height:1;letter-spacing:-0.02em;text-align:center">Find the right tool for Claude Code</h2>
+          <p style="font-size:17px;color:#a3a5aa">Describe the job in plain words. 160 plugins, skills, agents, commands, hooks and MCP servers.</p>
+          <div style="width:820px;margin-top:10px;position:relative">
+            <div style="display:flex;align-items:center;gap:14px;height:64px;padding:0 20px;background:#181b1d;border:1px solid #749dc4">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#94bce3" style="stroke-width:1.5;stroke-linecap:round;flex:none"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+              <span style="font-size:20px;color:#e6e7ea">I need a skill for parsing PDF invoices<span style="display:inline-block;width:2px;height:22px;background:#94bce3;vertical-align:-4px;margin-left:2px"></span></span>
+            </div>
+            <div style="border:1px solid #3a3d41;border-top:0;background:#181b1d;box-shadow:0 18px 40px rgba(0,0,0,0.5)">
+              <div style="display:flex;align-items:center;gap:8px;padding:12px 20px;border-bottom:1px solid #303336;font-size:13px;color:#a3a5aa">
+                <span>Detected</span>
+                <span style="display:flex;align-items:center;gap:6px;padding:2px 6px 2px 9px;border:1px solid #416180;color:#e6e7ea">Type: Skill <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></span>
+                <span style="margin-left:4px">Searching for <span style="color:#e6e7ea">parsing pdf invoices</span> + document, invoice</span>
+              </div>
+              <sc-for list="{{ typeahead }}" as="a" hint-placeholder-count="4">
+                <div style="display:grid;grid-template-columns:76px 220px minmax(0,1fr) auto;align-items:center;gap:14px;height:48px;padding:0 20px;background:{{ a.rowBg }};border-left:2px solid {{ a.rowEdge }}">
+                  <span style="display:flex;align-items:center;gap:7px;font-size:12px;color:{{ a.hue }}"><span style="width:7px;height:7px;background:{{ a.hue }}"></span>{{ a.typeLabel }}</span>
+                  <span style="font-family:'Barlow Condensed';font-weight:600;font-size:18px">{{ a.pre }}<mark style="background:#2c455d;color:#e6e7ea">{{ a.hit }}</mark>{{ a.post }}</span>
+                  <span style="font-size:13px;color:#a3a5aa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ a.desc }}</span>
+                  <span style="font-size:12px;color:#7c7f84">{{ a.plugin }}</span>
+                </div>
+              </sc-for>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 20px;border-top:1px solid #303336;font-size:13px">
+                <a style="text-decoration:none">See all 23 results →</a>
+                <span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#7c7f84">↑↓ move · Enter open · Esc close</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:72px 40px 0;display:grid;grid-template-columns:8fr 4fr;gap:40px">
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between">
+              <h3 style="font-family:'Barlow Condensed';font-weight:600;font-size:26px">What's new</h3>
+              <a style="font-size:14px;text-decoration:none">See all →</a>
+            </div>
+            <div style="border-top:1px solid #303336">
+              <sc-for list="{{ changes }}" as="ch" hint-placeholder-count="5">
+                <div style="display:grid;grid-template-columns:90px 84px 170px minmax(0,1fr) 120px;align-items:center;gap:14px;height:52px;border-bottom:1px solid #303336">
+                  <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#7c7f84">{{ ch.date }}</span>
+                  <span style="font-size:12px;color:#c4c6ca">{{ ch.kind }}</span>
+                  <span style="display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed';font-weight:600;font-size:18px"><span style="width:7px;height:7px;flex:none;background:{{ ch.hue }}"></span>{{ ch.name }}</span>
+                  <span style="font-size:13px;color:#a3a5aa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ ch.note }}</span>
+                  <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#c4c6ca;text-align:right">{{ ch.ver }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between">
+              <h3 style="font-family:'Barlow Condensed';font-weight:600;font-size:26px">Categories</h3>
+              <a style="font-size:14px;text-decoration:none">Browse →</a>
+            </div>
+            <div style="border-top:1px solid #303336">
+              <sc-for list="{{ cats }}" as="c" hint-placeholder-count="8">
+                <a style="display:flex;justify-content:space-between;align-items:center;height:41px;border-bottom:1px solid #303336;color:#e6e7ea;text-decoration:none;font-size:15px" style-hover="color:#94bce3">
+                  <span>{{ c.name }}</span>
+                  <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#a3a5aa">{{ c.count }}</span>
+                </a>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+        <footer style="margin-top:72px;padding:22px 40px;border-top:1px solid #303336;display:flex;gap:24px;font-size:13px;color:#a3a5aa">
+          <a style="color:#a3a5aa;text-decoration:none">GitHub</a><a style="color:#a3a5aa;text-decoration:none">Contribute</a><a style="color:#a3a5aa;text-decoration:none">RSS</a><a style="color:#a3a5aa;text-decoration:none">catalog.json</a><a style="color:#a3a5aa;text-decoration:none">llms.txt</a>
+          <span style="margin-left:auto">Catalog updated 16 Oct 2026</span>
+        </footer>
+      </div>
+
+      <div data-screen-label="1b Card" style="background:#121415;border:1px solid #26292c;padding:40px;display:flex;flex-direction:column;gap:32px">
+        <div style="font-family:'Barlow Condensed';font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:#94bce3">Artifact card · 1b</div>
+        <div style="display:flex;gap:18px;flex-wrap:wrap">
+          <sc-for list="{{ typeKey }}" as="t" hint-placeholder-count="6">
+            <span style="display:flex;align-items:center;gap:7px;font-size:13px;color:{{ t.hue }}"><span style="width:9px;height:9px;background:{{ t.hue }}"></span>{{ t.label }}</span>
+          </sc-for>
+          <span style="font-size:13px;color:#7c7f84">One hue per type, all at the same OKLCH lightness and chroma as the steel accent.</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px">
+          <sc-for list="{{ sheet }}" as="a" hint-placeholder-count="3">
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#7c7f84">{{ a.state }}</div>
+              <div style="border:1px solid {{ a.border }};border-top:3px solid {{ a.hue }};background:{{ a.bgB }};opacity:{{ a.opacity }};padding:18px 20px;display:flex;flex-direction:column;gap:10px">
+                <div style="display:flex;gap:8px;align-items:center">
+                  <span style="font-family:'Barlow Condensed';font-weight:600;font-size:14px;letter-spacing:0.06em;text-transform:uppercase;color:{{ a.hue }}">{{ a.typeLabel }}</span>
+                  <sc-if value="{{ a.hasStatus }}" hint-placeholder-val="{{ true }}">
+                    <span style="font-size:11px;padding:1px 7px;border:1px solid #416180;color:#c4c6ca">{{ a.statusLabel }}</span>
+                  </sc-if>
+                  <span style="margin-left:auto;font-size:12px;color:#7c7f84">{{ a.upd }}</span>
+                </div>
+                <a style="font-family:'Barlow Condensed';font-weight:600;font-size:23px;line-height:1.1;color:#e6e7ea;text-decoration:none">{{ a.name }}</a>
+                <p style="font-size:14px;line-height:1.5;color:#a3a5aa;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden">{{ a.desc }}</p>
+                <div style="display:flex;gap:6px;flex-wrap:wrap">
+                  <sc-for list="{{ a.tags3 }}" as="t" hint-placeholder-count="3">
+                    <span style="font-size:12px;color:#a3a5aa">#{{ t }}</span>
+                  </sc-for>
+                  <sc-if value="{{ a.hasMore }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#7c7f84">{{ a.more }}</span></sc-if>
+                </div>
+                <sc-if value="{{ a.isDeprecated }}" hint-placeholder-val="{{ false }}">
+                  <a style="font-size:13px">Use {{ a.replacement }} instead →</a>
+                </sc-if>
+                <div style="display:flex;align-items:center;gap:10px;margin-top:4px;padding-top:12px;border-top:1px solid #303336">
+                  <span style="flex:1;font-size:12px;color:#7c7f84">Installs with <span style="color:#c4c6ca">{{ a.plugin }}</span> v{{ a.v }}</span>
+                  <button style="display:flex;align-items:center;gap:6px;height:30px;padding:0 10px;background:transparent;border:1px solid {{ a.copyBorder }};color:{{ a.copyColor }};font-family:'Barlow Condensed';font-weight:600;font-size:13px">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>{{ a.copyLabelB }}</button>
+                </div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#7c7f84">Mini card · related rail</div>
+          <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px">
+            <sc-for list="{{ rows }}" as="a" hint-placeholder-count="4">
+              <div style="border:1px solid #303336;border-left:3px solid {{ a.hue }};padding:12px 14px;display:flex;flex-direction:column;gap:4px">
+                <span style="font-size:12px;color:{{ a.hue }}">{{ a.typeLabel }}</span>
+                <span style="font-family:'Barlow Condensed';font-weight:600;font-size:18px;line-height:1.1">{{ a.name }}</span>
+                <span style="font-size:12px;color:#7c7f84">in {{ a.plugin }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= 1c ================= -->
+    <div id="1c" style="display:flex;flex-direction:column;gap:24px;width:1280px">
+      <div style="display:flex;align-items:baseline;gap:14px">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:13px;padding:3px 9px;background:#749dc4;color:#121415;font-weight:700">1c</span>
+        <span style="font-family:'Barlow Condensed';font-weight:600;font-size:26px">Steel field</span>
+        <span style="color:#a3a5aa;font-size:15px">Big editorial Start card on the deep steel ground, cards in a shared-border grid, types as shapes.</span>
+      </div>
+
+      <div data-screen-label="1c Home" style="background:#121415;border:1px solid #26292c">
+        <header style="display:flex;align-items:center;gap:24px;height:64px;padding:0 40px;background:#1d2d3d;border-bottom:1px solid #2c455d">
+          <a style="display:flex;align-items:center;gap:10px;color:#e6e7ea;text-decoration:none">
+            <span style="width:18px;height:18px;border:1px solid #94bce3;display:grid;place-items:center"><span style="width:6px;height:6px;background:#94bce3"></span></span>
+            <span style="font-family:'Barlow Condensed';font-weight:600;font-size:21px">dev-digest</span>
+          </a>
+          <nav style="display:flex;gap:28px;margin-left:32px;font-size:14px">
+            <a style="color:#e6e7ea;text-decoration:none">Browse</a>
+            <a style="color:#e6e7ea;text-decoration:none">What's new</a>
+            <a style="color:#e6e7ea;text-decoration:none">Get started</a>
+          </nav>
+          <div style="flex:0 1 340px;margin-left:auto;display:flex;align-items:center;gap:10px;height:36px;padding:0 10px;background:#162331;border:1px solid #2c455d;color:#b5d9fd;font-size:14px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round;flex:none"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+            <span style="flex:1">Search</span>
+            <kbd style="font-family:ui-monospace,Menlo,monospace;font-size:11px;border:1px solid #416180;padding:0 6px">/</kbd>
+          </div>
+          <a style="display:flex;align-items:center;gap:6px;height:36px;padding:0 12px;border:1px solid #2c455d;color:#e6e7ea;text-decoration:none;font-family:'Barlow Condensed';font-weight:600;font-size:14px">GitHub <span style="color:#b5d9fd">★ 1.2k</span></a>
+          <button style="width:36px;height:36px;display:grid;place-items:center;background:transparent;border:1px solid #2c455d;color:#e6e7ea"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linejoin:round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg></button>
+        </header>
+
+        <div style="position:relative;background:#1d2d3d;padding:72px 40px 0">
+          <button style="position:absolute;top:24px;right:32px;display:flex;align-items:center;gap:6px;background:transparent;border:0;color:#b5d9fd;font-size:13px">Hide <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+          <div style="font-family:'Barlow Condensed';font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#b5d9fd">Start here · dev-digest marketplace</div>
+          <h2 style="margin-top:18px;font-family:'Barlow Condensed';font-weight:600;font-size:88px;line-height:0.95;letter-spacing:-0.025em;max-width:980px;text-wrap:balance">Everything you can add to Claude Code, in one place.</h2>
+          <div style="display:flex;align-items:center;gap:12px;margin-top:36px">
+            <button style="display:flex;align-items:center;gap:8px;height:46px;padding:0 20px;background:#94bce3;border:1px solid #94bce3;color:#121415;font-family:'Barlow Condensed';font-weight:600;font-size:17px">Connect the marketplace
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button>
+            <button style="height:46px;padding:0 18px;background:transparent;border:1px solid #416180;color:#e6e7ea;font-family:'Barlow Condensed';font-weight:600;font-size:17px">Find a skill</button>
+            <button style="height:46px;padding:0 18px;background:transparent;border:1px solid #416180;color:#e6e7ea;font-family:'Barlow Condensed';font-weight:600;font-size:17px">Starter pack</button>
+            <span style="margin-left:12px;font-size:15px;color:#b5d9fd">About 3 minutes, one command.</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:64px;border-top:1px solid #2c455d">
+            <sc-for list="{{ counts }}" as="c" hint-placeholder-count="4">
+              <div style="padding:24px 0 28px;display:flex;align-items:baseline;gap:12px;border-right:1px solid #2c455d;padding-left:24px">
+                <span style="font-family:'Barlow Condensed';font-weight:500;font-size:64px;line-height:1;letter-spacing:-0.02em">{{ c.n }}</span>
+                <span style="font-family:'Barlow Condensed';font-size:15px;letter-spacing:0.1em;text-transform:uppercase;color:#b5d9fd">{{ c.label }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="padding:64px 40px 0;display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;align-items:baseline;gap:16px">
+            <h3 style="font-family:'Barlow Condensed';font-weight:600;font-size:30px">What's new</h3>
+            <span style="font-size:14px;color:#a3a5aa">Last 14 days</span>
+            <a style="margin-left:auto;font-size:14px;text-decoration:none">See all changes →</a>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid #303336;border-left:1px solid #303336">
+            <sc-for list="{{ changeCards }}" as="a" hint-placeholder-count="5">
+              <div style="padding:18px;display:flex;flex-direction:column;gap:9px;border-right:1px solid #303336;border-bottom:1px solid #303336;min-height:230px">
+                <div style="display:flex;align-items:center;gap:8px">
+                  <span style="{{ a.glyph }}"></span>
+                  <span style="font-family:'Barlow Condensed';font-weight:600;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:#c4c6ca">{{ a.typeLabel }}</span>
+                  <span style="margin-left:auto;font-size:11px;padding:1px 6px;background:#1f2b37;color:#b5d9fd">{{ a.kind }}</span>
+                </div>
+                <span style="font-family:'Barlow Condensed';font-weight:600;font-size:22px;line-height:1.1">{{ a.name }}</span>
+                <p style="font-size:13px;line-height:1.5;color:#a3a5aa;flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden">{{ a.desc }}</p>
+                <div style="display:flex;justify-content:space-between;font-size:12px;color:#7c7f84"><span>in {{ a.plugin }}</span><span style="font-family:ui-monospace,Menlo,monospace">{{ a.ver }}</span></div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="padding:64px 40px 0;display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;align-items:baseline">
+            <h3 style="font-family:'Barlow Condensed';font-weight:600;font-size:30px">Browse by category</h3>
+            <a style="margin-left:auto;font-size:14px;text-decoration:none">All categories →</a>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid #303336;border-left:1px solid #303336">
+            <sc-for list="{{ cats }}" as="c" hint-placeholder-count="8">
+              <a style="padding:22px 22px 20px;display:flex;flex-direction:column;gap:22px;border-right:1px solid #303336;border-bottom:1px solid #303336;color:#e6e7ea;text-decoration:none" style-hover="background:#181b1d">
+                <span style="font-family:'Barlow Condensed';font-weight:500;font-size:44px;line-height:1;color:#94bce3">{{ c.count }}</span>
+                <span style="display:flex;justify-content:space-between;align-items:center;font-family:'Barlow Condensed';font-weight:600;font-size:20px">{{ c.name }}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a3a5aa" style="stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+
+        <footer style="margin-top:72px;padding:22px 40px;border-top:1px solid #303336;display:flex;gap:24px;font-size:13px;color:#a3a5aa">
+          <a style="color:#a3a5aa;text-decoration:none">GitHub</a><a style="color:#a3a5aa;text-decoration:none">Contribute</a><a style="color:#a3a5aa;text-decoration:none">RSS</a><a style="color:#a3a5aa;text-decoration:none">catalog.json</a><a style="color:#a3a5aa;text-decoration:none">llms.txt</a>
+          <span style="margin-left:auto">Catalog updated 16 Oct 2026</span>
+        </footer>
+      </div>
+
+      <div data-screen-label="1c Card" style="background:#121415;border:1px solid #26292c;padding:40px;display:flex;flex-direction:column;gap:32px">
+        <div style="font-family:'Barlow Condensed';font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:#94bce3">Artifact card · 1c</div>
+        <div style="display:flex;gap:22px;flex-wrap:wrap;align-items:center">
+          <sc-for list="{{ typeKey }}" as="t" hint-placeholder-count="6">
+            <span style="display:flex;align-items:center;gap:8px;font-size:13px;color:#c4c6ca"><span style="{{ t.glyph }}"></span>{{ t.label }}</span>
+          </sc-for>
+          <span style="font-size:13px;color:#7c7f84">Types told apart by shape, so the palette stays one steel accent.</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid #303336;border-left:1px solid #303336">
+          <sc-for list="{{ sheet }}" as="a" hint-placeholder-count="3">
+            <div style="position:relative;padding:22px;display:flex;flex-direction:column;gap:10px;border-right:1px solid #303336;border-bottom:1px solid #303336;background:{{ a.bgC }};opacity:{{ a.opacity }};box-shadow:{{ a.ringC }}">
+              <div style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#7c7f84;margin-bottom:6px">{{ a.state }}</div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="{{ a.glyph }}"></span>
+                <span style="font-family:'Barlow Condensed';font-weight:600;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:#c4c6ca">{{ a.typeLabel }}</span>
+                <sc-if value="{{ a.hasStatus }}" hint-placeholder-val="{{ true }}">
+                  <span style="font-size:11px;padding:1px 6px;background:#1f2b37;color:#b5d9fd">{{ a.statusLabel }}</span>
+                </sc-if>
+              </div>
+              <a style="font-family:'Barlow Condensed';font-weight:600;font-size:26px;line-height:1.05;color:#e6e7ea;text-decoration:none">{{ a.name }}</a>
+              <p style="font-size:14px;line-height:1.5;color:#a3a5aa;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden">{{ a.desc }}</p>
+              <div style="display:flex;gap:6px;flex-wrap:wrap">
+                <sc-for list="{{ a.tags3 }}" as="t" hint-placeholder-count="3">
+                  <span style="font-size:12px;padding:1px 8px;border:1px solid #303336;color:#c4c6ca">{{ t }}</span>
+                </sc-for>
+                <sc-if value="{{ a.hasMore }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#7c7f84">{{ a.more }}</span></sc-if>
+              </div>
+              <sc-if value="{{ a.isDeprecated }}" hint-placeholder-val="{{ false }}">
+                <a style="font-size:13px">Use {{ a.replacement }} instead →</a>
+              </sc-if>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:8px">
+                <span style="flex:1;font-size:12px;color:#7c7f84">Installs with {{ a.plugin }} · v{{ a.v }} · {{ a.upd }}</span>
+                <button style="width:32px;height:32px;display:grid;place-items:center;background:{{ a.copyBgC }};border:1px solid {{ a.copyBorder }};color:{{ a.copyFgC }}" aria-label="Copy install command">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="stroke-width:1.5"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:grid;grid-template-columns:7fr 5fr;gap:28px">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#7c7f84">Compact row</div>
+            <div style="border-top:1px solid #303336">
+              <sc-for list="{{ rows }}" as="a" hint-placeholder-count="4">
+                <div style="display:grid;grid-template-columns:22px 180px minmax(0,1fr) 110px;align-items:center;gap:12px;height:46px;border-bottom:1px solid #303336">
+                  <span style="{{ a.glyph }}"></span>
+                  <span style="font-family:'Barlow Condensed';font-weight:600;font-size:18px">{{ a.name }}</span>
+                  <span style="font-size:13px;color:#a3a5aa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ a.desc }}</span>
+                  <span style="font-size:12px;color:#7c7f84;text-align:right">{{ a.plugin }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#7c7f84">Mini card</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #303336;border-left:1px solid #303336">
+              <sc-for list="{{ minis }}" as="a" hint-placeholder-count="2">
+                <div style="padding:12px 14px;display:flex;flex-direction:column;gap:6px;border-right:1px solid #303336;border-bottom:1px solid #303336">
+                  <span style="display:flex;align-items:center;gap:7px;font-size:12px;color:#c4c6ca"><span style="{{ a.glyph }}"></span>{{ a.typeLabel }}</span>
+                  <span style="font-family:'Barlow Condensed';font-weight:600;font-size:18px;line-height:1.1">{{ a.name }}</span>
+                  <span style="font-size:12px;color:#7c7f84">in {{ a.plugin }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const TYPES = {
+  plugin:  { label: 'Plugin',  code: 'PLUGIN', h: 20,  g: { background: '#94bce3' } },
+  skill:   { label: 'Skill',   code: 'SKILL',  h: 250, g: { border: '1.5px solid #94bce3' } },
+  agent:   { label: 'Agent',   code: 'AGENT',  h: 305, g: { background: '#94bce3', borderRadius: '50%' } },
+  command: { label: 'Command', code: 'CMD',    h: 195, g: { border: '1.5px solid #94bce3', transform: 'rotate(45deg)', width: 8, height: 8 } },
+  hook:    { label: 'Hook',    code: 'HOOK',   h: 75,  g: { background: '#94bce3', transform: 'rotate(45deg)', width: 8, height: 8 } },
+  mcp:     { label: 'MCP',     code: 'MCP',    h: 150, g: { border: '1.5px solid #94bce3', borderRadius: '50%' } },
+};
+const STATUS = { new: 'New', updated: 'Updated', beta: 'Beta', deprecated: 'Deprecated' };
+
+const ARTS = [
+  { type: 'skill', name: 'invoice-parser', desc: 'Extracts line items, totals and VAT from PDF invoices, including scanned ones via OCR. Returns structured JSON or CSV.', plugin: 'pdf-tools', v: '1.3.0', upd: '2 days ago', tags: ['pdf', 'ocr', 'finance', 'csv', 'invoices'], status: 'new' },
+  { type: 'agent', name: 'pr-reviewer', desc: 'Reviews a pull request diff for bugs, missing tests and style drift, then leaves inline comments grouped by severity.', plugin: 'git-helpers', v: '2.1.0', upd: '5 days ago', tags: ['git', 'review', 'code-quality'], status: 'updated' },
+  { type: 'command', name: '/changelog', desc: 'Drafts a CHANGELOG entry from commits since the last tag, grouped into Added, Changed and Fixed.', plugin: 'git-helpers', v: '2.1.0', upd: '5 days ago', tags: ['git', 'release', 'docs'], status: '' },
+  { type: 'mcp', name: 'postgres', desc: 'Read-only MCP server for PostgreSQL. Lets Claude inspect schemas and run SELECT queries against a connection you provide.', plugin: 'data-kit', v: '0.9.2', upd: '1 week ago', tags: ['sql', 'postgres', 'database'], status: 'beta' },
+  { type: 'hook', name: 'pre-commit-lint', desc: 'Runs your project linter before file edits are written and blocks the change if it fails.', plugin: 'qa-guard', v: '1.1.0', upd: '3 weeks ago', tags: ['lint', 'ci', 'format'], status: '' },
+  { type: 'skill', name: 'k8s-deploy', desc: 'Generates and validates Helm values and Kubernetes manifests, then walks through a staged rollout.', plugin: 'ops-pack', v: '1.0.4', upd: '9 days ago', tags: ['kubernetes', 'helm', 'deploy'], status: 'updated' },
+  { type: 'skill', name: 'doc-summarizer', desc: 'Summarises long PDF documents into a one-page brief with section headings and key figures.', plugin: 'pdf-tools', v: '1.3.0', upd: '10 days ago', tags: ['pdf', 'summary'], status: 'deprecated', replacement: 'pdf-digest' },
+  { type: 'skill', name: 'receipt-ocr', desc: 'Reads photographed receipts and returns merchant, date, total and tax as JSON.', plugin: 'pdf-tools', v: '1.3.0', upd: '1 month ago', tags: ['ocr', 'finance', 'receipts'], status: '' },
+  { type: 'skill', name: 'pdf-forms', desc: 'Fills and flattens PDF forms from a JSON payload, keeping field validation intact.', plugin: 'pdf-tools', v: '1.3.0', upd: '1 month ago', tags: ['pdf', 'forms'], status: '' },
+];
+
+function deco(a) {
+  const t = TYPES[a.type];
+  return {
+    ...a,
+    typeLabel: t.label, code: t.code,
+    hue: `oklch(0.76 0.09 ${t.h})`,
+    glyph: { display: 'inline-block', flex: 'none', width: 9, height: 9, ...t.g },
+    tags3: a.tags.slice(0, 3),
+    hasMore: a.tags.length > 3, more: a.tags.length > 3 ? '+' + (a.tags.length - 3) : '',
+    hasStatus: !!a.status, statusLabel: STATUS[a.status] || '', statusUp: (STATUS[a.status] || '').toUpperCase(),
+    isDeprecated: a.status === 'deprecated',
+    cmd: `/plugin install ${a.plugin}@dev-digest`,
+  };
+}
+
+const D = ARTS.map(deco);
+
+const SHEET = [
+  { ...D[0], state: 'Default', border: '#3a3d41', corner: '#8a8d92', opacity: 1, copyColor: '#94bce3', copyLabel: 'Copy', copyLabelB: 'Copy install', copyBorder: '#3a3d41', bgB: 'transparent', bgC: 'transparent', ringC: 'none', copyBgC: 'transparent', copyFgC: '#e6e7ea' },
+  { ...D[1], state: 'Hover / focus · just copied', border: '#749dc4', corner: '#b5d9fd', opacity: 1, copyColor: '#b5d9fd', copyLabel: 'Copied', copyLabelB: 'Copied', copyBorder: '#749dc4', bgB: '#161b20', bgC: '#161b20', ringC: 'inset 0 0 0 1px #749dc4', copyBgC: '#94bce3', copyFgC: '#121415' },
+  { ...D[6], state: 'Deprecated', border: '#303336', corner: '#55585c', opacity: 0.72, copyColor: '#a3a5aa', copyLabel: 'Copy', copyLabelB: 'Copy install', copyBorder: '#303336', bgB: 'transparent', bgC: 'transparent', ringC: 'none', copyBgC: 'transparent', copyFgC: '#a3a5aa' },
+];
+
+const CHANGES = [
+  { kind: 'New', date: '14 Oct', a: D[0], ver: '1.2.0 → 1.3.0', note: 'Added invoice-parser with OCR fallback for scanned PDFs' },
+  { kind: 'Updated', date: '11 Oct', a: D[1], ver: '2.0.3 → 2.1.0', note: 'Groups comments by severity; skips generated files' },
+  { kind: 'New', date: '9 Oct', a: D[3], ver: '0.9.2', note: 'First release, read-only queries only' },
+  { kind: 'Updated', date: '7 Oct', a: D[5], ver: '1.0.3 → 1.0.4', note: 'Validates Helm values against the chart schema' },
+  { kind: 'Deprecated', date: '6 Oct', a: D[6], ver: '1.3.0', note: 'Replaced by pdf-digest' },
+].map(c => ({ ...c, kindUp: c.kind.toUpperCase(), name: c.a.name, typeLabel: c.a.typeLabel, plugin: c.a.plugin, hue: c.a.hue }));
+
+const TYPEAHEAD = [
+  { ...D[0], pre: 'invoice-', hit: 'pars', post: 'er', rowBg: '#1f262d', rowEdge: '#94bce3' },
+  { ...D[7], pre: 'receipt-ocr', hit: '', post: '', rowBg: 'transparent', rowEdge: 'transparent' },
+  { ...D[8], pre: '', hit: 'pdf', post: '-forms', rowBg: 'transparent', rowEdge: 'transparent' },
+  { ...D[6], pre: 'doc-summarizer', hit: '', post: '', rowBg: 'transparent', rowEdge: 'transparent' },
+];
+
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      counts: [{ n: 14, label: 'Plugins' }, { n: 62, label: 'Skills' }, { n: 23, label: 'Agents' }, { n: 41, label: 'Commands' }],
+      tries: ['review pull requests', 'deploy to kubernetes', 'query postgres', 'write release notes'],
+      changes: CHANGES,
+      changeCards: CHANGES.map(c => ({ ...c.a, kind: c.kind, ver: c.ver })),
+      cats: [['Development', 48], ['Testing', 21], ['DevOps', 19], ['Data', 17], ['Documents', 14], ['Writing', 11], ['Productivity', 26], ['Security', 9]]
+        .map(([name, count], i) => ({ name, count, n: String(i + 1).padStart(2, '0') })),
+      sheet: SHEET,
+      rows: [D[0], D[1], D[2], D[3]],
+      minis: [D[7], D[8]],
+      typeahead: TYPEAHEAD,
+      typeKey: Object.values(TYPES).map(t => ({ label: t.label, hue: `oklch(0.76 0.09 ${t.h})`, glyph: { display: 'inline-block', flex: 'none', width: 9, height: 9, ...t.g } })),
+    };
+  }
+}
+</script>
+</body>
+</html>

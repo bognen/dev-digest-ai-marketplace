@@ -1,0 +1,411 @@
+---
+// "How to connect the marketplace" guide. Rendered on /get-started and in the
+// onboarding drawer; both instances share progress through localStorage.
+// Commands and UI labels were checked against code.claude.com/docs (Oct 2026).
+import CopyCommand from './CopyCommand.astro';
+import { getSiteData, url } from '../lib/data.mjs';
+
+interface Props {
+  idPrefix: string;
+  headingLevel?: 'h2' | 'h3';
+  /** Read the contextual plugin from ?plugin= (used on /get-started). */
+  fromQuery?: boolean;
+}
+const { idPrefix, headingLevel = 'h2', fromQuery = false } = Astro.props;
+const Heading = headingLevel;
+const { catalog } = getSiteData();
+const mp = catalog.marketplace.name;
+const repo = catalog.marketplace.repo ?? '<owner>/<repo>';
+const installTemplate = `/plugin install {plugin}@${mp}`;
+const shellInstallTemplate = `claude plugin install {plugin}@${mp}`;
+const fill = (t: string) => t.replace('{plugin}', '<plugin>');
+const teamSnippet = JSON.stringify(
+  {
+    extraKnownMarketplaces: { [mp]: { source: { source: 'github', repo }, autoUpdate: true } },
+    enabledPlugins: { [`<plugin>@${mp}`]: true },
+  },
+  null,
+  2,
+);
+
+const tabs = [
+  { id: 'cli', label: 'CLI' },
+  { id: 'desktop', label: 'Desktop app' },
+  { id: 'ide', label: 'IDE' },
+];
+
+const docs = 'https://code.claude.com/docs/en';
+const STEP_COUNT = [1, 2, 3, 4, 5];
+const id = (s: string) => `${idPrefix}-${s}`;
+---
+<div
+  class="onboarding"
+  data-onboarding
+  data-from-query={fromQuery ? '' : undefined}
+  data-install-template={installTemplate}
+  data-shell-install-template={shellInstallTemplate}
+>
+  <div class="ob-bar-row">
+    <div class="ob-tabs" role="tablist" aria-label="Where you use Claude Code">
+      {tabs.map((t, i) => (
+        <button
+          type="button"
+          role="tab"
+          id={id(`tab-${t.id}`)}
+          aria-controls={id('steps')}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          tabindex={i === 0 ? 0 : -1}
+          data-tab={t.id}
+        >{t.label}</button>
+      ))}
+    </div>
+    <div class="ob-progress">
+      <span class="ob-segs" data-progress-bar aria-hidden="true">
+        {STEP_COUNT.map(() => <span></span>)}
+      </span>
+      <span data-progress-text aria-live="polite">0 of 5 done</span>
+    </div>
+  </div>
+
+  <ol class="ob-steps" id={id('steps')} role="tabpanel" aria-labelledby={id('tab-cli')} data-surface-current="cli">
+    <!-- 1. Prerequisites -->
+    <li class="ob-step" data-step="prereq">
+      <input type="checkbox" class="ob-check" id={id('check-prereq')} data-step-check="prereq" />
+      <label class="ob-box" for={id('check-prereq')}>
+        <span class="ob-num" aria-hidden="true">1</span>
+        <svg class="ob-tick" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+        <span class="visually-hidden">Step 1 done: Check prerequisites</span>
+      </label>
+      <div class="ob-step-body">
+        <div class="ob-title-row"><Heading class="ob-step-title">Check prerequisites</Heading></div>
+        <div data-surface="cli">
+          <p>Install Claude Code, then check that it runs. Use the latest release, because plugin features ship often.</p>
+          <CopyCommand command="curl -fsSL https://claude.ai/install.sh | bash" label="macOS and Linux install command" />
+          <p class="ob-note">Windows PowerShell: <code>irm https://claude.ai/install.ps1 | iex</code>. Other options are on the <a href={`${docs}/setup`}>setup page</a>.</p>
+          <CopyCommand command="claude --version && claude update" label="version check" />
+        </div>
+        <div data-surface="desktop" hidden>
+          <p>Install the Claude desktop app (<a href={`${docs}/desktop`}>macOS and Windows</a>) and sign in. Plugins work in local sessions only, not in cloud or WSL sessions.</p>
+          <p>Step 2 needs the Claude Code CLI once. Install it from the <a href={`${docs}/setup`}>setup page</a>. The desktop app reads the same settings, so what you add there appears in the app.</p>
+        </div>
+        <div data-surface="ide" hidden>
+          <p><strong>VS Code:</strong> install the <em>Claude Code</em> extension from the Extensions view (<kbd>Ctrl/Cmd+Shift+X</kbd>). See the <a href={`${docs}/vs-code`}>VS Code guide</a>.</p>
+          <p><strong>JetBrains:</strong> install the <a href="https://plugins.jetbrains.com/plugin/27310-claude-code-beta-">Claude Code plugin</a> and the <a href={`${docs}/setup`}>Claude Code CLI</a>. The plugin runs the CLI in the IDE terminal, so follow the <strong>CLI</strong> tab for the remaining steps.</p>
+        </div>
+      </div>
+    </li>
+
+    <!-- 2. Add the marketplace -->
+    <li class="ob-step" data-step="add">
+      <input type="checkbox" class="ob-check" id={id('check-add')} data-step-check="add" />
+      <label class="ob-box" for={id('check-add')}>
+        <span class="ob-num" aria-hidden="true">2</span>
+        <svg class="ob-tick" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+        <span class="visually-hidden">Step 2 done: Add the marketplace</span>
+      </label>
+      <div class="ob-step-body">
+        <div class="ob-title-row"><Heading class="ob-step-title">Add the marketplace</Heading></div>
+        <div data-surface="cli">
+          <p>In a Claude Code session, run:</p>
+          <CopyCommand command={`/plugin marketplace add ${repo}`} label="add marketplace command" />
+          <p class="ob-note">From your shell instead: <code>claude plugin marketplace add {repo}</code></p>
+        </div>
+        <div data-surface="desktop" hidden>
+          <p>The desktop app has no button for adding a marketplace yet. Run this once in a terminal:</p>
+          <CopyCommand command={`claude plugin marketplace add ${repo}`} label="add marketplace command" />
+          <p class="ob-note">The terminal, the desktop app and VS Code read the same settings, so the marketplace appears in the app straight away.</p>
+        </div>
+        <div data-surface="ide" hidden>
+          <p><strong>VS Code:</strong> type <code>/plugins</code> in the Claude prompt box to open <strong>Manage plugins</strong>. Then open the <strong>Marketplaces</strong> tab and add:</p>
+          <CopyCommand command={repo} label="marketplace repository" />
+          <p class="ob-note"><strong>JetBrains:</strong> run <code>/plugin marketplace add {repo}</code> in the Claude terminal.</p>
+        </div>
+        <p class="ob-note">Private repository? Authenticate git first, as described under Troubleshooting below.</p>
+      </div>
+    </li>
+
+    <!-- 3. Browse and install -->
+    <li class="ob-step" data-step="install" id={id('step-install')}>
+      <input type="checkbox" class="ob-check" id={id('check-install')} data-step-check="install" />
+      <label class="ob-box" for={id('check-install')}>
+        <span class="ob-num" aria-hidden="true">3</span>
+        <svg class="ob-tick" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+        <span class="visually-hidden">Step 3 done: Browse and install</span>
+      </label>
+      <div class="ob-step-body">
+        <div class="ob-banner" data-add-first hidden role="note">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M12 8v4" /><path d="M12 16h.01" /></svg>
+          <span><strong>First, add the marketplace.</strong> Finish step 2, then install <span data-context-plugin></span>.</span>
+        </div>
+        <div class="ob-title-row"><Heading class="ob-step-title"><span data-install-title>Browse and install</span></Heading> <span class="tag tag-accent" data-context-note hidden data-context-plugin></span></div>
+        <div data-surface="cli">
+          <p>Run <code>/plugin</code> and browse the <strong>Discover</strong> tab, or install a plugin directly:</p>
+          <CopyCommand command={fill(installTemplate)} label="install command" data-install-cmd="session" />
+          <p class="ob-note">Then choose a scope: <em>for you</em> (user), <em>for all collaborators</em> (project), or <em>for you, in this repo only</em> (local). From your shell: <code data-install-cmd="shell">{fill(shellInstallTemplate)}</code></p>
+        </div>
+        <div data-surface="desktop" hidden>
+          <p>Click <strong>+</strong> next to the prompt box, then <strong>Plugins → Add plugin</strong>. Find the plugin, choose a scope and install it.</p>
+          <p class="ob-note">Or use a terminal:</p>
+          <CopyCommand command={fill(shellInstallTemplate)} label="install command" data-install-cmd="shell" />
+        </div>
+        <div data-surface="ide" hidden>
+          <p><strong>VS Code:</strong> in <strong>Manage plugins</strong> (<code>/plugins</code>), open the <strong>Plugins</strong> tab, search for the plugin and click <strong>Install</strong>. Then pick <em>Install for you</em>, <em>for this project</em> or <em>locally</em>.</p>
+          <p class="ob-note"><strong>JetBrains:</strong> run this in the Claude terminal:</p>
+          <CopyCommand command={fill(installTemplate)} label="install command" data-install-cmd="session" />
+        </div>
+        <p class="ob-note">Skills, agents and commands install with their plugin. <a href={url('whats-new')}>See what's available</a>.</p>
+      </div>
+    </li>
+
+    <!-- 4. Verify -->
+    <li class="ob-step" data-step="verify">
+      <input type="checkbox" class="ob-check" id={id('check-verify')} data-step-check="verify" />
+      <label class="ob-box" for={id('check-verify')}>
+        <span class="ob-num" aria-hidden="true">4</span>
+        <svg class="ob-tick" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+        <span class="visually-hidden">Step 4 done: Verify</span>
+      </label>
+      <div class="ob-step-body">
+        <div class="ob-title-row"><Heading class="ob-step-title">Verify</Heading></div>
+        <div data-surface="cli">
+          <p>If you installed during this session, run <code>/reload-plugins</code> first. The plugin should then appear in <code>/plugin</code> on the <strong>Installed</strong> tab. Type <code>/</code> to see its skills as <code>/&lt;plugin&gt;:&lt;skill&gt;</code>.</p>
+          <CopyCommand command="claude plugin list" label="list command" />
+        </div>
+        <div data-surface="desktop" hidden>
+          <p>Open <strong>+ → Plugins → Manage plugins</strong>. The plugin should be listed and enabled. Type <code>/</code> in the prompt box to see its skills.</p>
+        </div>
+        <div data-surface="ide" hidden>
+          <p><strong>VS Code:</strong> the plugin shows in <strong>Manage plugins</strong> with its toggle on. If it failed to load, the row shows the reason. Type <code>/</code> to see its skills.</p>
+          <p class="ob-note"><strong>JetBrains:</strong> run <code>/reload-plugins</code>, then check <code>/plugin</code> → <strong>Installed</strong>.</p>
+        </div>
+      </div>
+    </li>
+
+    <!-- 5. Stay updated -->
+    <li class="ob-step" data-step="update">
+      <input type="checkbox" class="ob-check" id={id('check-update')} data-step-check="update" />
+      <label class="ob-box" for={id('check-update')}>
+        <span class="ob-num" aria-hidden="true">5</span>
+        <svg class="ob-tick" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+        <span class="visually-hidden">Step 5 done: Stay updated</span>
+      </label>
+      <div class="ob-step-body">
+        <div class="ob-title-row"><Heading class="ob-step-title">Stay updated</Heading></div>
+        <p>Auto-update is off by default for community marketplaces. Turn it on in <code>/plugin</code> → <strong>Marketplaces</strong> → <strong>{mp}</strong> → <strong>Enable auto-update</strong>, or update manually:</p>
+        <div data-surface="cli">
+          <CopyCommand command={`/plugin marketplace update ${mp}`} label="update command" />
+        </div>
+        <div data-surface="desktop" hidden>
+          <CopyCommand command={`claude plugin marketplace update ${mp}`} label="update command" />
+        </div>
+        <div data-surface="ide" hidden>
+          <CopyCommand command={`claude plugin marketplace update ${mp}`} label="update command" />
+        </div>
+        <p class="ob-note">A running session keeps the version it loaded until you run <code>/reload-plugins</code> or start a new session. <a href={url('whats-new')}>What's New</a> lists every release.</p>
+      </div>
+    </li>
+
+    <!-- 6. Team setup -->
+    <li class="ob-step optional" data-step="team">
+      <input type="checkbox" class="ob-check" id={id('check-team')} data-step-check="team" />
+      <label class="ob-box" for={id('check-team')}>
+        <span class="ob-num" aria-hidden="true">6</span>
+        <svg class="ob-tick" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+        <span class="visually-hidden">Step 6 done: Set up your team</span>
+      </label>
+      <div class="ob-step-body">
+        <div class="ob-title-row"><Heading class="ob-step-title">Set up your team</Heading> <span class="tag tag-neutral">Optional</span></div>
+        <p>Commit this file to your project. Teammates are offered the marketplace and plugins after they trust the folder.</p>
+        <CopyCommand command={teamSnippet} label="team settings snippet" filename=".claude/settings.json" />
+        <p class="ob-note">Or run <code>claude plugin marketplace add {repo} --scope project</code> to write the marketplace part for you. Plugins hosted outside this repository still need <code>claude plugin install &lt;plugin&gt;@{mp} --scope project</code> on each machine.</p>
+      </div>
+    </li>
+
+    <!-- 7. Troubleshooting -->
+    <li class="ob-step" data-step="troubleshooting">
+      <span class="ob-box ob-box-static" aria-hidden="true"><span class="ob-num">7</span></span>
+      <div class="ob-step-body">
+        <div class="ob-title-row"><Heading class="ob-step-title">Troubleshooting</Heading></div>
+        <p>Common problems and how to fix them.</p>
+        <div class="faq">
+        <details>
+          <summary><span>“Repository not found” or authentication errors</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></summary>
+          <p>Claude Code uses your own git credentials and can't show a login prompt. For HTTPS, run <code>gh auth login</code> and then <code>gh auth setup-git</code>. A <code>GITHUB_TOKEN</code> environment variable alone is not enough. For SSH, your key must work without a passphrase prompt. Test access with <code>git ls-remote https://github.com/{repo}.git</code>.</p>
+        </details>
+        <details>
+          <summary><span>The plugin doesn't show up</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></summary>
+          <p>Run <code>/reload-plugins</code>, or start a new session. Project-scope plugins and marketplaces from <code>.claude/settings.json</code> load only after you accept the folder's trust prompt. Load errors are listed in <code>/plugin</code> on the <strong>Errors</strong> tab.</p>
+        </details>
+        <details>
+          <summary><span>An update isn't picked up</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></summary>
+          <p>Run <code>/plugin marketplace update {mp}</code>, then <code>/reload-plugins</code>. If <code>claude plugin update &lt;plugin&gt;@{mp}</code> says you're on the latest version, no new version has been released yet. Check <a href={url('whats-new')}>What's New</a>.</p>
+        </details>
+        <details>
+          <summary><span>Disable or uninstall a plugin</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></summary>
+          <p>In a session, open <code>/plugin</code> → <strong>Installed</strong> and use <kbd>Space</kbd> to toggle, or open the plugin for <strong>Uninstall</strong>. From your shell:</p>
+          <CopyCommand command={`claude plugin disable <plugin>@${mp}\nclaude plugin uninstall <plugin>@${mp}`} label="disable and uninstall commands" />
+          <p>Removing the marketplace, with <code>claude plugin marketplace remove {mp}</code>, uninstalls all of its plugins.</p>
+        </details>
+        </div>
+      </div>
+    </li>
+  </ol>
+</div>
+
+<style>
+  .onboarding { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+  .ob-step, .ob-step-body, .ob-step-body [data-surface] { min-width: 0; }
+  .ob-step-body code { overflow-wrap: anywhere; }
+
+  .ob-bar-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; }
+  .ob-tabs { display: inline-flex; border: 1px solid var(--color-divider); max-width: 100%; }
+  .ob-tabs button {
+    height: 34px; padding: 0 14px; border: 0; border-right: 1px solid var(--color-divider);
+    background: transparent; color: var(--color-text); cursor: pointer; white-space: nowrap;
+    font-family: var(--font-heading); font-weight: 600; font-size: 15px;
+  }
+  .ob-tabs button:last-child { border-right: 0; }
+  .ob-tabs button:hover { background: var(--hover); }
+  .ob-tabs button[aria-selected="true"] { background: var(--accent-fill); color: var(--color-bg); }
+  .ob-tabs button:focus-visible { outline-offset: -2px; }
+  .ob-progress { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); }
+  .ob-segs { display: flex; gap: 3px; }
+  .ob-segs span { width: 22px; height: 4px; background: var(--color-divider); }
+  .ob-segs span.on { background: var(--color-accent); }
+
+  .ob-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+  .ob-step {
+    position: relative; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 14px;
+    padding: 18px 0; border-top: 1px solid var(--color-divider);
+  }
+  .ob-check { position: absolute; top: 18px; left: 0; width: 28px; height: 28px; margin: 0; opacity: 0; pointer-events: none; }
+  .ob-box {
+    width: 28px; height: 28px; display: grid; place-items: center; cursor: pointer;
+    border: 1px solid var(--control-border); color: var(--color-text);
+    font-family: var(--font-mono); font-size: 12px;
+  }
+  .ob-box:hover { background: var(--hover); border-color: var(--color-accent); }
+  .ob-tick { display: none; }
+  .ob-check:checked + .ob-box { background: var(--accent-fill); border-color: var(--accent-fill); color: var(--color-bg); }
+  .ob-check:checked + .ob-box .ob-num { display: none; }
+  .ob-check:checked + .ob-box .ob-tick { display: block; }
+  .ob-check:focus-visible + .ob-box { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  .ob-box-static { cursor: default; border: 1px dashed var(--color-divider); color: var(--faint); }
+  .ob-box-static:hover { background: none; border-color: var(--color-divider); }
+
+  .ob-step-body { display: flex; flex-direction: column; gap: 10px; }
+  .ob-step-body [data-surface] { display: flex; flex-direction: column; gap: 10px; }
+  .ob-step-body [data-surface][hidden] { display: none; }
+  .ob-step-body p { margin: 0; font-size: 15px; color: var(--muted); text-wrap: pretty; }
+  .ob-step-body p strong, .ob-step-body p code { color: var(--color-text); }
+  .ob-step-body p.ob-note { font-size: 14px; }
+  .ob-title-row { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .ob-step-title { margin: 0; font-size: 21px; line-height: 1.15; letter-spacing: 0; }
+  .ob-step.done .ob-step-title { color: var(--muted); }
+
+  .ob-banner {
+    display: flex; gap: 10px; align-items: center; padding: 10px 12px;
+    border: 1px solid var(--color-accent); background: var(--color-accent-100); color: var(--color-accent-800); font-size: 14px;
+  }
+  .ob-banner svg { flex: none; }
+
+  .faq { border-top: 1px solid var(--color-divider); }
+  .faq details { border-bottom: 1px solid var(--color-divider); }
+  .faq summary {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 0;
+    font-size: 15px; color: var(--color-text); cursor: pointer; list-style: none;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary svg { flex: none; transition: transform .15s; }
+  .faq details[open] summary svg { transform: rotate(180deg); }
+  .faq summary:focus-visible { outline-offset: -2px; }
+  .faq details > :global(:not(summary)) { margin: 0 0 14px; }
+  .faq details p { font-size: 14px; }
+</style>
+
+<script>
+  import { STEP_COUNTED, getOnboarding, setOnboarding } from '../scripts/storage.js';
+
+  type Context = { plugin?: string | null };
+
+  function render(root: HTMLElement, context: Context = {}) {
+    const state = getOnboarding();
+    const counted = state.done.filter((s) => STEP_COUNTED.includes(s)).length;
+    root.querySelector('[data-progress-text]')!.textContent = `${counted} of ${STEP_COUNTED.length} done`;
+    root.querySelectorAll('[data-progress-bar] > span').forEach((seg, i) => seg.classList.toggle('on', i < counted));
+
+    root.querySelectorAll<HTMLInputElement>('[data-step-check]').forEach((box) => {
+      box.checked = state.done.includes(box.dataset.stepCheck!);
+      box.closest('.ob-step')!.classList.toggle('done', box.checked);
+    });
+
+    const steps = root.querySelector<HTMLElement>('.ob-steps')!;
+    root.querySelectorAll<HTMLButtonElement>('[role="tab"]').forEach((tab) => {
+      const selected = tab.dataset.tab === state.tab;
+      tab.setAttribute('aria-selected', String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+      if (selected) steps.setAttribute('aria-labelledby', tab.id);
+    });
+    root.querySelectorAll<HTMLElement>('[data-surface]').forEach((panel) => {
+      panel.hidden = panel.dataset.surface !== state.tab;
+    });
+
+    // Contextual mode: pre-fill the plugin and remind about step 2.
+    const plugin = context.plugin ?? root.dataset.contextPlugin ?? null;
+    root.dataset.contextPlugin = plugin ?? '';
+    const name = plugin || '<plugin>';
+    root.querySelectorAll<HTMLElement>('[data-install-cmd]').forEach((el) => {
+      const template = el.dataset.installCmd === 'shell' ? root.dataset.shellInstallTemplate! : root.dataset.installTemplate!;
+      const target = el.querySelector('code') ?? el;
+      target.textContent = template.replace('{plugin}', name);
+    });
+    root.querySelector<HTMLElement>('[data-context-note]')!.hidden = !plugin;
+    root.querySelectorAll('[data-context-plugin]').forEach((el) => (el.textContent = plugin ?? ''));
+    root.querySelector('[data-install-title]')!.textContent = plugin ? `Install ${plugin}` : 'Browse and install';
+    root.querySelector<HTMLElement>('[data-add-first]')!.hidden = !plugin || state.done.includes('add');
+  }
+
+  function init(root: HTMLElement) {
+    root.addEventListener('change', (event) => {
+      const box = (event.target as HTMLElement).closest<HTMLInputElement>('[data-step-check]');
+      if (!box) return;
+      const state = getOnboarding();
+      const done = new Set(state.done);
+      if (box.checked) done.add(box.dataset.stepCheck!);
+      else done.delete(box.dataset.stepCheck!);
+      setOnboarding({ ...state, done: [...done] });
+    });
+
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const selectTab = (tab: HTMLButtonElement) => {
+      setOnboarding({ ...getOnboarding(), tab: tab.dataset.tab });
+      tab.focus();
+    };
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => selectTab(tab));
+      tab.addEventListener('keydown', (event) => {
+        const keys: Record<string, number> = { ArrowRight: 1, ArrowLeft: -1 };
+        if (event.key in keys) {
+          event.preventDefault();
+          selectTab(tabs[(i + keys[event.key] + tabs.length) % tabs.length]);
+        } else if (event.key === 'Home') {
+          event.preventDefault();
+          selectTab(tabs[0]);
+        } else if (event.key === 'End') {
+          event.preventDefault();
+          selectTab(tabs[tabs.length - 1]);
+        }
+      });
+    });
+
+    document.addEventListener('ddm:onboarding', () => render(root));
+    root.addEventListener('ddm:context', (event) => render(root, (event as CustomEvent<Context>).detail));
+
+    const plugin = root.hasAttribute('data-from-query') ? new URLSearchParams(location.search).get('plugin') : null;
+    const valid = plugin && /^[A-Za-z0-9._-]{1,100}$/.test(plugin) ? plugin : null;
+    render(root, { plugin: valid });
+    if (valid) root.querySelector('[data-step="install"]')?.scrollIntoView({ block: 'start' });
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-onboarding]').forEach(init);
+</script>

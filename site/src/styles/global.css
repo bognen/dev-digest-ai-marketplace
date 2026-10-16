@@ -1,0 +1,138 @@
+/* Site layer on top of the Industry design system (industry.css).
+   Tokens: industry.css holds the light theme. This file adds the tokens the
+   design uses on top (--muted, --faint, --accent-text, …) and the dark theme,
+   both taken from the Claude Design project (Marketplace.dc.html). */
+
+:root {
+  --muted: #55575b;
+  --faint: #66686c;
+  --accent-text: #416180;
+  --hover: color-mix(in srgb, #1d1f20 4%, transparent);
+  --mark: #d6ebff;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  /* Filled accent controls (primary button, selected tab, ticked step).
+     In light mode the design's #5980a6 fill gives 3.7:1 against its text, below
+     WCAG AA, so fills use the ramp's 700 step (5.8:1). Dark mode uses the accent. */
+  --accent-fill: var(--color-accent-700);
+  --accent-fill-hover: var(--color-accent-800);
+  /* Borders that identify a control (checkbox boxes), 3:1 against the ground. */
+  --control-border: color-mix(in srgb, var(--color-text) 50%, transparent);
+  --backdrop: color-mix(in srgb, #000 55%, transparent);
+  --page-max: 1280px;
+  --page-pad: clamp(16px, 4vw, 40px);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg: #121415; --color-surface: #1a1d1f; --color-text: #e6e7ea; --color-accent: #749dc4; --color-accent-2: #7e9cb8;
+    --color-divider: color-mix(in srgb, #e6e7ea 15%, transparent);
+    --color-neutral-100: #2b2b2d; --color-neutral-200: #424244; --color-neutral-300: #5d5d60; --color-neutral-400: #7a7a7d; --color-neutral-500: #98989b;
+    --color-neutral-600: #b7b7ba; --color-neutral-700: #d4d4d7; --color-neutral-800: #e7e7ea; --color-neutral-900: #f5f5f8;
+    --color-accent-100: #1d2d3d; --color-accent-200: #2c455d; --color-accent-300: #416180; --color-accent-400: #597ea3; --color-accent-500: #749dc4;
+    --color-accent-600: #94bce3; --color-accent-700: #b5d9fd; --color-accent-800: #d6ebff; --color-accent-900: #eef6ff;
+    --color-accent-2-100: #1f2d3a; --color-accent-2-200: #314457; --color-accent-2-300: #486077; --color-accent-2-400: #627d98; --color-accent-2-500: #7e9cb8;
+    --color-accent-2-600: #9ebbd8; --color-accent-2-700: #bdd8f2; --color-accent-2-800: #d6ebff; --color-accent-2-900: #eef6ff;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, .5);
+    --shadow-md: 0 0 0 1px rgba(255, 255, 255, .04), 0 6px 16px rgba(0, 0, 0, .45);
+    --shadow-lg: 0 0 0 1px rgba(255, 255, 255, .05), 0 18px 48px rgba(0, 0, 0, .6);
+    --muted: #a6a8ad; --faint: #8b8d92; --accent-text: #94bce3;
+    --hover: color-mix(in srgb, #e6e7ea 5%, transparent); --mark: #2c455d;
+    --accent-fill: #749dc4; --accent-fill-hover: #94bce3;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-bg: #121415; --color-surface: #1a1d1f; --color-text: #e6e7ea; --color-accent: #749dc4; --color-accent-2: #7e9cb8;
+  --color-divider: color-mix(in srgb, #e6e7ea 15%, transparent);
+  --color-neutral-100: #2b2b2d; --color-neutral-200: #424244; --color-neutral-300: #5d5d60; --color-neutral-400: #7a7a7d; --color-neutral-500: #98989b;
+  --color-neutral-600: #b7b7ba; --color-neutral-700: #d4d4d7; --color-neutral-800: #e7e7ea; --color-neutral-900: #f5f5f8;
+  --color-accent-100: #1d2d3d; --color-accent-200: #2c455d; --color-accent-300: #416180; --color-accent-400: #597ea3; --color-accent-500: #749dc4;
+  --color-accent-600: #94bce3; --color-accent-700: #b5d9fd; --color-accent-800: #d6ebff; --color-accent-900: #eef6ff;
+  --color-accent-2-100: #1f2d3a; --color-accent-2-200: #314457; --color-accent-2-300: #486077; --color-accent-2-400: #627d98; --color-accent-2-500: #7e9cb8;
+  --color-accent-2-600: #9ebbd8; --color-accent-2-700: #bdd8f2; --color-accent-2-800: #d6ebff; --color-accent-2-900: #eef6ff;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .5);
+  --shadow-md: 0 0 0 1px rgba(255, 255, 255, .04), 0 6px 16px rgba(0, 0, 0, .45);
+  --shadow-lg: 0 0 0 1px rgba(255, 255, 255, .05), 0 18px 48px rgba(0, 0, 0, .6);
+  --muted: #a6a8ad; --faint: #8b8d92; --accent-text: #94bce3;
+  --hover: color-mix(in srgb, #e6e7ea 5%, transparent); --mark: #2c455d;
+  --accent-fill: #749dc4; --accent-fill-hover: #94bce3;
+  color-scheme: dark;
+}
+
+/* Base — additions to industry.css */
+html { -webkit-text-size-adjust: 100%; }
+body { min-height: 100vh; display: flex; flex-direction: column; }
+main { flex: 1; width: 100%; }
+a { color: var(--accent-text); }
+a:hover { color: var(--color-accent-700); }
+code, pre, kbd { font-family: var(--font-mono); }
+code { font-size: 0.9em; }
+kbd { font-size: 0.8em; border: 1px solid var(--color-divider); padding: 0 5px; }
+[hidden] { display: none !important; }
+
+.container { max-width: var(--page-max); margin: 0 auto; padding: 0 var(--page-pad); }
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.skip { position: absolute; left: -999px; top: 8px; z-index: 100; background: var(--color-bg); border: 1px solid var(--color-accent); padding: 8px 12px; }
+.skip:focus { left: 8px; }
+.kicker {
+  display: flex; align-items: center; gap: 8px; margin: 0;
+  font-family: var(--font-heading); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-text);
+}
+
+/* Design-system components, adjusted for AA contrast (see --accent-fill). */
+.btn { white-space: nowrap; }
+.btn-primary { background: var(--accent-fill); border-color: var(--accent-fill); color: var(--color-bg); }
+.btn-primary:hover { background: var(--accent-fill-hover); border-color: var(--accent-fill-hover); color: var(--color-bg); }
+.btn-primary:active { background: var(--accent-fill-hover); }
+.btn-secondary { color: var(--color-text); }
+.btn-secondary:hover { color: var(--color-text); }
+.btn-ghost, .btn-ghost:hover { color: var(--accent-text); }
+.tag { white-space: nowrap; }
+.tag-outline { color: var(--accent-text); }
+
+/* Blueprint primary button: the corner marks sit outside the fill. */
+.btn.blueprint { position: relative; overflow: visible; }
+
+/* Artifact type code (one accent for every type, per the design system). */
+.type-code {
+  display: inline-block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; line-height: 1.4;
+  padding: 1px 6px; border: 1px solid var(--color-accent); color: var(--accent-text); white-space: nowrap;
+}
+
+/* Copy-command block */
+.cmd {
+  display: flex; align-items: center; gap: 8px; min-height: 42px; padding: 0 6px 0 14px;
+  background: var(--color-surface); border: 1px solid var(--color-divider); min-width: 0;
+}
+.cmd pre { flex: 1; min-width: 0; margin: 0; padding: 11px 0; overflow-x: auto; font-size: 13px; line-height: 1.45; white-space: pre; }
+.cmd pre code { font-size: inherit; }
+.cmd .copy-btn { height: 30px; padding: 0 8px; font-size: 13px; flex: none; }
+.cmd .copy-btn[data-copied] { color: var(--color-text); }
+.cmd-file { display: block; padding: 0; }
+.cmd-file .cmd-file-head {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  padding: 4px 6px 4px 14px; border-bottom: 1px solid var(--color-divider);
+  font-family: var(--font-mono); font-size: 12px; color: var(--faint);
+}
+.cmd-file pre { padding: 12px 14px; font-size: 12.5px; line-height: 1.55; }
+
+/* Page heading */
+.page-head { padding: 40px 0 24px; display: flex; flex-direction: column; gap: 10px; }
+.page-head h1 { margin: 0; font-size: clamp(32px, 4.5vw, 48px); line-height: 1.05; letter-spacing: -0.02em; text-wrap: balance; }
+.page-head p { margin: 0; color: var(--muted); font-size: 16px; max-width: 640px; text-wrap: pretty; }
+
+.section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
+.section-head h2 { margin: 0; font-size: clamp(24px, 3vw, 30px); }
+.section-head a { font-size: 14px; text-decoration: none; }
+
+.empty { border: 1px dashed var(--color-divider); padding: 32px 20px; color: var(--muted); }
+.empty p:last-child { margin-bottom: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
