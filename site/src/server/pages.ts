@@ -3,7 +3,7 @@
 import { CHANGE_TAGS, detailPath, url } from '../lib/site';
 import type {
   ArtifactDetailProps, ArtifactView, Badge, CardInfo, ChangeView, DetailView, HomeProps, PageData, PluginDetailProps, PluginSummary, RouteId,
-  SearchProps, SiteInfo, WhatsNewProps,
+  SearchProps, SiteInfo, SkillLink, WhatsNewProps,
 } from '../types';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -143,7 +143,12 @@ function view(data: SiteData, a: any): ArtifactView {
     installCommand: a.installCommand,
     href: url(detailPath(a.id)),
     badges: badgesFor(data, a),
+    ...(a.type === 'agent' && a.skills?.length ? { skills: skillLinks(a.skills) } : {}),
   };
+}
+
+function skillLinks(skills: { name: string; id: string | null }[]): SkillLink[] {
+  return skills.map((s) => ({ name: s.name.split(':').pop()!, fullName: s.name, href: s.id ? url(detailPath(s.id)) : null }));
 }
 
 function searchProps(data: SiteData): SearchProps {
@@ -233,6 +238,11 @@ function artifactProps(data: SiteData, a: any): ArtifactDetailProps {
     },
     summary: summaryOf(components(data, a.plugin)),
     related,
+    usedBy: a.type === 'skill'
+      ? data.catalog.artifacts
+        .filter((x: any) => x.type === 'agent' && (x.skills ?? []).some((s: any) => s.id === a.id))
+        .map((x: any) => ({ name: x.title || x.name, plugin: x.plugin, href: url(detailPath(x.id)) }))
+      : [],
   };
 }
 

@@ -19,6 +19,9 @@
 .card mark, .row mark { background: var(--mark); color: inherit; }
 .tags { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
 .more { font-size: 12px; color: var(--faint); }
+.skills { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; font-size: 13px; }
+.skillsLabel { font-size: 12px; color: var(--faint); }
+.skill { font-family: var(--font-mono); font-size: 12px; overflow-wrap: anywhere; }
 .meta { margin: auto 0 0; font-size: 12px; color: var(--faint); }
 .foot {
   display: flex; align-items: center; gap: 8px; height: 42px; padding: 0 6px 0 20px;

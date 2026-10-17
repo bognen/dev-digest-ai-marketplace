@@ -59,6 +59,15 @@ export function ArtifactCard({ artifact: a, variant, terms, when }: Props) {
             {a.tags.length > 3 && <span className={s.more}>{t('results.moreTags', { count: a.tags.length - 3 })}</span>}
           </div>
         )}
+        {a.skills && a.skills.length > 0 && (
+          <p className={s.skills}>
+            <span className={s.skillsLabel}>{t('results.skills')}</span>
+            {a.skills.slice(0, 3).map((k) => (k.href
+              ? <a key={k.fullName} href={k.href} title={k.fullName} className={s.skill}>{k.name}</a>
+              : <span key={k.fullName} title={k.fullName} className={s.skill}>{k.name}</span>))}
+            {a.skills.length > 3 && <span className={s.more}>{t('results.moreTags', { count: a.skills.length - 3 })}</span>}
+          </p>
+        )}
         <p className={s.meta}>
           {a.version ? t('results.meta', { install, version: a.version, when: date }) : t('results.metaNoVersion', { install, when: date })}
         </p>
