@@ -1,0 +1,21 @@
+.drawer {
+  padding: 0; border: 0; border-left: 1px solid var(--color-divider); margin: 0 0 0 auto;
+  height: 100dvh; max-height: 100dvh; width: min(560px, 100vw); max-width: 100vw;
+  background: var(--color-bg); color: var(--color-text); box-shadow: var(--shadow-lg);
+  overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain;
+}
+.drawer::backdrop { background: var(--backdrop); }
+.inner { display: flex; flex-direction: column; gap: 18px; padding: 24px 28px 40px; min-width: 0; }
+.head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.titles { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.head h2 { margin: 0; font-size: 30px; line-height: 1.05; overflow-wrap: anywhere; }
+.head :global(.btn) { flex: none; }
+.foot { margin: 0; font-size: 14px; }
+
+@media (max-width: 767px) {
+  .drawer {
+    margin: auto 0 0; width: 100vw; height: 92dvh; max-height: 92dvh;
+    border-left: 0; border-top: 1px solid var(--color-divider);
+  }
+  .inner { padding: 20px 16px 32px; }
+}

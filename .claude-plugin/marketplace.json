@@ -6,5 +6,52 @@
     "name": "Dima Bognen",
     "url": "https://github.com/bognen"
   },
-  "plugins": []
+  "plugins": [
+    {
+      "name": "architecture-review",
+      "source": "./plugins/architecture-review",
+      "description": "Read-only architecture review of a diff against your repo's architecture docs and shared layering rules, with file:line evidence for each finding.",
+      "category": "development",
+      "tags": [
+        "code-review",
+        "refactoring",
+        "typescript"
+      ]
+    },
+    {
+      "name": "engineering-paved-path",
+      "source": "./plugins/engineering-paved-path",
+      "description": "Shared technical skills for TypeScript web stacks: architecture, security, React, Next.js, Fastify, Drizzle, PostgreSQL, Zod and Mermaid.",
+      "category": "development",
+      "tags": [
+        "typescript",
+        "javascript",
+        "testing",
+        "database",
+        "sql"
+      ]
+    },
+    {
+      "name": "research-tools",
+      "source": "./plugins/research-tools",
+      "description": "A read-only researcher agent that investigates one scoped question in your repo or on the web and reports evidence and gaps.",
+      "category": "productivity",
+      "tags": [
+        "debugging",
+        "docs",
+        "git"
+      ]
+    },
+    {
+      "name": "sdd-engineering",
+      "source": "./plugins/sdd-engineering",
+      "description": "Spec-Driven Development workflow: write a spec, plan it, run the plan with implementers, verify it and review the architecture, then hold a retro.",
+      "category": "development",
+      "tags": [
+        "code-review",
+        "testing",
+        "docs"
+      ]
+    }
+  ]
 }

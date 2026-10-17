@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: layering-violation-cited
+description: Two real boundary breaks; the repo's ARCHITECTURE.md names the rule ids the reviewer must cite.
+tags: [smoke, layering]
+context:
+  scaffold_script: setup.sh

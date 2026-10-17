@@ -8,8 +8,11 @@ on:
 permissions:
   contents: read
 
+# The site build has its own workflow (site-build.yml), so its status shows
+# separately from these checks of the plugins and the marketplace manifest.
 jobs:
   validate:
+    name: Marketplace and plugin checks
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -48,22 +51,3 @@ jobs:
 
       - name: Marketplace policy checks
         run: node scripts/validate-marketplace.mjs
-
-  site:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # What's New is built from git history
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-          cache-dependency-path: site/package-lock.json
-
-      - name: Build site
-        working-directory: site
-        run: |
-          npm ci
-          npm run build

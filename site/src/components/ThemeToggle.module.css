@@ -1,0 +1,4 @@
+.toggle svg { display: none; }
+:global(html:not([data-theme])) .toggle .system,
+:global(html[data-theme="light"]) .toggle .light,
+:global(html[data-theme="dark"]) .toggle .dark { display: block; }

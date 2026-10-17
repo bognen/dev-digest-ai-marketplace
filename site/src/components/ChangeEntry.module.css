@@ -1,0 +1,29 @@
+/* Timeline row */
+.row {
+  list-style: none; display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center;
+  padding: 14px 0; border-bottom: 1px solid var(--color-divider);
+}
+.row[hidden] { display: none; }
+.date { width: 52px; font-family: var(--font-mono); font-size: 12px; color: var(--faint); }
+.kind { width: 96px; }
+.card { flex: 0 1 280px; min-width: min(220px, 100%); }
+.notes { flex: 1 1 220px; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.ver { font-family: var(--font-mono); font-size: 13px; }
+.note { margin: 0; font-size: 14px; color: var(--muted); overflow-wrap: anywhere; }
+.sub { margin: 0; font-size: 13px; color: var(--faint); overflow-wrap: anywhere; }
+
+/* Strip cell */
+.cell {
+  list-style: none; padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 8px;
+  background: var(--color-bg); min-width: 0; transition: background-color .15s; scroll-snap-align: start;
+}
+.cell:hover { background: var(--color-surface); }
+.cellTop { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.cellTop time { font-family: var(--font-mono); font-size: 11px; color: var(--faint); }
+.cellName { margin: 0; font-size: 21px; line-height: 1.15; letter-spacing: 0; overflow-wrap: anywhere; }
+.cellName a { color: var(--color-text); text-decoration: none; }
+.cellName a:hover { color: var(--accent-text); text-decoration: underline; }
+.removed .cellName { text-decoration: line-through; }
+.cellMeta { font-size: 13px; color: var(--muted); }
+.cellVer { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.cellInstall { align-self: flex-start; height: 28px; margin: auto 0 0 -4px; font-size: 13px; }

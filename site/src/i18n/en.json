@@ -1,0 +1,379 @@
+{
+  "meta": {
+    "lang": "en"
+  },
+  "date": {
+    "months": [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ],
+    "short": "{day} {month}",
+    "long": "{day} {month} {year}"
+  },
+  "site": {
+    "title": "{name} marketplace",
+    "pageTitle": "{page} · {site}",
+    "description": "Plugins, skills and agents for Claude Code",
+    "fallbackDescription": "A curated Claude Code plugin marketplace."
+  },
+  "pages": {
+    "getStarted": {
+      "title": "Get started",
+      "description": "How to connect the {name} marketplace to Claude Code"
+    },
+    "whatsNew": {
+      "title": "What's new",
+      "description": "New, updated and deprecated plugins, skills and agents"
+    },
+    "notFound": {
+      "title": "Page not found"
+    },
+    "search": {
+      "title": "All artifacts",
+      "description": "Every plugin, skill, agent, command, hook and MCP server in the {name} marketplace"
+    }
+  },
+  "types": {
+    "plugin": "Plugin",
+    "skill": "Skill",
+    "agent": "Agent",
+    "command": "Command",
+    "hook": "Hook",
+    "mcp": "MCP"
+  },
+  "typeCodes": {
+    "plugin": "PLUGIN",
+    "skill": "SKILL",
+    "agent": "AGENT",
+    "command": "CMD",
+    "hook": "HOOK",
+    "mcp": "MCP"
+  },
+  "changeKinds": {
+    "new": "New",
+    "updated": "Updated",
+    "deprecated": "Deprecated",
+    "removed": "Removed"
+  },
+  "badges": {
+    "new": "New",
+    "updated": "Updated",
+    "beta": "Beta",
+    "deprecated": "Deprecated"
+  },
+  "common": {
+    "changes": {
+      "one": "{count} change",
+      "other": "{count} changes"
+    },
+    "copy": "Copy",
+    "copied": "Copied",
+    "copyFailed": "Copy failed",
+    "copiedAnnouncement": "Copied to clipboard",
+    "copyAriaLabel": "Copy {label}",
+    "close": "Close",
+    "install": "Install",
+    "installWith": "Install with {plugin}",
+    "installAriaLabel": "Install {plugin}",
+    "inPlugin": "in {plugin}",
+    "typeInPlugin": "{type} · {plugin}",
+    "listSeparator": ", "
+  },
+  "nav": {
+    "main": "Main",
+    "footer": "Footer",
+    "whatsNew": "What's new",
+    "getStarted": "Get started",
+    "github": "GitHub",
+    "contribute": "Contribute",
+    "browse": "Browse"
+  },
+  "layout": {
+    "skipToContent": "Skip to content"
+  },
+  "header": {
+    "homeAriaLabel": "{name} home",
+    "searchPlaceholder": {
+      "one": "Search {count} artifact",
+      "other": "Search {count} artifacts"
+    },
+    "searchPlaceholderEmpty": "Search…",
+    "searchToggle": "Search",
+    "menu": "Menu",
+    "githubAriaLabel": "GitHub repository",
+    "githubAriaLabelStars": {
+      "one": "GitHub repository, {count} star",
+      "other": "GitHub repository, {count} stars"
+    },
+    "githubStars": "GitHub ★ {count}"
+  },
+  "search": {
+    "label": "Search plugins, skills and agents",
+    "results": "Search results",
+    "nothingPublished": "No artifacts have been published yet.",
+    "noMatches": "No matches for “{query}”",
+    "seeAll": {
+      "one": "See {count} result →",
+      "other": "See all {count} results →"
+    }
+  },
+  "theme": {
+    "ariaLabel": "Theme: {theme}",
+    "system": "system",
+    "light": "light",
+    "dark": "dark"
+  },
+  "footer": {
+    "updated": "Catalog updated {date}"
+  },
+  "start": {
+    "kicker": "Start here",
+    "connected": "Connected to {name}",
+    "title": "Plugins, skills and agents for Claude Code, in one marketplace.",
+    "pitch": "Connect {name} once, then install any plugin with a single command. Takes about three minutes.",
+    "pitchConnected": "You have added the marketplace. See what has been added or updated, or install the starter pack.",
+    "connect": "Connect the marketplace",
+    "browse": "Browse what's new",
+    "findSkill": "Find a skill",
+    "starterPack": "Starter pack",
+    "dismiss": "Dismiss",
+    "dismissAriaLabel": "Dismiss the getting started card",
+    "stats": {
+      "plugin": "Plugins",
+      "skill": "Skills",
+      "agent": "Agents",
+      "command": "Commands"
+    },
+    "copyAll": "Copy all install commands",
+    "starterEmpty": "We're still choosing the starter plugins. Meanwhile, <link>see what's new</link>."
+  },
+  "home": {
+    "title": "Claude Code plugins, skills and agents",
+    "showStart": "New here? Getting started →"
+  },
+  "strip": {
+    "title": "What's new",
+    "seeAll": "See all →",
+    "empty": "Nothing has been published yet. New and updated plugins appear here as soon as they're merged."
+  },
+  "changes": {
+    "includes": {
+      "one": "Includes {count} component: {list}",
+      "other": "Includes {count} components: {list}"
+    },
+    "changed": "Changed: {list}"
+  },
+  "whatsNew": {
+    "title": "What's new",
+    "intro": "Every change to the catalog, from git history and plugin versions. Rebuilt on every merge to main.",
+    "filters": "Filter changes",
+    "changeType": "Change type",
+    "all": "All",
+    "artifactType": "Artifact type",
+    "allTypes": "All types",
+    "plugin": "Plugin",
+    "allPlugins": "All plugins",
+    "noMatch": "No changes match these filters.",
+    "clearFilters": "Clear filters",
+    "week": "Week of {date}",
+    "emptyTitle": "Nothing has been published yet.",
+    "emptyBody": "New plugins, version updates and deprecations appear here as soon as they're merged into <code>main</code>.",
+    "emptyContribute": "Want to add one? Read the <link>contribution guide</link>.",
+    "connect": "Connect the marketplace"
+  },
+  "getStarted": {
+    "kicker": "Get started",
+    "title": "Connect the marketplace",
+    "intro": "About three minutes. Pick where you use Claude Code; the steps are the same. Tick each step as you go — progress is saved in this browser.",
+    "asideLabel": "More",
+    "terminalTitle": "Prefer the terminal?",
+    "terminalBody": "Install <code>find-skill</code> and ask Claude Code to recommend artifacts from this catalog without leaving your session.",
+    "comingSoon": "Coming in phase 2",
+    "next": "Next",
+    "seeWhatsNew": "See what's new",
+    "backToCatalog": "Back to the catalog"
+  },
+  "notFound": {
+    "path": "404 · {path}",
+    "title": "This page isn't in the catalog.",
+    "lead": "It may have been renamed or removed. Search for what you need instead.",
+    "search": "Search the marketplace",
+    "home": "Home",
+    "whatsNew": "What's new",
+    "getStarted": "Get started"
+  },
+  "drawer": {
+    "kicker": "Get started",
+    "kickerInstall": "Install",
+    "title": "Connect the marketplace",
+    "titleInstall": "Install {plugin}",
+    "fullGuide": "Open the full guide →"
+  },
+  "onboarding": {
+    "tablist": "Where you use Claude Code",
+    "tabs": {
+      "cli": "CLI",
+      "desktop": "Desktop app",
+      "ide": "IDE"
+    },
+    "progress": "{done} of {total} done",
+    "stepDone": "Step {n} done: {title}",
+    "optional": "Optional",
+    "prereq": {
+      "title": "Check prerequisites",
+      "cli": "Install Claude Code, then check that it runs. Use the latest release, because plugin features ship often.",
+      "cliWindows": "Windows PowerShell: <code>{command}</code>. Other options are on the <setup>setup page</setup>.",
+      "desktop": "Install the Claude desktop app (<desktop>macOS and Windows</desktop>) and sign in. Plugins work in local sessions only, not in cloud or WSL sessions.",
+      "desktopCli": "Step 2 needs the Claude Code CLI once. Install it from the <setup>setup page</setup>. The desktop app reads the same settings, so what you add there appears in the app.",
+      "vscode": "<b>VS Code:</b> install the <em>Claude Code</em> extension from the Extensions view (<kbd>Ctrl/Cmd+Shift+X</kbd>). See the <vscode>VS Code guide</vscode>.",
+      "jetbrains": "<b>JetBrains:</b> install the <jetbrains>Claude Code plugin</jetbrains> and the <setup>Claude Code CLI</setup>. The plugin runs the CLI in the IDE terminal, so follow the <b>CLI</b> tab for the remaining steps."
+    },
+    "add": {
+      "title": "Add the marketplace",
+      "cli": "In a Claude Code session, run:",
+      "cliShell": "From your shell instead: <code>{command}</code>",
+      "desktop": "The desktop app has no button for adding a marketplace yet. Run this once in a terminal:",
+      "desktopNote": "The terminal, the desktop app and VS Code read the same settings, so the marketplace appears in the app straight away.",
+      "vscode": "<b>VS Code:</b> type <code>/plugins</code> in the Claude prompt box to open <b>Manage plugins</b>. Then open the <b>Marketplaces</b> tab and add:",
+      "jetbrains": "<b>JetBrains:</b> run <code>{command}</code> in the Claude terminal.",
+      "private": "Private repository? Authenticate git first, as described under Troubleshooting below."
+    },
+    "install": {
+      "title": "Browse and install",
+      "titleFor": "Install {plugin}",
+      "addFirst": "<b>First, add the marketplace.</b> Finish step 2, then install {plugin}.",
+      "cli": "Run <code>/plugin</code> and browse the <b>Discover</b> tab, or install a plugin directly:",
+      "cliScope": "Then choose a scope: <em>for you</em> (user), <em>for all collaborators</em> (project), or <em>for you, in this repo only</em> (local). From your shell: {command}",
+      "desktop": "Click <b>+</b> next to the prompt box, then <b>Plugins → Add plugin</b>. Find the plugin, choose a scope and install it.",
+      "desktopTerminal": "Or use a terminal:",
+      "vscode": "<b>VS Code:</b> in <b>Manage plugins</b> (<code>/plugins</code>), open the <b>Plugins</b> tab, search for the plugin and click <b>Install</b>. Then pick <em>Install for you</em>, <em>for this project</em> or <em>locally</em>.",
+      "jetbrains": "<b>JetBrains:</b> run this in the Claude terminal:",
+      "components": "Skills, agents and commands install with their plugin. <whatsNew>See what's available</whatsNew>."
+    },
+    "verify": {
+      "title": "Verify",
+      "cli": "If you installed during this session, run <code>/reload-plugins</code> first. The plugin should then appear in <code>/plugin</code> on the <b>Installed</b> tab. Type <code>/</code> to see its skills as <code>{skillRef}</code>.",
+      "desktop": "Open <b>+ → Plugins → Manage plugins</b>. The plugin should be listed and enabled. Type <code>/</code> in the prompt box to see its skills.",
+      "vscode": "<b>VS Code:</b> the plugin shows in <b>Manage plugins</b> with its toggle on. If it failed to load, the row shows the reason. Type <code>/</code> to see its skills.",
+      "jetbrains": "<b>JetBrains:</b> run <code>/reload-plugins</code>, then check <code>/plugin</code> → <b>Installed</b>."
+    },
+    "update": {
+      "title": "Stay updated",
+      "intro": "Auto-update is off by default for community marketplaces. Turn it on in <code>/plugin</code> → <b>Marketplaces</b> → <b>{mp}</b> → <b>Enable auto-update</b>, or update manually:",
+      "note": "A running session keeps the version it loaded until you run <code>/reload-plugins</code> or start a new session. <whatsNew>What's New</whatsNew> lists every release."
+    },
+    "team": {
+      "title": "Set up your team",
+      "intro": "Commit this file to your project. Teammates are offered the marketplace and plugins after they trust the folder.",
+      "note": "Or run <code>{addCommand}</code> to write the marketplace part for you. Plugins hosted outside this repository still need <code>{installCommand}</code> on each machine."
+    },
+    "troubleshooting": {
+      "title": "Troubleshooting",
+      "intro": "Common problems and how to fix them.",
+      "authQuestion": "“Repository not found” or authentication errors",
+      "authAnswer": "Claude Code uses your own git credentials and can't show a login prompt. For HTTPS, run <code>gh auth login</code> and then <code>gh auth setup-git</code>. A <code>GITHUB_TOKEN</code> environment variable alone is not enough. For SSH, your key must work without a passphrase prompt. Test access with <code>{command}</code>.",
+      "missingQuestion": "The plugin doesn't show up",
+      "missingAnswer": "Run <code>/reload-plugins</code>, or start a new session. Project-scope plugins and marketplaces from <code>.claude/settings.json</code> load only after you accept the folder's trust prompt. Load errors are listed in <code>/plugin</code> on the <b>Errors</b> tab.",
+      "updateQuestion": "An update isn't picked up",
+      "updateAnswer": "Run <code>{updateCommand}</code>, then <code>/reload-plugins</code>. If <code>{pluginUpdateCommand}</code> says you're on the latest version, no new version has been released yet. Check <whatsNew>What's New</whatsNew>.",
+      "removeQuestion": "Disable or uninstall a plugin",
+      "removeAnswer": "In a session, open <code>/plugin</code> → <b>Installed</b> and use <kbd>Space</kbd> to toggle, or open the plugin for <b>Uninstall</b>. From your shell:",
+      "removeMarketplace": "Removing the marketplace, with <code>{command}</code>, uninstalls all of its plugins."
+    },
+    "copyLabels": {
+      "installScript": "macOS and Linux install command",
+      "versionCheck": "version check",
+      "addMarketplace": "add marketplace command",
+      "marketplaceRepo": "marketplace repository",
+      "install": "install command",
+      "list": "list command",
+      "update": "update command",
+      "teamSnippet": "team settings snippet",
+      "disableUninstall": "disable and uninstall commands"
+    }
+  },
+  "categories": {
+    "development": "Development",
+    "testing": "Testing",
+    "devops": "DevOps",
+    "data": "Data",
+    "documents": "Documents",
+    "writing": "Writing",
+    "productivity": "Productivity",
+    "security": "Security"
+  },
+  "statuses": {
+    "stable": "Stable",
+    "beta": "Beta",
+    "deprecated": "Deprecated"
+  },
+  "results": {
+    "title": "All artifacts",
+    "titleQuery": {
+      "one": "{count} result for {query}",
+      "other": "{count} results for {query}"
+    },
+    "count": {
+      "one": "{count} result",
+      "other": "{count} results"
+    },
+    "summarySorted": "{results} · sorted by {sort}",
+    "sortedBy": {
+      "name": "name",
+      "updated": "last update"
+    },
+    "filters": "Filters",
+    "filtersCount": "Filters ({count})",
+    "showResults": {
+      "one": "Show {count} result",
+      "other": "Show {count} results"
+    },
+    "facets": {
+      "type": "Type",
+      "plugin": "Plugin",
+      "category": "Category",
+      "status": "Status",
+      "updated": "Updated"
+    },
+    "updatedWithin": {
+      "any": "Any time",
+      "7": "Last 7 days",
+      "30": "Last 30 days",
+      "90": "Last 90 days"
+    },
+    "chip": "{facet}: {value}",
+    "chipUpdated": "Updated: last {days} days",
+    "removeFilter": "Remove filter {label}",
+    "clearAll": "Clear all",
+    "sort": "Sort",
+    "sortOptions": {
+      "relevance": "Relevance",
+      "updated": "Recently updated",
+      "name": "Name A–Z"
+    },
+    "layout": "Layout",
+    "gridView": "Grid view",
+    "listView": "List view",
+    "emptyTitle": "No matches for “{query}”",
+    "emptyFilters": "these filters",
+    "emptyHint": "Try fewer or different words, remove a filter, or browse a popular category:",
+    "request": "Can't find it? <link>Request this artifact ↗</link>",
+    "requestIssueTitle": "Request: {query}",
+    "installsPlugin": "Installs this plugin",
+    "installsWith": "Installs with {plugin}",
+    "meta": "{install} · v{version} · {when}",
+    "metaNoVersion": "{install} · {when}",
+    "copyInstall": "Copy install command",
+    "moreTags": "+{count}"
+  }
+}

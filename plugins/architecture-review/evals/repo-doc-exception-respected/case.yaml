@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: repo-doc-exception-respected
+description: The generic onion rules forbid a service constructing a repository, but this repo documents it as an allowed exception, so the reviewer must not flag it.
+tags: [repo-docs, precision]
+context:
+  scaffold_script: setup.sh

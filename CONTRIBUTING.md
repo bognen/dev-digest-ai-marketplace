@@ -23,13 +23,22 @@ Thanks for adding to the `dev-digest-ai-marketplace` marketplace. Read these bef
 
 ## Changing the site
 
-The marketplace site lives in `site/` (Astro). Run it locally:
+The marketplace site lives in `site/`: React 18 components (`src/components`, `src/pages`) built with Vite and prerendered to static HTML for GitHub Pages. Run it locally:
 
 ```bash
 cd site
 npm ci
-npm run dev
+npm run dev        # http://localhost:5173, re-reads the repo on every page load
+npm run typecheck
+npm run build      # dist/: client bundle, then server render of each page
+npm run preview    # serves dist/ the way GitHub Pages does
 ```
+
+All text the site shows is in `site/src/i18n/en.json`; components look it up by key (`t('header.menu')`), so change wording there, not in the components.
+
+Every PR runs two separate checks: **Validate marketplace** (plugins and the manifest) and **Site build** (typecheck, build and the 150 KB JavaScript budget). The Site build run page has a summary table with the result of each step.
+
+The site shows only what is in this repository, so a plugin appears once it is in `.claude-plugin/marketplace.json` and the catalog is valid (`node scripts/validate-marketplace.mjs`).
 
 ## Commit messages
 

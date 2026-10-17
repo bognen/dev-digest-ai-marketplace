@@ -1,0 +1,8 @@
+{
+  "name": "engineering-paved-path",
+  "version": "1.0.0",
+  "description": "Shared technical skills for TypeScript web stacks: architecture, security, TypeScript, React, Next.js, Fastify, Drizzle, PostgreSQL, Zod and Mermaid, plus a file-to-skill routing table",
+  "author": { "name": "Dima Bognen", "url": "https://github.com/bognen" },
+  "repository": "https://github.com/bognen/dev-digest-ai-marketplace",
+  "keywords": ["skills", "typescript", "react", "nextjs", "fastify", "drizzle", "postgresql", "zod", "architecture", "security"]
+}

@@ -1,12 +1,21 @@
 # Dev Digest AI — Claude Code Plugin Marketplace
 
+[![Marketplace checks](https://github.com/bognen/dev-digest-ai-marketplace/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/bognen/dev-digest-ai-marketplace/actions/workflows/validate.yml)
+[![Site build](https://github.com/bognen/dev-digest-ai-marketplace/actions/workflows/site-build.yml/badge.svg?branch=main)](https://github.com/bognen/dev-digest-ai-marketplace/actions/workflows/site-build.yml)
+[![Deploy site](https://github.com/bognen/dev-digest-ai-marketplace/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/bognen/dev-digest-ai-marketplace/actions/workflows/pages.yml)
+
 A [Claude Code plugin marketplace](https://code.claude.com/docs/en/plugins/create-marketplace) named **`dev-digest-ai-marketplace`**. Browse it at **https://bognen.github.io/dev-digest-ai-marketplace/**.
 
 ## Plugins
 
-| Plugin | Description |
-|---|---|
-| _none yet_ | |
+| Plugin | Description | Depends on |
+|---|---|---|
+| [`sdd-engineering`](plugins/sdd-engineering) | Spec-Driven Development workflow: spec, plan, `/run-plan`, verification, architecture review and retro | `engineering-paved-path`, `research-tools`, `architecture-review` |
+| [`architecture-review`](plugins/architecture-review) | Read-only `architecture-reviewer` agent that checks a diff against your repo's architecture docs | `engineering-paved-path` |
+| [`research-tools`](plugins/research-tools) | Read-only `researcher` agent for scoped questions about your repo or the web | none |
+| [`engineering-paved-path`](plugins/engineering-paved-path) | Shared technical skills: onion architecture, frontend architecture, security, TypeScript, React, Next.js, Fastify, Drizzle, PostgreSQL, Zod, Mermaid and skill routing | none |
+
+Installing a plugin also installs its dependencies. Dependency ranges resolve against git tags (`<plugin>--v<version>`), so release a dependency before the plugins that use it. See [docs/RELEASES.md](docs/RELEASES.md).
 
 ## Prerequisites
 
@@ -58,7 +67,7 @@ plugins/<plugin-name>/            # one directory per plugin
 scripts/
   validate-marketplace.mjs        # policy checks on top of claude plugin validate
   lib/catalog.mjs                 # catalog model shared by the validator and the site
-site/                             # marketplace site (Astro): Start card, Get started, What's New
+site/                             # marketplace site (React + Vite, prerendered): Start card, Get started, What's New
 CODEOWNERS
 CONTRIBUTING.md
 ```

@@ -39,6 +39,22 @@ Without a matching section, What's New falls back to the commit subject.
    ```
 5. The marketplace site rebuilds on the merge, and the change appears under What's New.
 
+## Plugins with dependencies
+
+A plugin can list other plugins from this marketplace in `plugin.json` → `dependencies`, with a semver range:
+
+```json
+"dependencies": [{ "name": "engineering-paved-path", "version": "^1.0.0" }]
+```
+
+Claude Code installs each dependency at the highest git tag `<plugin>--v<version>` that satisfies the range. A dependency with no matching tag cannot be installed, so:
+
+1. Tag dependencies before the plugins that depend on them. The current order is `engineering-paved-path`, then `research-tools` and `architecture-review`, then `sdd-engineering`.
+2. A major bump of a dependency (`2.0.0`) is outside `^1.0.0`. Release it, then update and release every dependent plugin's range in the same change set.
+3. When two plugins depend on the same plugin, their ranges must overlap. `architecture-review` and `sdd-engineering` both require `engineering-paved-path`.
+
+After tagging, check a test install with `claude plugin list --json`. It must show no `dependency-unsatisfied` or `dependency-version-unsatisfied` errors.
+
 ## Deprecating and removing
 
 - **Deprecate:** set `"metadata": { "status": "deprecated" }` on the marketplace entry and say what replaces the plugin in its README and changelog. It stays installable.

@@ -1,0 +1,8 @@
+{
+  "name": "research-tools",
+  "version": "1.0.0",
+  "description": "A read-only researcher agent that answers one scoped question from your repository or the web and returns evidence, references and what it could not find",
+  "author": { "name": "Dima Bognen", "url": "https://github.com/bognen" },
+  "repository": "https://github.com/bognen/dev-digest-ai-marketplace",
+  "keywords": ["research", "investigation", "read-only", "agent"]
+}

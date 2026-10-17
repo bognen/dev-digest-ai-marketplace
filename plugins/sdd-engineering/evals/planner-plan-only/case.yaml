@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: planner-plan-only
+description: implementation-planner writes exactly one Status draft *-plan.md in the configured plansDir and no code, and does not invent a verify command.
+tags: [implementation-planner, guard]
+context:
+  scaffold_script: scaffold.sh
