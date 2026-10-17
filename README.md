@@ -31,7 +31,7 @@ Installing a plugin also installs its dependencies. Dependency ranges resolve ag
 
 From your shell, use `claude plugin marketplace add …` and `claude plugin install …`.
 
-Update with `/plugin marketplace update dev-digest-ai-marketplace`. Auto-update is off by default for community marketplaces. Turn it on in `/plugin` → Marketplaces. The site's [Get started](https://bognen.github.io/dev-digest-ai-marketplace/get-started) page covers the CLI, the desktop app and the IDEs.
+Update with `/plugin marketplace update dev-digest-ai-marketplace`. Auto-update is off by default for community marketplaces. Turn it on in `/plugin` → Marketplaces. It runs within about ten minutes of your first message in a session, not at startup; see [docs/RELEASES.md](docs/RELEASES.md#getting-updates-as-a-user). The site's [Get started](https://bognen.github.io/dev-digest-ai-marketplace/get-started) page covers the CLI, the desktop app and the IDEs.
 
 ### Team setup
 

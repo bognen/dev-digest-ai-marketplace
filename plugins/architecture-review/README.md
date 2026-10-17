@@ -18,6 +18,17 @@ It reads **your repository's own architecture docs first** and falls back to the
 
 Installing it also installs **`engineering-paved-path`** (`^1.0.0`), because the reviewer preloads four of its skills. Claude Code resolves the dependency from this marketplace automatically.
 
+## Updates
+
+Auto-update is off for this marketplace until you turn it on: `/plugin` → **Marketplaces** → `dev-digest-ai-marketplace` → **Enable auto-update**. It does not run at startup. In an interactive session, after your first message, Claude Code waits a random delay of up to ten minutes, refreshes the marketplace and updates any plugin whose `plugin.json` version changed. It then shows `Plugin updated: architecture-review · Run /reload-plugins to apply`.
+
+To update straight away instead, run this from your shell:
+
+```bash
+claude plugin marketplace update dev-digest-ai-marketplace
+claude plugin update architecture-review@dev-digest-ai-marketplace
+```
+
 ## What it contains
 
 | Component | Name | What it does |
