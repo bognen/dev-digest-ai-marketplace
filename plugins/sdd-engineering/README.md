@@ -13,6 +13,17 @@ plan before any code is written.
 Installing it also installs its three dependencies from the same marketplace:
 `engineering-paved-path`, `research-tools` and `architecture-review`.
 
+## Updates
+
+Auto-update is off for this marketplace until you turn it on: `/plugin` → **Marketplaces** → `dev-digest-ai-marketplace` → **Enable auto-update**. It does not run at startup. In an interactive session, after your first message, Claude Code waits a random delay of up to ten minutes, refreshes the marketplace and updates any plugin whose `plugin.json` version changed. It then shows `Plugin updated: sdd-engineering · Run /reload-plugins to apply`.
+
+To update straight away instead, run this from your shell:
+
+```bash
+claude plugin marketplace update dev-digest-ai-marketplace
+claude plugin update sdd-engineering@dev-digest-ai-marketplace
+```
+
 ## How the pieces fit together
 
 ```mermaid

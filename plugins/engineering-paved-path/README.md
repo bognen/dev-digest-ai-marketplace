@@ -10,6 +10,17 @@ Shared technical skills for TypeScript web stacks: backend and frontend architec
 
 You rarely need to install it by hand: `architecture-review` and `sdd-engineering` declare it as a dependency, so installing either one pulls it in.
 
+## Updates
+
+Auto-update is off for this marketplace until you turn it on: `/plugin` → **Marketplaces** → `dev-digest-ai-marketplace` → **Enable auto-update**. It does not run at startup. In an interactive session, after your first message, Claude Code waits a random delay of up to ten minutes, refreshes the marketplace and updates any plugin whose `plugin.json` version changed. It then shows `Plugin updated: engineering-paved-path · Run /reload-plugins to apply`.
+
+To update straight away instead, run this from your shell:
+
+```bash
+claude plugin marketplace update dev-digest-ai-marketplace
+claude plugin update engineering-paved-path@dev-digest-ai-marketplace
+```
+
 ## What it contains
 
 Skills only. There are no agents, hooks, MCP servers or network calls.

@@ -6,6 +6,8 @@ Claude Code updates a plugin only when its **computed version** changes. It take
 
 We set `version` in `plugin.json` only. **If you push changes without bumping it, users never receive them.** Never also set `version` in the marketplace entry: `plugin.json` silently wins, and validation warns.
 
+Updates come from the version on `main`. Git tags (`<plugin>--v<version>`) do not trigger them; tags only choose which version of a plugin to install when another plugin depends on it (see [Plugins with dependencies](#plugins-with-dependencies)).
+
 ## Versioning
 
 Plugins follow [semver](https://semver.org):
@@ -38,6 +40,7 @@ Without a matching section, What's New falls back to the commit subject.
    claude plugin tag plugins/<plugin> --push      # creates <plugin>--v<version>
    ```
 5. The marketplace site rebuilds on the merge, and the change appears under What's New.
+6. Users with auto-update on get the new version in their next interactive session, within about ten minutes of their first message (see [Getting updates as a user](#getting-updates-as-a-user)).
 
 ## Plugins with dependencies
 
@@ -63,10 +66,17 @@ After tagging, check a test install with `claude plugin list --json`. It must sh
 
 ## Getting updates as a user
 
-Auto-update is off by default for third-party marketplaces. Users either update manually:
+Auto-update is off by default for third-party marketplaces. Turn it on in `/plugin` → **Marketplaces** → `dev-digest-ai-marketplace` → **Enable auto-update**, or set `"autoUpdate": true` on the marketplace's `extraKnownMarketplaces` entry in a project's `.claude/settings.json` (see the [README](../README.md#team-setup)).
+
+**When it runs.** Auto-update does not run at startup. In an interactive session, after the user's first message, Claude Code waits a random delay of up to ten minutes. It then refreshes every marketplace with auto-update on and updates plugins whose version changed. The running session keeps the old version and shows `Plugin updated: <plugin> · Run /reload-plugins to apply`. Only interactive sessions run it. Sessions with `DISABLE_UPDATES`, `DISABLE_AUTOUPDATER` or `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC` set skip it unless `FORCE_AUTOUPDATE_PLUGINS=1` is set. Details: [When auto-update runs](https://code.claude.com/docs/en/plugins/loading.md#when-auto-update-runs).
+
+**Updating by hand**, from the shell:
 
 ```bash
-/plugin marketplace update dev-digest-ai-marketplace
+claude plugin marketplace update dev-digest-ai-marketplace
+claude plugin update <plugin>@dev-digest-ai-marketplace
 ```
 
-or enable auto-update in `/plugin` → Marketplaces. Run `/reload-plugins` to load updates into a running session.
+Then restart, or run `/reload-plugins` in an open session.
+
+**Checking a release.** In a project that uses the plugin, send a message, wait up to ten minutes, run `/reload-plugins`, then `claude plugin list`. If it still shows the old version, run the two commands above. If they update it, the release is fine and the problem is the auto-update setting.
