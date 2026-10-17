@@ -51,3 +51,6 @@ jobs:
 
       - name: Marketplace policy checks
         run: node scripts/validate-marketplace.mjs
+
+      - name: Cost tooling tests
+        run: node --test "scripts/cost/test/*.test.mjs"

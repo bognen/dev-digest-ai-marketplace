@@ -6,6 +6,16 @@ export function url(path = ''): string {
   return `${base}/${path.replace(/^\//, '')}`;
 }
 
+/**
+ * Detail page of a catalog id ("<plugin>/<type>/<name>"), relative to the base:
+ * plugins/<plugin>/ for a plugin, plugins/<plugin>/<type>/<name>/ otherwise.
+ */
+export function detailPath(id: string): string {
+  const [plugin, type, ...rest] = id.split('/');
+  const seg = (s: string) => encodeURIComponent(s);
+  return type === 'plugin' ? `plugins/${seg(plugin)}/` : `plugins/${seg(plugin)}/${seg(type)}/${rest.map(seg).join('/')}/`;
+}
+
 const parts = (iso: string) => {
   const d = new Date(iso);
   return { day: d.getUTCDate(), month: MONTHS[d.getUTCMonth()], year: d.getUTCFullYear() };

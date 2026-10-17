@@ -43,3 +43,6 @@ build/
 .env.*
 *.pem
 *.key
+
+# Raw output of scripts/cost/run-scenario.sh
+.cost-runs/

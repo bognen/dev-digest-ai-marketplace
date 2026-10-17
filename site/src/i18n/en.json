@@ -375,5 +375,107 @@
     "metaNoVersion": "{install} · {when}",
     "copyInstall": "Copy install command",
     "moreTags": "+{count}"
+  },
+  "detail": {
+    "breadcrumb": "Breadcrumb",
+    "catalog": "Catalog",
+    "version": "v{version}",
+    "updated": "Updated {date}",
+    "by": "by {author}",
+    "install": "Install",
+    "installsPlugin": "Installs {summary}",
+    "installsWith": "Installs with plugin {plugin} ({summary})",
+    "notConnected": "Not connected yet? <link>Get started</link>",
+    "deprecated": "This {type} is deprecated.",
+    "sections": "Sections",
+    "tabs": {
+      "overview": "Overview",
+      "how": "How to use",
+      "req": "Requirements",
+      "files": "Files",
+      "log": "Changelog"
+    },
+    "how": {
+      "skill": "Claude loads this skill on its own when your request matches its description. You can also ask for it by name.",
+      "slashSkill": "Type it in a Claude Code session. Claude can also load it on its own when your request matches its description. Arguments in [brackets] are optional.",
+      "agent": "Ask Claude to “use the {name} agent”, or let Claude delegate to it when a task matches its description.",
+      "command": "Type the command in a Claude Code session. Arguments in [brackets] are optional.",
+      "hook": "Runs automatically on the {event} event once the plugin is installed. Nothing to call.",
+      "mcp": "Set the environment variables listed under Requirements, then restart Claude Code. Claude can then call the server’s tools."
+    },
+    "syntax": "Syntax",
+    "examples": "Example prompts",
+    "copyPrompt": "Copy prompt",
+    "noBody": "No description beyond the summary above.",
+    "requirements": {
+      "tools": "Allowed tools",
+      "model": "Model",
+      "env": "Environment variables",
+      "event": "Hook event",
+      "arguments": "Arguments"
+    },
+    "toolsDefault": "Session default",
+    "modelDefault": "Inherits from session",
+    "noChangelog": "No changelog yet.",
+    "quality": "Quality",
+    "qualityScore": "{score} / 100",
+    "qualityLabel": "Quality score",
+    "qualityFlags": {
+      "validManifest": "Valid manifest",
+      "hasReadme": "Has a README",
+      "hasExamples": "Has example prompts",
+      "recentlyUpdated": "Updated in the last 90 days",
+      "description": "Clear description"
+    },
+    "tags": "Tags",
+    "details": "Details",
+    "meta": {
+      "type": "Type",
+      "plugin": "Plugin",
+      "category": "Category",
+      "version": "Version",
+      "added": "Added",
+      "updated": "Updated",
+      "author": "Author",
+      "status": "Status"
+    },
+    "viewSource": "View source on GitHub",
+    "reportIssue": "Report an issue",
+    "related": "Related",
+    "contents": "Contents",
+    "readme": "README",
+    "changelog": "Changelog",
+    "dependencies": "Installs with it",
+    "noReadme": "This plugin has no README.",
+    "typeCounts": {
+      "skill": {
+        "one": "{count} skill",
+        "other": "{count} skills"
+      },
+      "agent": {
+        "one": "{count} agent",
+        "other": "{count} agents"
+      },
+      "command": {
+        "one": "{count} command",
+        "other": "{count} commands"
+      },
+      "hook": {
+        "one": "{count} hook",
+        "other": "{count} hooks"
+      },
+      "mcp": {
+        "one": "{count} MCP server",
+        "other": "{count} MCP servers"
+      }
+    },
+    "typeGroups": {
+      "skill": "Skills",
+      "agent": "Agents",
+      "command": "Commands",
+      "hook": "Hooks",
+      "mcp": "MCP servers"
+    },
+    "summarySeparator": " · "
   }
 }
