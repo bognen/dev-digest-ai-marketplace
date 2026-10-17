@@ -1,0 +1,48 @@
+/* Grid card */
+.card { list-style: none; display: flex; flex-direction: column; min-width: 0; transition: background-color .15s; }
+.card:hover { background: var(--hover); }
+.dim { opacity: 0.7; }
+.body { padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; min-width: 0; }
+.badges { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.code {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; padding: 2px 7px;
+  border: 1px solid var(--color-accent); color: var(--accent-text);
+}
+.badge { padding: 1px 6px; }
+.name { margin: 0; font-size: 23px; line-height: 1.1; letter-spacing: 0; overflow-wrap: anywhere; }
+.name a, .rowName a { color: var(--color-text); text-decoration: none; }
+.name a:hover, .rowName a:hover { color: var(--accent-text); text-decoration: underline; }
+.desc {
+  margin: 0; font-size: 14px; line-height: 1.5; color: var(--muted);
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.card mark, .row mark { background: var(--mark); color: inherit; }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.more { font-size: 12px; color: var(--faint); }
+.meta { margin: auto 0 0; font-size: 12px; color: var(--faint); }
+.foot {
+  display: flex; align-items: center; gap: 8px; height: 42px; padding: 0 6px 0 20px;
+  border-top: 1px solid var(--color-divider);
+}
+.cmd {
+  flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+  font-size: 12px; color: var(--muted);
+}
+.copy { height: 30px; padding: 0 8px; font-size: 13px; flex: none; }
+
+/* List row */
+.row {
+  list-style: none; display: grid; grid-template-columns: 60px minmax(120px, 1fr) minmax(0, 2fr) auto 30px;
+  align-items: center; gap: 14px; min-height: 46px; padding: 6px 12px; border-bottom: 1px solid var(--color-divider);
+}
+.row:hover { background: var(--hover); }
+.rowCode { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; color: var(--accent-text); }
+.rowName { margin: 0; font-size: 18px; line-height: 1.15; letter-spacing: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rowDesc { font-size: 13px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rowMeta { display: flex; gap: 6px; align-items: center; justify-content: flex-end; font-size: 12px; color: var(--faint); white-space: nowrap; }
+.rowCopy { width: 30px; height: 30px; }
+
+@media (max-width: 767px) {
+  .row { grid-template-columns: 52px minmax(0, 1fr) 30px; }
+  .rowDesc, .rowMeta { display: none; }
+}

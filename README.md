@@ -1,5 +1,9 @@
 # Dev Digest AI — Claude Code Plugin Marketplace
 
+[![Marketplace checks](https://github.com/bognen/dev-digest-ai-marketplace/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/bognen/dev-digest-ai-marketplace/actions/workflows/validate.yml)
+[![Site build](https://github.com/bognen/dev-digest-ai-marketplace/actions/workflows/site-build.yml/badge.svg?branch=main)](https://github.com/bognen/dev-digest-ai-marketplace/actions/workflows/site-build.yml)
+[![Deploy site](https://github.com/bognen/dev-digest-ai-marketplace/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/bognen/dev-digest-ai-marketplace/actions/workflows/pages.yml)
+
 A [Claude Code plugin marketplace](https://code.claude.com/docs/en/plugins/create-marketplace) named **`dev-digest-ai-marketplace`**. Browse it at **https://bognen.github.io/dev-digest-ai-marketplace/**.
 
 ## Plugins
@@ -63,7 +67,7 @@ plugins/<plugin-name>/            # one directory per plugin
 scripts/
   validate-marketplace.mjs        # policy checks on top of claude plugin validate
   lib/catalog.mjs                 # catalog model shared by the validator and the site
-site/                             # marketplace site (Astro): Start card, Get started, What's New
+site/                             # marketplace site (React + Vite, prerendered): Start card, Get started, What's New
 CODEOWNERS
 CONTRIBUTING.md
 ```

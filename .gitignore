@@ -30,7 +30,7 @@ venv/
 
 # Astro site build output
 site/dist/
-site/.astro/
+site/.ssr/
 
 # Packaging artifacts
 *.zip

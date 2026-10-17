@@ -1,0 +1,24 @@
+.layout { display: flex; flex-wrap: wrap; gap: 56px; padding-top: 40px; padding-bottom: 88px; align-items: flex-start; }
+.main { flex: 1 1 600px; min-width: 0; max-width: 780px; display: flex; flex-direction: column; gap: 24px; }
+.head { display: flex; flex-direction: column; gap: 10px; }
+.head h1 { margin: 0; font-size: clamp(34px, 5vw, 52px); line-height: 1.02; letter-spacing: -0.02em; }
+.head p:last-child { margin: 0; color: var(--muted); font-size: 17px; text-wrap: pretty; }
+.aside { flex: 1 1 260px; max-width: 340px; display: flex; flex-direction: column; gap: 20px; position: sticky; top: 84px; }
+.card { padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; }
+.card h2 { margin: 0; font-size: 20px; }
+.card p { margin: 0; font-size: 14px; color: var(--muted); }
+.card code { color: var(--color-text); }
+.card .soon { color: var(--faint); }
+.next { display: flex; flex-direction: column; }
+.next h2 { margin: 0 0 6px; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.next a {
+  display: flex; justify-content: space-between; min-height: 40px; align-items: center;
+  border-bottom: 1px solid var(--color-divider); color: var(--color-text); text-decoration: none;
+}
+.next a:hover { color: var(--accent-text); }
+@media (max-width: 939px) {
+  .aside { position: static; max-width: none; }
+}
+@media (max-width: 480px) {
+  .layout { padding-top: 28px; gap: 40px; }
+}

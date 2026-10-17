@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--app-head-->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&family=Barlow+Condensed:wght@400;500;600&display=swap" />
+    <script>
+      // Apply stored preferences before first paint (no flash).
+      (function () {
+        var d = document.documentElement;
+        function read(k) { try { return JSON.parse(localStorage.getItem('ddm:' + k)); } catch (e) { return null; } }
+        var theme = read('theme');
+        if (theme === 'light' || theme === 'dark') d.dataset.theme = theme;
+        if (read('startCard') === 'dismissed') d.setAttribute('data-start-dismissed', '');
+        var ob = read('onboarding');
+        if (ob && Array.isArray(ob.done) && ob.done.indexOf('add') >= 0) d.setAttribute('data-connected', '');
+        // Filters in the URL: the results page hides its list until they are applied.
+        if (/[?&](q|type|plugin|category|status|updated|sort|view)=/.test(location.search)) d.setAttribute('data-query', '');
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"><!--app-html--></div>
+    <!--app-data-->
+    <script type="module" src="/src/entry-client.tsx"></script>
+  </body>
+</html>

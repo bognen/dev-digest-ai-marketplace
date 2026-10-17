@@ -1,0 +1,104 @@
+name: Site build
+
+# Builds the marketplace site on every PR and push to main, separately from the
+# marketplace and plugin checks in validate.yml, so the build's pass/fail shows
+# as its own check, badge and run summary. Deploying is pages.yml's job.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-build-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  JS_BUDGET_KB: 150 # first-load JavaScript, gzipped
+
+jobs:
+  build:
+    name: Build site
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash # adds pipefail, so a failing build fails the step even through tee
+        working-directory: site
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # What's New is built from git history
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install dependencies
+        id: install
+        run: npm ci
+
+      - name: Typecheck
+        id: typecheck
+        run: npm run typecheck 2>&1 | tee typecheck.log
+
+      - name: Build
+        id: build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run build 2>&1 | tee build.log
+
+      - name: JavaScript size budget
+        id: budget
+        run: |
+          bytes=0
+          for f in dist/assets/*.js; do bytes=$((bytes + $(gzip -9 -c "$f" | wc -c))); done
+          kb=$(awk "BEGIN { printf \"%.1f\", $bytes / 1024 }")
+          echo "kb=$kb" >> "$GITHUB_OUTPUT"
+          if [ "$bytes" -gt $((JS_BUDGET_KB * 1024)) ]; then
+            echo "::error title=JavaScript over budget::${kb} KB gzipped; the budget is ${JS_BUDGET_KB} KB"
+            exit 1
+          fi
+
+      - name: Upload the built site
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: site/dist
+          retention-days: 7
+
+      - name: Summary
+        if: always()
+        env:
+          JOB_STATUS: ${{ job.status }}
+          INSTALL: ${{ steps.install.outcome }}
+          TYPECHECK: ${{ steps.typecheck.outcome }}
+          BUILD: ${{ steps.build.outcome }}
+          BUDGET: ${{ steps.budget.outcome }}
+          JS_KB: ${{ steps.budget.outputs.kb }}
+        run: |
+          result() { case "$1" in success) echo '✅ Passed' ;; failure) echo '❌ Failed' ;; skipped) echo '⏭️ Not run' ;; *) echo "$1" ;; esac; }
+          log() { [ -f "$2" ] && printf '\n<details open><summary>%s output (last 40 lines)</summary>\n\n```\n%s\n```\n</details>\n' "$1" "$(tail -n 40 "$2")"; }
+          {
+            if [ "$JOB_STATUS" = success ]; then echo '## ✅ Site build passed'; else echo '## ❌ Site build failed'; fi
+            echo
+            echo '| Step | Result |'
+            echo '|---|---|'
+            echo "| Install dependencies | $(result "$INSTALL") |"
+            echo "| Typecheck | $(result "$TYPECHECK") |"
+            echo "| Build and prerender | $(result "$BUILD") |"
+            echo "| JavaScript size | $(result "$BUDGET")${JS_KB:+ — ${JS_KB} KB of ${JS_BUDGET_KB} KB gzipped} |"
+            if [ "$BUILD" = success ]; then
+              echo
+              echo "Pages: $(cd dist && find . -name '*.html' | sed 's|^\./||' | sort | paste -sd ' ' -). The built site is attached to this run as the \`site\` artifact."
+            fi
+            [ "$TYPECHECK" = failure ] && log Typecheck typecheck.log
+            [ "$BUILD" = failure ] && log Build build.log
+            true
+          } >> "$GITHUB_STEP_SUMMARY"
