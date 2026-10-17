@@ -4,6 +4,9 @@ All notable changes to `sdd-engineering` are documented here, in
 [Keep a Changelog](https://keepachangelog.com) format. Versions follow
 [semver](https://semver.org).
 
+## [1.0.1] - 2026-10-16
+- Added an example invocation to the `/run-plan` skill
+
 ## [1.0.0] - 2026-10-16
 - Added agents `spec-creator`, `implementation-planner`, `implementer` and `plan-verifier`
 - Added skills `/run-plan`, `/workflow-retro` and `engineering-insights`

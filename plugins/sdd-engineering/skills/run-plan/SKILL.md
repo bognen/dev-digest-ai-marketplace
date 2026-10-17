@@ -10,6 +10,8 @@ metadata:
 
 # /run-plan — lean Spec-Driven execution
 
+Example: `/run-plan docs/plans/checkout-plan.md --verify "npm test" --rounds 2`
+
 You run in the **main session**, so you can spawn subagents. You coordinate; you
 do **not** write or edit code, tests, specs or plans yourself — every change goes
 through `sdd-engineering:implementer`. Never commit, push, open a PR, or change
