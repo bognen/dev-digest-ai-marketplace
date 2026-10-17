@@ -2,7 +2,7 @@
 name: workflow-retro
 description: Workflow retrospective, run manually as /workflow-retro after a multi-agent run (/run-plan, spec-creator fan-out, review loops). Measures tokens, agents, parallelism, tool errors and duplicated reads from the session transcripts, then reports per-agent insights and concrete improvements.
 disable-model-invocation: true
-argument-hint: [session-id-or-transcript-path] [--save] [focus notes...]
+argument-hint: "[session-id-or-transcript-path] [--save] [focus notes...]"
 metadata:
   type: workflow
   role: analyzer
