@@ -553,6 +553,20 @@ export function repoSlug(root) {
   }
 }
 
+/**
+ * An agent's `skills:` list: "plugin:skill" names, or bare names from the agent's
+ * own plugin. id is null when the skill is not in this catalog.
+ */
+function agentSkills(agent, artifacts) {
+  const raw = agent.frontmatter?.skills;
+  const names = Array.isArray(raw) ? raw : typeof raw === 'string' ? raw.split(',') : [];
+  return names.map((n) => String(n).trim()).filter(Boolean).map((name) => {
+    const [plugin, skill] = name.includes(':') ? name.split(':', 2) : [agent.plugin, name];
+    const id = `${plugin}/skill/${skill}`;
+    return { name, id: artifacts.some((x) => x.id === id) ? id : null };
+  });
+}
+
 export function buildSiteData(root, { now = new Date() } = {}) {
   const { model, issues } = validate(root);
   if (!model.marketplace) throw new Error(`Cannot read ${MARKETPLACE_PATH}`);
@@ -602,6 +616,8 @@ export function buildSiteData(root, { now = new Date() } = {}) {
       requires: a.requires,
       examples: a.examples,
       argumentHint: a.argumentHint ?? null,
+      // Agents: the skills preloaded through `skills:` in the frontmatter, as catalog ids where they resolve.
+      skills: a.type === 'agent' ? agentSkills(a, model.artifacts) : undefined,
       sourceUrl: a.type === 'plugin' ? (plugin?.dir ? tree(plugin.dir) : null) : blob(a.path),
       quality,
     };

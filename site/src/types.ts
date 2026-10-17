@@ -80,6 +80,17 @@ export interface ArtifactView {
   installCommand: string;
   href: string | null;
   badges: Badge[];
+  /** Agents: the skills they preload (frontmatter `skills:`). */
+  skills?: SkillLink[];
+}
+
+/** A skill an agent loads; href is null when the skill is not in this catalog. */
+export interface SkillLink {
+  /** Short name, e.g. "onion-architecture". */
+  name: string;
+  /** As written in the agent, e.g. "engineering-paved-path:onion-architecture". */
+  fullName: string;
+  href: string | null;
 }
 
 export interface SearchProps {
@@ -128,6 +139,8 @@ export interface ArtifactDetailProps {
   quality: { score: number; flags: { key: 'validManifest' | 'hasReadme' | 'hasExamples' | 'recentlyUpdated' | 'description'; ok: boolean }[] };
   summary: PluginSummary[];
   related: ArtifactView[];
+  /** Skills: the agents that preload this skill. */
+  usedBy: { name: string; plugin: string; href: string }[];
 }
 
 export interface PluginDetailProps {

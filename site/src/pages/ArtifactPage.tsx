@@ -155,6 +155,34 @@ export function ArtifactPage(p: ArtifactDetailProps) {
             </ul>
           </section>
 
+          {a.skills && a.skills.length > 0 && (
+            <section className={s.asideSection} aria-labelledby="skills-title">
+              <h2 id="skills-title">{t('detail.skills')}</h2>
+              <div className={s.contents}>
+                {a.skills.map((k) => (
+                  <a key={k.fullName} href={k.href ?? undefined} title={k.fullName}>
+                    <span>{k.name}</span>
+                    <span className={s.count}>{k.fullName.includes(':') ? k.fullName.split(':')[0] : a.plugin}</span>
+                  </a>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {p.usedBy.length > 0 && (
+            <section className={s.asideSection} aria-labelledby="used-by-title">
+              <h2 id="used-by-title">{t('detail.usedBy')}</h2>
+              <div className={s.contents}>
+                {p.usedBy.map((u) => (
+                  <a key={u.href} href={u.href}>
+                    <span>{u.name}</span>
+                    <span className={s.count}>{u.plugin}</span>
+                  </a>
+                ))}
+              </div>
+            </section>
+          )}
+
           {a.tags.length > 0 && (
             <section className={s.asideSection}>
               <h2>{t('detail.tags')}</h2>

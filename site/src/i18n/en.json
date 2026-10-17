@@ -374,7 +374,8 @@
     "meta": "{install} · v{version} · {when}",
     "metaNoVersion": "{install} · {when}",
     "copyInstall": "Copy install command",
-    "moreTags": "+{count}"
+    "moreTags": "+{count}",
+    "skills": "Skills"
   },
   "detail": {
     "breadcrumb": "Breadcrumb",
@@ -446,6 +447,8 @@
     "readme": "README",
     "changelog": "Changelog",
     "dependencies": "Installs with it",
+    "skills": "Skills it loads",
+    "usedBy": "Loaded by agents",
     "noReadme": "This plugin has no README.",
     "typeCounts": {
       "skill": {
