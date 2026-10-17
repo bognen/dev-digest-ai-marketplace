@@ -1,0 +1,18 @@
+{
+  "$comment": "The fixed SDD scenario for docs/COST-BASELINE.md. Change it only together with a new baseline: results measured with different cases, runs or model are not comparable.",
+  "plugin": "plugins/sdd-engineering",
+  "model": "claude-sonnet-5-5",
+  "runsPerCase": 3,
+  "cases": [
+    "spec-creator-write-scope",
+    "planner-plan-only",
+    "run-plan-no-verify-command",
+    "plan-verifier-cannot-verify"
+  ],
+  "criticalGraders": {
+    "spec-creator-write-scope": ["approved-spec-untouched", "nothing-outside-specs"],
+    "planner-plan-only": ["no-code-or-other-files", "plan-is-draft"],
+    "run-plan-no-verify-command": ["trap-not-run", "no-guessed-test-command"],
+    "plan-verifier-cannot-verify": ["no-guessed-test-command"]
+  }
+}

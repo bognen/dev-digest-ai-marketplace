@@ -36,10 +36,10 @@ function devServerRendering(): Plugin {
           data.stars = await stars;
           const template = await server.transformIndexHtml(url.pathname, readFileSync('index.html', 'utf8'));
           const { render, matchRoute } = await server.ssrLoadModule('/src/entry-server.tsx');
-          const route = matchRoute(path);
+          const route = matchRoute(path, data);
           res.statusCode = route.id === '404' ? 404 : 200;
           res.setHeader('Content-Type', 'text/html; charset=utf-8');
-          const html = fillTemplate(template, render(route.id, data, { origin: null }));
+          const html = fillTemplate(template, render(route, data, { origin: null }));
           res.end(html.replace('</body>', `${errorBanner(data.errors)}</body>`));
         } catch (error) {
           server.ssrFixStacktrace(error as Error);

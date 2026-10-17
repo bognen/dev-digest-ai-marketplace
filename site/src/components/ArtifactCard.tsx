@@ -1,5 +1,5 @@
 // An artifact on the results page: a card (grid view) or a row (list view).
-// The name links to the source on GitHub; the footer copies the install command.
+// The name links to its detail page; the footer copies the install command.
 import { label, t } from '../i18n';
 import { highlightParts } from '../lib/search';
 import { formatDate } from '../lib/site';

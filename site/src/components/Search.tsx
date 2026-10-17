@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type RefObject } from 'react';
 import { label, t, tn } from '../i18n';
 import { rank } from '../lib/search';
-import { url } from '../lib/site';
+import { detailPath, url } from '../lib/site';
 import { SearchIcon } from './Icons';
 import s from './Search.module.css';
 
@@ -115,7 +115,7 @@ export function Search({ className = '', inputRef, placeholder }: Props) {
         )}
         {results?.map((a, i) => (
           <li key={a.id} id={`sr-${i}`} role="option" aria-selected={i === active} className={i === active ? s.active : undefined}>
-            <a href={a.sourceUrl ?? '#'} tabIndex={-1} onMouseEnter={() => setActive(i)}>
+            <a href={url(detailPath(a.id))} tabIndex={-1} onMouseEnter={() => setActive(i)}>
               <span className={s.code}>{label('typeCodes', a.type)}</span>
               <span className={s.name}>{a.title || a.name}</span>
               <span className={s.plugin}>{a.plugin}</span>

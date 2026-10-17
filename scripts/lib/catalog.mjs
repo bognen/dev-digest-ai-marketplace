@@ -415,6 +415,19 @@ function listCommits(root) {
   }
 }
 
+/** Keep a Changelog sections: [{ version, date, notes }], newest first as written. */
+export function parseChangelog(text) {
+  if (!text) return [];
+  const entries = [];
+  for (const line of text.split(/\r?\n/)) {
+    const head = /^##\s*\[?v?([^\]\s]+)\]?(?:\s*-\s*(\d{4}-\d{2}-\d{2}))?/.exec(line);
+    if (head) { entries.push({ version: head[1], date: head[2] ?? null, notes: [] }); continue; }
+    const bullet = /^\s*[-*]\s+(.*)$/.exec(line);
+    if (bullet && entries.length) entries.at(-1).notes.push(bullet[1].trim());
+  }
+  return entries.filter((e) => /^\d/.test(e.version));
+}
+
 function changelogNote(text, version) {
   if (!text || !version) return null;
   const lines = text.split(/\r?\n/);
@@ -596,7 +609,43 @@ export function buildSiteData(root, { now = new Date() } = {}) {
 
   const counts = Object.fromEntries(ARTIFACT_TYPES.map((t) => [t, artifacts.filter((a) => a.type === t).length]));
 
+  // Content for the detail pages. Kept out of catalog.json, which stays an index.
+  const read = (path) => { try { return readFileSync(join(root, path), 'utf8'); } catch { return null; } };
+  const details = { artifacts: {}, plugins: {} };
+  for (const plugin of model.plugins) {
+    if (!plugin.dir) continue;
+    details.plugins[plugin.name] = {
+      readme: read(`${plugin.dir}/README.md`),
+      readmePath: `${plugin.dir}/README.md`,
+      changelog: parseChangelog(read(`${plugin.dir}/CHANGELOG.md`)),
+      dependencies: (Array.isArray(plugin.manifest?.dependencies) ? plugin.manifest.dependencies : [])
+        .map((d) => (typeof d === 'string' ? { name: d, range: null } : { name: d?.name, range: d?.version ?? null }))
+        .filter((d) => typeof d.name === 'string'),
+    };
+  }
+  for (const a of model.artifacts) {
+    const plugin = model.plugins.find((p) => p.name === a.plugin);
+    if (!plugin?.dir || a.type === 'plugin') continue;
+    const file = (path) => ({ path: path.slice(plugin.dir.length + 1), url: blob(path) });
+    let markdown = null;
+    let files = [file(a.path)];
+    if (a.type === 'skill' || a.type === 'agent' || a.type === 'command') {
+      markdown = parseFrontmatter(read(a.path) ?? '').body.trim();
+      if (a.type === 'skill') {
+        const dir = a.path.slice(0, a.path.lastIndexOf('/') + 1);
+        files = plugin.files.filter((f) => f.startsWith(dir)).sort((x, y) => (x === a.path ? -1 : y === a.path ? 1 : x.localeCompare(y))).map(file);
+      }
+    } else {
+      // Hooks and MCP servers: show their configuration.
+      let config = null;
+      try { config = JSON.parse(a.key); } catch { /* not JSON */ }
+      if (config) markdown = `\`\`\`json\n${JSON.stringify(config, null, 2)}\n\`\`\``;
+    }
+    details.artifacts[a.id] = { markdown, markdownPath: a.path, files, event: a.type === 'hook' ? a.name : null };
+  }
+
   return {
+    details,
     catalog: {
       schemaVersion: SCHEMA_VERSION,
       generatedAt: now.toISOString(),

@@ -4,10 +4,48 @@
 import { readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { Marked } from 'marked';
 import { buildSiteData } from '../../scripts/lib/catalog.mjs';
 
 const SITE_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const readJson = (file) => JSON.parse(readFileSync(resolve(SITE_DIR, 'data', file), 'utf8'));
+
+const escapeText = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+// Markdown from the repository (READMEs, SKILL.md and agent bodies) to HTML for
+// the detail pages. Relative links point at the file on GitHub, raw HTML is
+// shown as text, and a leading "# Title" is dropped because the page has its own.
+export function markdownToHtml(markdown, path, repo) {
+  if (!markdown) return null;
+  const dir = path.slice(0, path.lastIndexOf('/') + 1);
+  const resolveHref = (href) => {
+    if (!href || !repo || /^(?:[a-z][a-z0-9+.-]*:|#|\/\/)/i.test(href)) return href;
+    const target = decodeURI(new URL(href, `https://repo.invalid/${dir}`).pathname.slice(1));
+    return `https://github.com/${repo}/blob/main/${target}`;
+  };
+  const marked = new Marked({
+    gfm: true,
+    async: false,
+    walkTokens(token) {
+      if (token.type === 'link') token.href = resolveHref(token.href);
+      if (token.type === 'image') token.href = `${resolveHref(token.href)}${/^https:\/\/github\.com\//.test(resolveHref(token.href)) ? '?raw=true' : ''}`;
+    },
+    renderer: { html: (token) => escapeText(token.text) },
+  });
+  return marked.parse(markdown.replace(/^\s*#\s+[^\n]*\n+/, ''));
+}
+
+const inline = new Marked({ gfm: true, async: false, renderer: { html: (token) => escapeText(token.text) } });
+
+function renderDetails(details, repo) {
+  const artifacts = Object.fromEntries(Object.entries(details.artifacts).map(([id, d]) => [id, { ...d, html: markdownToHtml(d.markdown, d.markdownPath, repo) }]));
+  const plugins = Object.fromEntries(Object.entries(details.plugins).map(([name, d]) => [name, {
+    ...d,
+    readmeHtml: markdownToHtml(d.readme, d.readmePath, repo),
+    changelog: d.changelog.map((e) => ({ version: e.version, date: e.date, notesHtml: e.notes.map((n) => inline.parseInline(n)) })),
+  }]));
+  return { artifacts, plugins };
+}
 
 // strict (the build): an invalid catalog stops the build, so it never deploys.
 // Not strict (the dev server): render what is there and report the errors.
@@ -21,6 +59,7 @@ export function loadSiteData({ repoRoot = process.env.REPO_ROOT || resolve(SITE_
     errors,
     catalog: data.catalog,
     changes: data.changes,
+    details: renderDetails(data.details, data.catalog.marketplace.repo),
     settings: readJson('settings.json'),
     collections: readJson('collections.json').collections,
     categories: readJson('taxonomy.json').categories.map((c) => c.id),

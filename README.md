@@ -63,10 +63,13 @@ docs/
   PLUGIN-GUIDELINES.md            # layout and fields every plugin must follow
   RELEASES.md                     # versioning, changelog, tagging
   SECURITY.md                     # vulnerability reporting and review rules
+  COST-BASELINE.md                # cost and quality baseline for sdd-engineering
+  cost/                           # measurement records behind COST-BASELINE.md
 plugins/<plugin-name>/            # one directory per plugin
 scripts/
   validate-marketplace.mjs        # policy checks on top of claude plugin validate
   lib/catalog.mjs                 # catalog model shared by the validator and the site
+  cost/                           # cost scenario, runner and metrics (see docs/COST-BASELINE.md)
 site/                             # marketplace site (React + Vite, prerendered): Start card, Get started, What's New
 CODEOWNERS
 CONTRIBUTING.md
