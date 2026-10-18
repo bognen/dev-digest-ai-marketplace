@@ -52,12 +52,13 @@ const readJsonl = (p) =>
 
 function analyze(entries) {
   const tok = { input: 0, cacheRead: 0, cacheWrite: 0, output: 0 };
-  const seen = new Set();
+  const usageById = new Map();
   const tools = {};
   const errors = [];
   const reads = {};
   const bigResults = [];
   const useById = {};
+  const seenResults = new Set();
   let turns = 0;
   let first = null;
   let last = null;
@@ -70,27 +71,34 @@ function analyze(entries) {
     const m = o.message;
     if (!m) continue;
     if (o.type === 'assistant' && m.usage) {
-      // one API response can be split across several transcript lines: count once
+      // one API response is streamed as several transcript lines (one per content block);
+      // earlier lines carry a partial usage snapshot, so keep the largest value per field
       const key = m.id || o.requestId || o.uuid;
-      if (!seen.has(key)) {
-        seen.add(key);
+      const prev = usageById.get(key);
+      if (!prev) {
         turns++;
         model ??= m.model;
-        tok.input += m.usage.input_tokens || 0;
-        tok.cacheRead += m.usage.cache_read_input_tokens || 0;
-        tok.cacheWrite += m.usage.cache_creation_input_tokens || 0;
-        tok.output += m.usage.output_tokens || 0;
       }
+      const u = m.usage;
+      usageById.set(key, {
+        input: Math.max(prev?.input || 0, u.input_tokens || 0),
+        cacheRead: Math.max(prev?.cacheRead || 0, u.cache_read_input_tokens || 0),
+        cacheWrite: Math.max(prev?.cacheWrite || 0, u.cache_creation_input_tokens || 0),
+        output: Math.max(prev?.output || 0, u.output_tokens || 0),
+      });
     }
     if (!Array.isArray(m.content)) continue;
     for (const b of m.content) {
       if (b.type === 'tool_use') {
+        if (useById[b.id]) continue; // same block repeated on a later streaming line
         tools[b.name] = (tools[b.name] || 0) + 1;
         useById[b.id] = b;
         const fp = b.input?.file_path || b.input?.path;
         if (b.name === 'Read' && fp) reads[fp] = (reads[fp] || 0) + 1;
       }
       if (b.type === 'tool_result') {
+        if (seenResults.has(b.tool_use_id)) continue;
+        seenResults.add(b.tool_use_id);
         const text =
           typeof b.content === 'string' ? b.content : JSON.stringify(b.content || '');
         const use = useById[b.tool_use_id];
@@ -100,6 +108,7 @@ function analyze(entries) {
       }
     }
   }
+  for (const u of usageById.values()) for (const f in tok) tok[f] += u[f];
   bigResults.sort((a, b) => b.chars - a.chars);
   return {
     model,
