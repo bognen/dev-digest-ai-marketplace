@@ -53,7 +53,8 @@ flowchart LR
 1. **Spec.** `spec-creator` analyses your design sources (a description, Figma
    exports, existing code), interviews you about gaps and writes one
    `Status: draft` spec with EARS acceptance criteria, edge cases, NFRs and a
-   traceability matrix. It can fan out `research-tools:researcher` agents to
+   traceability matrix. The spec header records the plugin version that wrote it
+   (`Generated-by: sdd-engineering@<version>`). It can fan out `research-tools:researcher` agents to
    gather evidence.
 2. **You approve the spec** by changing its `Status:` line to `approved`.
 3. **Plan.** `implementation-planner` reviews the approved spec, asks about

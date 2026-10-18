@@ -110,6 +110,8 @@ touches). Don't assume a directory layout; discover it.
   (grep `Spec ID:`; files without one don't count). Always `Status: draft` —
   only a human promotes a spec. Fill `Supersedes` only when the user says so or
   confirms a conflict you found; never edit the superseded spec.
+- **Version stamp.** Copy the `Generated-by:` line from the template exactly. It
+  records which plugin version wrote the spec; never change or drop it.
 - **No implementation detail.** No file paths to change, function names, step
   lists or schemas. Existing code may be cited as context (`path:line`).
 - **Diagrams** (via `engineering-paved-path:mermaid-diagram`) only when a state
@@ -131,6 +133,7 @@ are literal strings: copy them exactly, in order.
 Spec ID: SPEC-NN
 Status: draft
 Supersedes: <link, or —>
+Generated-by: sdd-engineering@1.1.0
 
 ## Problem and user
 ## Goals / Non-goals
@@ -216,7 +219,8 @@ Every `US-n` maps to ≥1 AC; every `EC-n` to an AC or `OQ-n`; every AC traces t
 
 Mark ✅/❌; fix every ❌ you can and list the rest honestly.
 
-1. `Spec ID` unique in `specsDir`; `Status: draft`; `Supersedes` filled or `—`.
+1. `Spec ID` unique in `specsDir`; `Status: draft`; `Supersedes` filled or `—`;
+   `Generated-by: sdd-engineering@1.1.0` copied exactly.
 2. All nine headings present, exact, in order.
 3. Every AC: ID, pattern label, priority, one "shall", correct EARS form,
    `Verify:` with level + hint.

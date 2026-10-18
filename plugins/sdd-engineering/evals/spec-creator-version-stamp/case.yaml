@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: spec-creator-version-stamp
+description: spec-creator stamps the spec it writes with Generated-by sdd-engineering@<version>, keeps Status draft, and writes nothing outside specsDir.
+tags: [spec-creator, version]
+context:
+  scaffold_script: scaffold.sh
