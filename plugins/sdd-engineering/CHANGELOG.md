@@ -4,6 +4,10 @@ All notable changes to `sdd-engineering` are documented here, in
 [Keep a Changelog](https://keepachangelog.com) format. Versions follow
 [semver](https://semver.org).
 
+## [1.1.0] - 2026-10-18
+- spec-creator stamps every spec it writes with `Generated-by: sdd-engineering@<version>`, so a spec records which plugin version wrote it
+- Added the `spec-creator-version-stamp` eval case
+
 ## [1.0.1] - 2026-10-16
 - Added an example invocation to the `/run-plan` skill
 - Fixed the `/workflow-retro` frontmatter, which failed to parse and loaded the skill without metadata

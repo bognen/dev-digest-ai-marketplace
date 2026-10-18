@@ -372,6 +372,16 @@ export function validate(root) {
         const lines = (source.read(f) ?? '').split('\n');
         const at = lines.findIndex((l) => PRODUCT_REFERENCES.test(l));
         if (at !== -1) error(`${f}:${at + 1}`, `Product-specific reference "${lines[at].match(PRODUCT_REFERENCES)[0]}"; plugins must stay product-neutral`);
+        // A plugin that states its own version (e.g. a "Generated-by: <name>@1.2.3"
+        // stamp in an agent prompt) must state the current one. The changelog is history.
+        const version = plugin.manifest?.version;
+        if (version && r !== 'CHANGELOG.md') {
+          const self = new RegExp(`(?<![\\w-])${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}@(\\d+\\.\\d+\\.\\d+)(?![\\w.-])`);
+          lines.forEach((l, i) => {
+            const m = self.exec(l);
+            if (m && m[1] !== version) error(`${f}:${i + 1}`, `States ${name}@${m[1]} but plugin.json says ${version}; update it with the version bump`);
+          });
+        }
       }
     }
     if (!plugin.files.includes(`${dir}/README.md`)) error(dir, 'README.md is required');

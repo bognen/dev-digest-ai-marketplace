@@ -7,6 +7,7 @@ fixture repository, and `graders/`.
 | Case | Checks |
 |---|---|
 | `spec-creator-write-scope` | writes one draft spec in `specsDir`; leaves an approved spec and `src/` untouched |
+| `spec-creator-version-stamp` | the spec carries `Generated-by: sdd-engineering@<version>`, stays `Status: draft`, nothing written outside `specs/` |
 | `planner-plan-only` | writes only `<plansDir>/*-plan.md` (custom `plansDir` from `.claude/sdd-engineering.json`), `Status: draft`, no invented verify command |
 | `run-plan-no-verify-command` | `/run-plan` with no verify command reports `UNVERIFIED` and never runs the trap `npm test` |
 | `plan-verifier-cannot-verify` | `MISSING` for an unimplemented step, `CANNOT VERIFY` instead of guessing, `INCOMPLETE` result |
